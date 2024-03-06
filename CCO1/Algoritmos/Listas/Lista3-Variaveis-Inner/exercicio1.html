@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicio 1 - Aposentadoria</title>
+</head>
+<body style="background-color: rgba(15, 15, 92, 0.63);">
+
+  <div style="background-color: black; color: white; margin: 10px; padding: 15px; padding-top:5px ; position: absolute; left: 35%; right: 35%; border-radius: 8px; border-style: solid; border-width: 2px; border-color: gray;">
+
+  <h1 style="position: relative; left: 20%;">Aposentadoria</h1>
+  
+  <div style="position: relative; left: 15%;">
+  Idade: <input type="text" id="input_idade" >  <br> <br>
+  </div>
+
+
+  <button onclick="aposentarH()" style="background-color: rgb(218, 27, 27); border-radius: 5px; "> Aposentadoria homem</button> &nbsp &nbsp &nbsp
+  <button onclick="aposentarM()" style="background-color: rgb(16, 233, 34); border-radius: 5px;"> Aposentadoria mulher</button>  <br> <br>
+
+
+  </div>
+
+</body>
+</html>
+
+
+<Script>
+
+  function aposentarH() {
+    var idade = Number(input_idade.value)
+    var calculo = 70 - idade;
+    var mensagem = "Faltam " + calculo + " anos para a sua aposentadoria";
+
+    alert (mensagem)
+  }
+
+  function aposentarM() {
+    var idade = Number(input_idade.value)
+    var calculo = 60 - idade;
+    var mensagem = "Faltam " + calculo + " anos para a sua aposentadoria";
+
+    alert (mensagem)
+  }
+
+
+
+
+</Script>

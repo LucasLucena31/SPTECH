@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 02 - Calculadora com JS</title>
+</head>
+<body style="background-color: rgba(15, 15, 92, 0.63);">
+
+  <div style="background-color: black; color: white; margin: 10px; padding: 15px; padding-top:5px ; position: absolute; left: 35%; right: 35%; border-radius: 8px; border-style: solid; border-width: 2px; border-color: gray;">
+
+  <h1 style="position: relative; left: 50px;">Calculadora IMC</h1>
+  
+  Nome Completo: <input type="text" id="input_nome">  <br> <br>
+  Peso (em quilogramas): <input type="text" id="input_peso">  <br> <br>
+  Altura (em metros): <input type="text" id="input_altura">  <br> <br>
+
+  <button onclick="calcular()" style="background-color: rgb(16, 233, 34); border-radius: 5px; font-weight: bold;">Calcular</button>  <br> <br>
+
+  </div>
+
+</body>
+</html>
+
+
+<Script>
+
+  function calcular() {
+    var nome = input_nome.value;
+    var peso = Number(input_peso.value);
+    var altura = Number(input_altura.value);
+    var Imc = peso / (altura * altura);
+    var pes = altura / 0.3048;
+    var oncas = peso * 35.274;
+    var ImcAlt = oncas / (pes * pes);
+    var mensagem = nome + ', seu IMC é de: ' + Imc + ' \nA sua altura em pés é de: ' + pes + '\nO seu peso em onças é de: ' + oncas + '\nO seu IMC em pés/onça² é de: ' + ImcAlt;
+
+    alert(mensagem)
+
+  }
+
+
+
+</Script>
