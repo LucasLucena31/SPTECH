@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Frozen Meat </title>
+</head>
+<body style="background-color: rgb(116, 112, 112);">
+
+  <div style="background-color: black; color: white; margin: 10px; padding: 15px; padding-top:5px ; position: absolute; left: 10%; right: 35%; border-radius: 8px; border-style: solid; border-width: 2px; border-color: gray; width: 75%;">
+
+  <h1 style="position: relative; left: 33%; width: 55%;">Calculadora Financeira <br></h1>
+
+  <p> Com base em dados obtidos através de pesquisas entre funcionários e gerentes do setores de alimentação (dados disponíveis
+  ao final da página), foi elaborada está calculadora financeira, que contém os 10 produtos com mais desperdício em açougues.
+  Dos produtos a seguir, preencha (em quilos) quanto o açougue forneçe. *Caso não forneça o produto, deixar em branco: </p>
+
+  <br>
+  
+  Linguiça Toscana: <input type="text" id="input_LinguicaT">  <br> <br>
+
+  Pernil Dianteiro: <input type="text" id="input_PernilDianteiro">  <br> <br>
+
+  Acém Bovino: <input type="text" id="input_Acem">  <br> <br>
+
+  Músculo Bovino: <input type="text" id="input_Musculo">  <br> <br>
+
+  Contrafilé: <input type="text" id="input_Contrafile">  <br> <br>
+
+  Pernil Traseiro: <input type="text" id="input_PernilTraseiro">  <br> <br>
+
+  Chã de Dentro: <input type="text" id="input_Cha">  <br> <br>
+
+  Lombo Suíno: <input type="text" id="input_Lombo">  <br> <br>
+
+  Costelinha Suína: <input type="text" id="input_Costelinha">  <br> <br>
+
+  Maçã de Peito: <input type="text" id="input_Maca">  <br> <br>
+
+
+  <button onclick="calcular()" style="background-color: rgb(16, 233, 34); border-radius: 5px; font-weight: bold;">Calcular desperdício</button>  <br> <br>
+
+
+  <!--  Com 10kg de Linguiça Toscana, a um preço de mercado de R$5 o kg e um desperdício médio de 5%, há um prejuízo de Xkg, totalizando R$Z
+    
+    Com 5kg de Pernil, a um preço de mercado de R$15 o kg e um desperdício médio de 10%, há um prejuízo de Xkg, totalizando R$Z
+
+    Portanto, a somatória dos valores totaliza:
+    15kg de carne, a um preço médio de 10 com um desperdício médio de 7.5% há um prejuízo de Xkg, totalizando R$z
+  -->
+
+
+
+<div id="div_mensagem"></div>
+
+</body>
+</html>
+
+
+<Script>
+    var Linguica = input_LinguicaT.value;
+    var PernilDianteiro = input_PernilDianteiro.value;
+    var Acem = input_Acem.value;
+    var Musculo = input_Musculo.value;
+    var Contrafile = input_Contrafile.value;
+    var PernilTraseiro = input_PernilTraseiro.value;
+    var Cha = input_Cha.value;
+    var Lombo = input_Lombo.value;
+    var Costelinha = input_Costelinha.value;
+    var Maca = input_Maca.value;
+
+  function calcular() {
+     Linguica = input_LinguicaT.value * 0.0485;
+     PernilDianteiro = input_PernilDianteiro.value * 0.0820;
+     Acem = input_Acem.value * 0.1022;
+     Musculo = input_Musculo.value * 0.1085;
+     Contrafile = input_Contrafile.value * 0.1123;
+     PernilTraseiro = input_PernilTraseiro.value * 0.1235;
+     Cha = input_Cha.value * 0.1321;
+     Lombo = input_Lombo.value * 0.1345;
+     Costelinha = input_Costelinha.value * 0.1478;
+     Maca = input_Maca.value * 0.1524;
+
+     total = Linguica + PernilDianteiro + Acem + Musculo + Contrafile + PernilTraseiro + Cha + Lombo + Costelinha + Maca;
+
+     totalDin = (Linguica * 65) + (PernilDianteiro * 12) + (Acem * 26.89) + (Musculo * 28) + (Contrafile * 49.90) + (PernilTraseiro * 28) + (Cha * 17.39) + (Lombo * 35.99) + (Costelinha * 109.9) + (Maca * 8.93);
+
+    var mensagem = `O total de kg em produtos alimentícios (no açougue) que seu estabelecimento desperdiça por mês é: ${total}kg ou ${total * 1000} gramas. Um total de ${totalDin}R$`;
+
+          
+
+          div_mensagem.innerHTML = mensagem;
+
+        }
+      
+    
+</Script>

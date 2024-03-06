@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L4 Exercicio 18 - Frêquencia </title>
+</head>
+<body style="background-color: rgba(15, 15, 92, 0.63);">
+
+  <div style="background-color: black; color: white; margin: 10px; padding: 15px; padding-top:5px ; position: relative; left: 35%; right: 35%; width: 25%; border-radius: 8px; border-style: solid; border-width: 2px; border-color: gray;">
+
+  <h1 style="position: relative; left: 20px;">Frêquencia</h1>
+  
+  Insira sua frêquencia: <input type="text" id="input_freq">  <br> <br>
+
+  <button onclick="verificar()" style="background-color: rgb(16, 233, 34); border-radius: 5px; font-weight: bold;">Analisar Frêquencia</button>  <br> <br>
+
+
+
+  
+</div>
+
+<div id="div_mensagem">
+
+  </div>
+  
+
+
+</body>
+</html>
+
+
+
+
+<Script>
+    var freq = input_freq.value;
+
+  function verificar() {
+    freq = input_freq.value;
+
+
+          if (freq >= 50){
+
+            div_mensagem.innerHTML = '<img src="https://jornaldafronteira.com.br/wp-content/uploads/2024/02/jornal-cedro-img-38-1.png">';
+
+            } else{
+              div_mensagem.innerHTML = '<img src="https://st3.depositphotos.com/12982378/35274/i/450/depositphotos_352740142-stock-photo-shocked-traveler-hat-backpack-holding.jpg">';
+            }
+          
+
+
+        }
+      
+
+</Script>
+
+

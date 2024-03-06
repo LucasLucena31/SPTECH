@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercicio 1</title>
+    </head>
+    <body>
+        <!-- isto é um comentário no HTML! não será interpretado como tag!  -->
+        
+        <h1>Exercicio 1, cadastrar cidade</h1>
+
+        Cidade Natal: 
+        <input id="cidade" type="text">
+        Ano de nascimento: 
+        <input id="ano" type="text">
+        <button onclick="cadastrar()"> Cadastrar </button>
+
+        
+
+    </body>
+</html>
+
+<script>
+    // isto é um comentário em JS! não será interpretado como código! 
+    // tudo que estiver dentro da tag <script> é considerado como código JavaScript, que vai ser incorporado no HTML 
+          
+
+    function cadastrar() {
+        alert( 'A sua cidade natal é ' + cidade.value + ' e você nasceu no ano de ' + ano.value);
+
+    }
+    // "input_nome.value" indica que estamos acessando a informação "value" do elemento identificado como "input_nome"
+    // essa "soma" ou "junção" de textos é chamada de "concatenação"
+
+    /*
+        Este é um comentário de múltiplas linhas!
+
+        Composição de uma função:
+
+            function nome_da_funcao () { ...conteúdo... }
+
+        - function: a palavra reservada que indica ao JS que a seguir será definida uma função;
+        - nome_da_funcao(): é o identificador da função, usado para invocar/executar a funcionalidade;
+        - {}: as chaves indicam onde nossa função começa e termina, delimitando o seu conteúdo;
+    */
+
+</script>

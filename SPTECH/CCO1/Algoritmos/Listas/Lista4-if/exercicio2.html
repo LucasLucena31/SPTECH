@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L4 Exercicio 2 - Refri </title>
+</head>
+<body style="background-color: rgba(15, 15, 92, 0.63);">
+
+  <div style="background-color: black; color: white; margin: 10px; padding: 15px; padding-top:5px ; position: absolute; left: 35%; right: 35%; border-radius: 8px; border-style: solid; border-width: 2px; border-color: gray;">
+
+  <h1 style="position: relative; left: 27px;">Contagem de refri/ano</h1>
+  
+  Quantidade de latinhas por dia: <input type="text" id="input_refri">  <br> <br>
+
+  <button onclick="verificar()" style="background-color: rgb(16, 233, 34); border-radius: 5px; font-weight: bold;">Quantos refris?</button>  <br> <br>
+
+  <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+
+<Script>
+    var refri = input_refri.value;
+
+
+  function verificar() {
+     refri = input_refri.value;
+     refriAno = refri * 365;
+
+     div_mensagem.innerHTML = `Você tomou ${refriAno} latinhas de refri no ano!`
+
+    if(refriAno > 500){
+        div_mensagem.innerHTML = div_mensagem.innerHTML + ` Cuidado com a diabetes!`
+    }
+
+  }
+
+
+
+</Script>

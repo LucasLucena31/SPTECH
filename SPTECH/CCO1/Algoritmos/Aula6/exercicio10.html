@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L3 Exercicio 10 - Calculadora de votos </title>
+</head>
+<body style="background-color: rgba(15, 15, 92, 0.63);">
+
+  <div style="background-color: black; color: white; margin: 10px; padding: 15px; padding-top:5px ; position: absolute; left: 35%; right: 35%; border-radius: 8px; border-style: solid; border-width: 2px; border-color: gray;">
+
+  <h1 style="position: relative; left: 40px;">Calculadora de Votos</h1>
+  
+  Quantos votos o candidato A teve? <input type="text" id="input_vCA">  <br> <br>
+  Quantos votos o candidato B teve? <input type="text" id="input_vCB">  <br> <br>
+  Quantos votos brancos houveram? <input type="text" id="input_vBr">  <br> <br>
+  Quantos votos nulos houveram? <input type="text" id="input_vNl">  <br> <br>
+
+  
+
+  <button onclick="calcular()" style="background-color: rgb(16, 233, 34); border-radius: 5px; font-weight: bold;">Resultado da eleição</button>  <br> <br>
+
+  <div id="div_calculo"></div>
+  </div>
+
+</body>
+</html>
+
+
+<Script>
+    
+
+
+  function calcular() {
+    var vCA = Number(input_vCA.value);
+    var vCB = Number(input_vCB.value);
+    var vBr = Number(input_vBr.value);
+    var vNl = Number(input_vNl.value);
+    var tNB = vNl + vBr;
+
+    var vTotal = vCA + vCB + vBr + vNl;
+
+    var mensagem = ` Total de votos: ${vTotal} <br> Candidato A: ${(vCA / vTotal) * 100}% (${vCA} votos) <br> Candidato B: ${(vCB / vTotal) * 100}% ( ${vCB} votos) <br> Inválidos: ${(vNl / vTotal) * 100 + (vBr / vTotal) * 100 }% (${tNB} votos)`;
+
+
+    /*
+    var mensagem = ' Total de votos: ' + vTotal + '<br> Candidato A: ' + (vCA / vTotal) * 100 + '% ('+ vCA + ' votos) <br> Candidato B: ' + (vCB / vTotal) * 100 + '% ('+ vCB + ' votos) <br> Inválidos: ' + ((vNl / vTotal) * 100 + (vBr / vTotal) * 100 ) + '% ('+ tNB +' votos) ';
+    */
+
+    div_calculo.innerHTML = mensagem;
+
+  }
+
+
+
+</Script>
