@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L4 Exercicio 16 - Banco XPTO </title>
+</head>
+<body style="background-color: rgba(15, 15, 92, 0.63);">
+
+  <div style="background-color: black; color: white; margin: 10px; padding: 15px; padding-top:5px ; position: absolute; left: 35%; right: 35%; border-radius: 8px; border-style: solid; border-width: 2px; border-color: gray;">
+
+  <h1 style="position: relative; left: 20px;">Banco XPTO</h1>
+  
+  Insira seu Saldo: <input type="text" id="input_saldo">  <br> <br>
+
+  Valor do Débito: <input type="text" id="input_deb">  <br> <br>
+
+  <button onclick="verificar()" style="background-color: rgb(16, 233, 34); border-radius: 5px; font-weight: bold;">Analisar conta</button>  <br> <br>
+
+<div id="div_mensagem"></div>
+
+</body>
+</html>
+
+
+
+
+<Script>
+    var saldo = input_saldo.value;
+    var deb = input_deb.value;
+
+  function verificar() {
+    saldo = input_saldo.value;
+    deb = input_deb.value;
+    total = saldo - deb;
+
+
+          if (total < 0){
+              mensagem = `<p style="color: red; font-weight: bold;"> o saldo da sua conta é ${total}</p>`;
+            } else{
+              mensagem = `<p style="color: blue; font-weight: bold;"><i> o saldo da sua conta é ${total}<i></p>`;
+            }
+          
+
+          div_mensagem.innerHTML = mensagem;
+
+        }
+      
+        /*
+        if (total > 0){
+              div_mensagem.innerHTML.value = `<div style="color: blue;> <i>o saldo atual da conta corrente é ${total} <i></div>`;
+            } else{
+              div_mensagem.innerHTML.value = `<div style="color: red; font-weight: bold;> o saldo atual da conta corrente é ${total} </div>`;
+            }
+        }
+        */
+
+</Script>
+
+
