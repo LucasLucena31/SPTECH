@@ -1,0 +1,38 @@
+Um jogador de Valorant quer analisar sua performance no jogo. 
+
+Como ele acabou com a memória do seu celular instalando Genshin, 
+ele pediu para que você, um futuro SUPER estagiário, faça um 
+programa para calcular seu KD (Kills p/ Death) ou KDA (Kill p/ Death p/ Assistance) 
+dependendo de sua classe (sentinela, duelista, controlador ou iniciador).
+
+No seu programa, crie meios para que o usúario insira:
+
+a. A classe do personagem do jogador;
+
+b. O número de Kills na partida;
+
+c. O número de vezes em que ele morreu na partidas;
+
+d. O número de assistências que ele realizou na partida;
+
+
+Com base nos dados obtidos:
+
+1. Se a classe do personagem for duelista:
+    1.1 Exiba a mensagem "Para de dar InstaLock!!";
+    1.2 Calcule o KD do jogador (Número de Kills por número de Mortes);
+    1.3 Se o KD for maior que 1, também exiba "Pelo menos fez sua parte com um KD de X", onde X é o KD;
+    1.4 Se o KD for menor que 1 também exiba "Vai fazer lição da faculdade que é melhor, seu KD tá em X", onde X é o KD;
+
+2. Se a classe não for duelista:
+    1.1 Exiba a mensagem "Complicado ter que lidar com duelista, né?";
+    1.2 Calcule o KDA do jogador (Número de Kills + Assistências / Número de Mortes);
+    1.3 Se o KDA for maior que 1, também exiba "E você ainda tá carregando o cara com um KDA de Y", onde Y é o KDA;
+    1.4 Se o KDA for menor que 1, também exiba "Relaxa, o seu KDA tá em Y, mas é tudo culpa do duelista", onde o Y é o KDA;
+
+OBS: Não é necessário validar as entradas, assuma que são válidas.
+
+
+
+
+

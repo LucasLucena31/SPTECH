@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinder</title>
+</head>
+<body>
+
+    Altura: <input type="text" id="input_altura"> <br> <br>
+
+    Cor do cabelo:
+    <select id="select_cabelo">
+        <option value="0" selected disabled>Selecione uma Opção</option>
+        <option value="1">Preto</option>
+        <option value="2">Vermelho</option>
+        <option value="3">Amarelo</option>
+        <option value="4">Castanho</option>
+    </select> <br> <br>
+    
+    <button onclick="selecionar()">Deu match?</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function selecionar(){
+        var cabelo = Number(select_cabelo.value);
+        var altura = Number(input_altura.value);
+
+        if ((cabelo == 3 || cabelo == 4) && altura < 1.85){
+            div_mensagem.innerHTML = `<img src="https://www.iped.com.br/_upload/content/2015/04/14/5-dicas-voce-conseguir-motivar-dia-dia.jpg" alt="">`
+            
+        } else {
+            div_mensagem.innerHTML = `<img src="https://www.frasesdobem.com.br/wp-content/uploads/2021/01/todas-as.jpg">`
+        }
+
+    }
+
+</script>

@@ -1,0 +1,53 @@
+body {
+
+    background-color: orange;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-family: monospace;
+
+    font-size: 12.8px;
+    
+}
+
+.texto {
+
+    margin: 0 auto;
+    /* Centraliza o elemento horizontalmente na página.*/
+
+    max-width: 600px;
+    /* Defina a largura máxima do conteúdo */
+
+    text-align: center; /*Define o alinhamento do texto dentro do elemento como centralizado.*/
+}
+
+.container{
+    background-color: #984447;
+    margin: auto;
+}
+
+
+.titulo {
+
+    width: 50%; /*Define a largura do elemento como 50% da largura do seu contêiner pai*/
+    margin: auto;
+}
+
+.input{
+
+    width: 40%;
+    margin: 0 auto;
+    
+}
+
+
+.botao {
+
+    background-color: white;
+
+    color: #984447;
+
+    font-weight: bold;
+}

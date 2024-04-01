@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analise Temperatura</title>
+</head>
+<body>
+
+    Renda: <input type="text" id="input_renda"> <br> 
+    Renda Familiar: <input type="text" id="input_renda_fml"> <br> <br>
+
+
+    <button onclick="Verificar()">Verificar Ajuda</button>
+    
+</body>
+</html>
+
+<script>
+    function Verificar(){
+        var renda = input_renda.value;
+        var fml = input_renda_fml.value;
+
+        if (renda <= 1050 && fml <= 2100){
+                alert('Você terá direito!')
+            } else {
+                alert('Você NÃO terá direito!')
+            }
+
+        }
+
+
+</script>
+
+<!-- Crie um programa o qual: 
+- Receba a temp
+- Ao clicar em "analisar":
+-- Caso a temperatura esteja entre 21 e 24, exiba "Temperatura Confortável";
+
+-- Caso contrário, exiba "Temperatura Desconfortável"; -->

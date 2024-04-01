@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aninhamento</title>
+</head>
+<body>
+    <!-- NÃO USEI ANINHAMENTO  -->
+
+    <!-- O usuário vai inserir um número
+    Caso o número seja menor que 0, exiba "O número X é menor que 0";
+    Caso o número seja entre 0 e 25, exiba "O número está entre 0 e 25";
+    Caso o número seja maior que 25 até 50, exiba "O número X é maior que 25 e vai até 50";
+    Caso o número seja maior que 50, exiba "O númmero X é maior que 50"; -->
+
+    Insira um número: <input type="number" id="input_n1"> <br><br>
+
+    <button onclick="analisar()">Analisar o Número</button> <br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    function analisar() {
+        var n1 = input_n1.value;
+        var mensagem;
+
+
+        if(n1 < 0){
+            mensagem = `O número ${n1}  é menor que 0`;
+        }
+        if(n1 > 0){
+            mensagem = `O número ${n1} está entre 0 e 25`;
+        }
+        if(n1 > 25){
+            mensagem = `O número ${n1} é maior que 25 e vai até 50`;
+        }
+        if(n1 > 50){
+            mensagem = `O número ${n1} é maior que 50`;
+        }
+        
+        
+        
+
+        div_mensagem.innerHTML = mensagem;
+         
+    }
+
+
+</script>

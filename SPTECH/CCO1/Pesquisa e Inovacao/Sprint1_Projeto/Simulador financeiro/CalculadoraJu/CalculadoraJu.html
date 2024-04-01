@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="caculadora.css">
+</head>
+
+<body>
+    <div class="container">
+    <div class="texto">
+        <h1 class="titulo">FROZEN MEAT</h1><br>
+        <h3>Calcule o prejuízo financeiro causado pela perda de carne em seu açougue</h3>
+        <h3>Basta adicionar o peso em Kilo de cada peça de carne desejada nos campos abaixo:</h3>
+        <div class="input">
+            Linguiça Toscana:
+            <input id="input_linguica" text="Linguiça Toscana:"><br><br>
+            Pernil Dianteiro:
+            <input id="input_pernild" text="Pernil Dianteiro:"><br><br>
+            Acém Bovino:
+            <input id="input_acem" text="Acém Bovino:"><br><br>
+            Músculo Bovino:
+            <input id="input_musculo" text="Músculo Bovino:"><br><br>
+            Contrafilé:
+            <input id="input_contrafile" text="Contrafilé:"><br><br>
+            Pernil Traseiro:
+            <input id="input_pernilt" text="Pernil Traseiro:"><br><br>
+            Coxão Mole:
+            <input id="input_coxao" text="Coxão Mole:"><br><br>
+            Lombo Suíno:
+            <input id="input_lombo" text="Lombo Suíno:"><br><br>
+            Costelinha Suína:
+            <input id="input_costelinha" text="Costelinha Suína:"><br><br>
+            Peito Bovino:
+            <input id="input_peito" text="Peito Bovino"><br><br>
+        </div>
+
+        <button onclick="calcular()" class="botao">CALCULAR PREJUIZO</button>
+
+        <div id="div_mensagem" class="mensagem"></div>
+    </div>
+    </div>
+
+    <script>
+
+        function calcular() {
+            var linguica = Number(input_linguica.value)
+            var pernild = Number(input_pernild.value)
+            var acem = Number(input_acem.value)
+            var musculo = Number(input_musculo.value)
+            var contra = Number(input_contrafile.value)
+            var pernilt = Number(input_pernilt.value)
+            var coxao = Number(input_coxao.value)
+            var lombo = Number(input_lombo.value)
+            var costelinha = Number(input_costelinha.value)
+            var peito = Number(input_peito.value)
+
+            //Quilo da peça x porcentagem de perda x preço por quilo
+
+            var plinguica = (linguica * (4.85 / 100) * 24.99)
+            var ppernild = (pernild * (8.20 / 100) * 12.49)
+            var pacem = (acem * (10.22 / 100) * 24.98)
+            var pmusculo = (musculo * (10.85 / 100) * 23.98)
+            var pcontra = (contra * (11.23 / 100) * 42.48)
+            var ppernilt = (pernilt * (12.35 / 100) * 12.99)
+            var pcoxao = (coxao * (13.21 / 100) * 37.60)
+            var plombo = (lombo * (13.45 / 100) * 19.98)
+            var pcostelinha = (costelinha * (14.78 / 100) * 21.98)
+            var ppeito = (peito * (15.24 / 100) * 25.99)
+            var prejuizototal = plinguica + ppernild + pacem + pmusculo + pcontra + ppernilt + pcoxao + plombo + pcostelinha + ppeito
+            var ktotal = linguica + pernild + acem + musculo + contra + pernilt + coxao + lombo + costelinha + peito
+            //testa se o campo é vazio, caso não seja a mensagem é exibida
+
+            div_mensagem.innerHTML += `Prejuizo de ${ktotal} quilos de carne custa R$${prejuizototal}`
+
+            if (linguica > 0) {
+                div_mensagem.innerHTML += `Prejuizo de ${linguica} quilo(s) de linguiça tocana = R$${plinguica} <br>`
+            }
+
+            if (pernild > 0) {
+                div_mensagem.innerHTML += `Prejuizo de ${pernild} quilo(s) de pernil dianteiro = R$${ppernild}<br>`
+            }
+
+            if (acem > 0) {
+                div_mensagem.innerHTML += `Prejuizo de ${acem} quilo(s) de acém bovino = R$${pacem}<br>`
+            }
+
+            if (musculo > 0) {
+                div_mensagem.innerHTML += `Prejuizo de ${musculo} quilo(s) de músculo bovino = R$${pmusculo}<br>`
+            }
+
+            if (contra > 0) {
+                div_mensagem.innerHTML += `Prejuizo de ${contra} quilo(s) de contrafilé = R$${pcontra}<br>`
+            }
+
+            if (pernilt > 0) {
+                div_mensagem.innerHTML += `Prejuizo de ${pernilt} quilo(s) de pernil traseiro = R$${ppernilt}<br>`
+            }
+
+            if (coxao > 0) {
+                div_mensagem.innerHTML += `Prejuizo de ${coxao} quilo(s) de coxão mole = R$${pcoxao}<br>`
+            }
+
+            if (lombo > 0) {
+                div_mensagem.innerHTML += `Prejuizo de ${lombo} quilo(s) de lombo suíno = R$${plombo}<br>`
+            }
+
+            if (costelinha > 0) {
+                div_mensagem.innerHTML += `Prejuizo de ${costelinha} quilo(s) de costelinha suína = R$${pcostelinha}<br>`
+            }
+
+            if (peito > 0) {
+                div_mensagem.innerHTML += `Prejuizo de ${peito} quilo(s) de peito bovino = R$${ppeito}<br>`
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

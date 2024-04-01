@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analise Temperatura</title>
+</head>
+<body>
+
+    Insira o valor da temperatura: <input type="text" id="input_temp"> <br> <br>
+
+    <button onclick="Analisar()">Analisar</button>
+    
+</body>
+</html>
+
+<script>
+    function Analisar(){
+        var temp = Number(input_temp.value);
+
+        if (temp >= 21){
+            if (temp <= 24){
+                alert('Temperatura Confortável')
+            } else {
+                alert('Temperatura Desconfortável')
+            }
+        } else {
+                alert('Temperatura Desconfortável')
+            }
+        
+    }
+
+
+</script>
+
+<!-- Crie um programa o qual: 
+- Receba a temp
+- Ao clicar em "analisar":
+-- Caso a temperatura esteja entre 21 e 24, exiba "Temperatura Confortável";
+
+-- Caso contrário, exiba "Temperatura Desconfortável"; -->

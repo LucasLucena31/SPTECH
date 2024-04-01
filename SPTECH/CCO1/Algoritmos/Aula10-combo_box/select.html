@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combo Box</title>
+</head>
+<body>
+
+    <select id="select_pagamento">
+        <option value="1">Dinheiro</option>
+        <option value="2">Débito</option>
+        <option value="3">Crédito</option>
+        <option value="4">Boleto</option>
+        <option value="5">Pix</option>
+    </select> <br> <br>
+    
+    <button onclick="selecionar()">Selecionar</button>
+
+</body>
+</html>
+
+<script>
+    function selecionar(){
+        var pagamento = Number(select_pagamento.value);
+
+        console.log(`O método selecionado foi: ${pagamento}`);
+        console.error(`O método selecionado foi: ${pagamento}`);
+        console.warn(`O método selecionado foi: ${pagamento}`);
+
+        if (pagamento == 1 || pagamento == 2 || pagamento == 5){
+            alert ('O pagamento será a vista')
+        } else {
+            alert('O pagamento pode ser parcelado')
+        }
+
+    }
+
+</script>

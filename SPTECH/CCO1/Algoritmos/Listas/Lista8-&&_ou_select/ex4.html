@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passagens</title>
+</head>
+<body>
+
+
+    Login: <input type="text" id="input_login"> <br> <br>
+    Senha: <input type="text" id="input_senha"> <br> <br>
+
+    Pergunta Adicional:
+    <select id="select_pergunta">
+        <option value="0" selected disabled>Selecione uma Opção</option>
+        <option value="1">Ano de Nascimento</option>
+        <option value="2">Nome do Animal</option>
+    </select> <br> <br>
+
+    Resposta: <input type="text" id="input_resposta"> <br> <br>
+
+    <button onclick="autenticar()">Autenticar</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function autenticar(){
+        var Login = input_login.value;
+        var Senha = input_senha.value;
+        var Pergunta = select_pergunta.value;
+        var Resposta = Number(input_resposta.value);
+
+        
+
+        if (Pergunta == 1 && Login == 'Ana' && Senha == 'braga' && Resposta == '1949'){
+            div_mensagem.innerHTML = "Usuário autenticado";
+            
+        } else if (Pergunta == 1 && Login == 'Ana' && Senha == 'braga' && isNaN(Resposta)) {
+            div_mensagem.innerHTML = `Ops! Você selecionou "Ano de Nascimento" mas passou uma informação do tipo texto` 
+
+        } else if (Pergunta == 2 && Login == 'Ana' && Senha == 'braga' && Resposta == 'louro josé') {
+            div_mensagem.innerHTML = `Ops! Você selecionou "Ano de Nascimento" mas passou uma informação do tipo texto` 
+
+        } else if (Pergunta == 2 && Login == 'Ana' && Senha == 'braga' && isNumber(Resposta)) {
+            div_mensagem.innerHTML = `Ops! Você selecionou "Nome de Animal" mas passou uma informação do tipo número` 
+
+        }
+        else{
+            alert(`Selecione uma informação válida`)
+        }
+
+    }
+
+</script>

@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analise Temperatura</title>
+</head>
+<body>
+
+    Hora: <input type="text" id="input_hora"> <br> 
+
+    <button onclick="recomendar()">Ver recomendação</button>
+    
+</body>
+</html>
+
+<script>
+    function recomendar(){
+        var hora = input_hora.value;
+
+        if ( hora > 19 && hora < 21){
+            alert(`Não é recomendável que você assista sua série favorita no horário ${hora}!`)
+        } else {
+            alert(`O horário ${hora} é adequado para assistir sua série favorita!`)
+        }
+    }
+
+
+</script>
+
+<!-- Crie um programa o qual: 
+- Receba a temp
+- Ao clicar em "analisar":
+-- Caso a temperatura esteja entre 21 e 24, exiba "Temperatura Confortável";
+
+-- Caso contrário, exiba "Temperatura Desconfortável"; -->

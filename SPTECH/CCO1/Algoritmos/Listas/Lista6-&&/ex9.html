@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analise Temperatura</title>
+</head>
+<body>
+
+    <h3>Configuração do programa:</h3>
+    Altura mínima Desejada: <input type="text" id="input_min"> <br> <br>
+    Altura máxima Desejada: <input type="text" id="input_max"> <br> <br>
+
+    <h3>Candidatos:</h3>
+    Nome:  <input type="text" id="input_nome"> <br> <br>
+    Altura:  <input type="text" id="input_altura"> <br> <br>
+
+    <button onclick="verificar()">Verificar candidato</button>
+
+    <div id="div_mensagem"><h3>Histórico de seleção:</h3></div>
+    
+</body>
+</html>
+
+<script>
+    function verificar(){
+        var min = input_min.value;
+        var max = input_max.value;
+        var nome = input_nome.value;
+        var alt = input_altura.value;
+
+        if ( min < 1 || max < min){
+            alert(`Intervalo da altura de seleção é inválida! A altura inicial deve ser maior que 1 e a altura final deve ser maior que a altura inicial`)
+        } else if ( alt > min && alt < max){
+            div_mensagem.innerHTML += `O candidato ${nome}, com altura de ${alt} metros, participará do processo de seleção de piloto <br>`;
+        } else {
+            div_mensagem.innerHTML += `Infelizmente, o candidato ${nome}, com altura de ${alt} metros, não atende os requisitos da seleção <br>`;
+        }
+    }
+
+
+</script>

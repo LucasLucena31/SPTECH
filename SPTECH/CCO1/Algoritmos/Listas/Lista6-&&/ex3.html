@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analise Temperatura</title>
+</head>
+<body>
+
+    Nota: <input type="text" id="input_nota"> <br> 
+
+    <button onclick="avaliar()">Avaliar Aluno</button>
+    
+</body>
+</html>
+
+<script>
+    function avaliar(){
+        var nota = input_nota.value;
+
+        if ( nota > 0 && nota < 10){
+            alert("Nota válida!")
+        } else {
+            alert("Onde já se viu nota menor que 0 e maior que 10?!")
+        }
+    }
+
+
+</script>
+
+<!-- Crie um programa o qual: 
+- Receba a temp
+- Ao clicar em "analisar":
+-- Caso a temperatura esteja entre 21 e 24, exiba "Temperatura Confortável";
+
+-- Caso contrário, exiba "Temperatura Desconfortável"; -->

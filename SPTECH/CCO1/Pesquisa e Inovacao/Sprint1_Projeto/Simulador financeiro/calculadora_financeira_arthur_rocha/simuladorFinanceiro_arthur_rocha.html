@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+    <link rel="stylesheet" href="simuladorFinanceiro_ArthurRocha.css">
+</head>
+<body>
+    <div class="parte_de_cima">
+    <h3 class="bem_vindo">Bem vindo(a) ao:</h3>
+    <h1 class="titulo">Simulador financeiro da <span class="frozen_titulo" >Frozen</span> <span class="meat_titulo" >Meat!</span></h1>
+
+    <h2 class="insira">Insira a quantidade em quilos dos produtos indicados, para que seja calculada a perda dos produtos. Se não tiver o produto, insira 0.</h2>
+</div>
+    <br>
+    <br>
+    <h3 class="inputs">
+    Linguiça toscana: <br> <input type="number" id="linguica_input"> <br>
+    Pernil dianteiro: <br> <input type="number" id="pernil1_input"> <br>
+    Pernil traseiro <br> <input type="number" id="pernil2_input"> <br>
+    Acem Bovino: <br> <input type="number" id="acem_input"> <br>
+    Músculo bovino: <br> <input type="number" id="musculo_input"> <br>
+    Contrafilé: <br> <input type="number" id="contrafile_input"> <br>
+    Chá de dentro:  <br> <input type="number" id="cha_input"> <br>
+    Lombo suino: <br> <input type="number" id="lombo_input"> <br>
+    Costelinha suína: <br> <input type="number" id="costelinha_input"> <br>
+    Maçã de peito: <br> <input type="number" id="maca_input"> <br>
+    </h3>
+    <br>
+
+    <div class="div_botao">
+    <button class="botao" onclick="calculos()">Calcular perdas</button>
+    </div>
+    <br>
+    <br>
+    <div class="pai_output">
+    <div class="outputs">  
+    <div id="linguica_output"></div> 
+    <div id="pernil1_output"></div> 
+    <div id="pernil2_output"></div> 
+    <div id="acem_output"></div>
+    <div id="musculo_output"></div> 
+    <div id="contrafile_output"></div> 
+    <div id="cha_output"></div> 
+    <div id="lombo_output"></div> 
+    <div id="costelinha_output"></div>
+    <div id="maca_output"></div> 
+</div> 
+ </div>
+
+</body>
+</html> 
+
+<script>
+
+function calculos(){
+    var linguica = Number(linguica_input.value)
+    var pernil1 = Number(pernil1_input.value)
+    var pernil2 = Number(pernil2_input.value)
+    var acem = Number(acem_input.value)
+    var musculo = Number(musculo_input.value)
+    var contrafile = Number(contrafile_input.value)
+    var cha = Number(cha_input.value)
+    var lombo = Number(lombo_input.value)
+    var costelinha = Number(costelinha_input.value)
+    var maca = Number(maca_input.value)
+
+    if(linguica > 0){
+        var linguica_perdida = linguica * 0.0485
+
+        linguica_output.innerHTML = `O quilo de linguiça toscana perdida foi: ${linguica_perdida} kg`
+    } if (linguica <= 0){ linguica_output.innerHTML = `Sem linguiça toscana.`}
+
+
+    if(pernil1 > 0){
+        var pernil_perdido = pernil1 * 0.0820
+
+        pernil1_output.innerHTML = `O quilo de pernil dianteiro perdido foi: ${pernil_perdido} kg`
+    } if(pernil1 <= 0){pernil1_output.innerHTML = `Sem pernil dianteiro.`}
+
+
+    if(pernil2 > 0){
+        var pernil2_perdido = pernil2 * 0.1235
+
+        pernil2_output.innerHTML = `O quilo de pernil traseiro perdido foi: ${pernil2_perdido} kg`
+    } if(pernil2 <= 0){pernil2_output.innerHTML = `Sem pernil traseiro`}
+
+
+    if(acem > 0){
+        var acem_perdido = acem * 0.1022
+
+        acem_output.innerHTML = `O quilo de acém bovino perdido foi: ${acem_perdido} kg`
+    } if(acem <= 0){acem_output.innerHTML = `Sem acem bovino.`}
+
+
+    if(musculo > 0){
+        var musculo_perdido = musculo * 0.1085
+
+        musculo_output.innerHTML = `O quilo de músculo bovino perdido foi: ${musculo_perdido} kg`
+    } if(musculo <= 0){musculo_output.innerHTML = `Sem músculo bovino.`}
+
+
+    if(contrafile > 0){
+        var contrafile_perdido = contrafile * 0.1123
+
+        contrafile_output.innerHTML = `O quilo de contra file perdido foi: ${contrafile_perdido}`
+    } if(contrafile <= 0){contrafile_output.innerHTML = `Sem contrafilé.`}
+
+
+    if(cha > 0){
+        var cha_perdido = cha * 0.1321
+
+        cha_output.innerHTML = `O quilo de chá de dentro perdido foi: ${cha_perdido} kg`
+    } if(cha <= 0){cha_output.innerHTML = `Sem chá de dentro.`}
+
+
+    if(lombo > 0){
+        var lombo_perdido = lombo * 0.134
+
+        lombo_output.innerHTML = `O quilo de lombo suíno perdido foi: ${lombo_perdido} kg`
+    } if(lombo <= 0){lombo_output.innerHTML = `Sem lombo suíno.`}
+
+
+    if(costelinha > 0){
+        var costelinha_perdida = costelinha * 0.1478
+
+        costelinha_output.innerHTML = `O quilo de costelinha suína perido foi: ${costelinha_perdida} kg`
+    } if(costelinha <= 0){costelinha_output.innerHTML = `Sem costelinha suína.`}    
+
+
+    if(maca > 0){
+        var maca_perdida = maca * 0.1524
+
+        maca_output.innerHTML = `O quilo de maçã de peito perdido foi: ${maca_perdida} kg`
+    } if(maca <= 0){maca_output.innerHTML = `Sem maçã de peito.`}
+}
+
+</script>
