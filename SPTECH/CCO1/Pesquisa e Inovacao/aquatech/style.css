@@ -24,10 +24,15 @@ body {
   color: #32b8cd;
 }
 
+.logo{
+  display: flex;
+  
+}
+
 .logo img{
   height: 90%;
   width: auto;
-  
+  margin: 5px;
 }
 
 .navbar {
