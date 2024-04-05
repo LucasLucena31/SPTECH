@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Inicio: <input type="text" id="input_inicio"> <br>
+    Fim: <input type="text" id="input_fim"> <br> <br>
+    <button onclick="contar()">S2 pares!</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function contar(){
+        var inicio = Number(input_inicio.value);
+        var fim = Number(input_fim.value);
+
+        if(fim > inicio){
+
+            for( var cont = inicio; cont <= fim; cont++){
+                var resto_divisao = cont % 2;
+
+                if(resto_divisao == 0){
+                    div_mensagem.innerHTML += `${cont} <br>`;
+                }
+        }
+        } else {
+            alert("Intervalo deve ser crescente");
+        }
+       
+    }
+    
+</script>

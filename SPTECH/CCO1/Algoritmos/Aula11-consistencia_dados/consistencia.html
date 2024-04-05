@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consistencia de dados</title>
+</head>
+<body>
+    <h1>Manipulação e Analise de Texto</h1>
+
+    Frase: <input type="text" id="input_frase"> <br><br>
+    <button onclick="analisar()">Analisar</button> <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function analisar(){
+
+        div_mensagem.innerHTML = '<h3>Operações com o texto</h3>';
+
+        // Variavel carregando o valor da input frase
+        var frase = input_frase.value;
+
+        // Comprimento, .length retorna o número de caracteres; input_frase.value.length tambem funciona
+        var tamanho_frase = frase.length;
+
+                div_mensagem.innerHTML += `- Quantidade de caracteres: ${tamanho_frase}`;
+
+                if(tamanho_frase < 8){
+                    div_mensagem.innerHTML +=  `<br>- Não possui 8 letras`;
+                } else {
+                    div_mensagem.innerHTML += `<br>- Possui ao menos 8 letras`;
+                }
+
+
+        // Funcao para verificar a primeira letra da frase
+        var comeca_com_a = frase.startsWith('a') // || frase.startsWith('A');
+                div_mensagem.innerHTML += `<br>- Começa com a:  ${comeca_com_a}`;
+
+        var comeca_com_hst = frase.startsWith('#');
+                if(comeca_com_hst){
+                    div_mensagem.innerHTML += `<br>- Comeca com '#'`;
+                } else {
+                    div_mensagem.innerHTML += `<br>- Não comeca com '#'`;
+                }
+
+
+        // Funcao para verificar a ultima letra da frase
+        var termina_com_e = frase.endsWith('e') || frase.endsWith('E');
+                div_mensagem.innerHTML += `<br>- Termina com 'e' ou 'E': ${termina_com_e}`;
+
+        var termina_com_com = frase.endsWith('.com') 
+                div_mensagem.innerHTML += `<br>- Termina com '.com': ${termina_com_com}`;
+
+
+        // Verificar um caracter especifico, posição = 0, 1, 2, 3 ... qtd de caracteres - 1
+        var primeira_letra = frase[0];
+                div_mensagem.innerHTML += `<br>- Primeira letra: ${primeira_letra}`;
+
+        var terceira_letra = frase[2];
+                div_mensagem.innerHTML += `<br>- Terceira letra: ${terceira_letra}`;
+
+
+        // Obter de forma dinamica o ultimo caracter, tamanhon - 1
+        var ultima_posicao = tamanho_frase - 1;
+        var ultima_letra = frase[ultima_posicao];
+                div_mensagem.innerHTML += `<br>- Última letra: ${ultima_letra}`;
+
+        
+        // Procurar a posição de um caracter
+        var indice_arroba = frase.indexOf('@');
+                div_mensagem.innerHTML += `<br>- Índice de '@': ${indice_arroba}`;
+
+                if (indice_arroba > 0){
+                        div_mensagem.innerHTML += `<br>- Possui '@' no índice: ${indice_arroba}`;
+                } else {
+                        div_mensagem.innerHTML += `<br>- Não possui '@' na frase!`;
+                }
+
+        // Procurar a posição de uma palavra, pega a posição da primeira letra
+        var indice_com = frase.indexOf('.com');
+                div_mensagem.innerHTML += `<br>- Índice de '.com': ${indice_com}`;
+
+        
+        // Transformar todo o texto em caixa alta
+        var caixa_alta = frase.toUpperCase();
+                div_mensagem.innerHTML += `<br>- Texto em caixa alta: ${caixa_alta}`;
+
+        // Transformar todo o texto em caixa baixa
+        var caixa_baixa = frase.toLowerCase();
+                div_mensagem.innerHTML += `<br>- Texto em caixa baixa: ${caixa_baixa}`;
+
+        // Verificar mensagem
+        if (caixa_baixa == "sim"){ // if (caixa_alta == "SIM") {}
+                div_mensagem.innerHTML += `<br>- Você digitou 'sim'`;
+        } else if (caixa_alta == "NÃO") {
+                div_mensagem.innerHTML += `<br>- Você digitou 'não`;
+        } else {
+                div_mensagem.innerHTML += `<br>- Você digitou algo diferente de 'sim' ou 'não'`;
+        }
+
+
+        // Substituir algum caracter por outro
+        var frase_sem_espacos = frase.replaceAll(' ', '');
+                div_mensagem.innerHTML += `<br>- Frase sem espaços: ${frase_sem_espacos}`;
+
+        // Substituir o PRIMEIRO caracter por outro
+        var frase_com_arroba = frase.replace('a', '@');
+                div_mensagem.innerHTML += `<br>- Frase com @ no primeiro 'a': ${frase_com_arroba}`;
+
+        // sem espaco + arroba
+        var frase_com_arroba = frase_sem_espacos.replace('a', '@');
+                div_mensagem.innerHTML += `<br>- Frase com @ no primeiro 'a': ${frase_com_arroba}`;
+
+        
+    }
+
+
+</script>

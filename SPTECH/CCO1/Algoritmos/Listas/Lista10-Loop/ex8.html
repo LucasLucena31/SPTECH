@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Número entre 0 e 200: <input type="text" id="input_numero"> <br> <br>
+    <button onclick="contar()">viva o 7!</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function contar(){
+        var qtd = input_numero.value;
+
+        if( qtd <= 0 || qtd >= 200){
+            alert('Número inválido!')
+        } else {
+        div_mensagem.innerHTML = 'Iniciando contagem...<br>';
+
+        var texto_final = "";
+        for( var cont = 1; cont <= qtd; cont++){
+            texto_final += `7 x ${cont} = ${cont * 7} <br>`;
+        }
+        div_mensagem.innerHTML = texto_final;
+    }
+    }
+</script>

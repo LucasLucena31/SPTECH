@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="select_multiplicador">
+        <option value="0" selected disabled>Selecione o multiplicador</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select> <br> <br>
+
+    Até qual número a tabuada deve ser construida? <input type="text" id="input_max"> <br> <br>
+
+    <button onclick="contar()">Ver Tabuada</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function contar(){
+        div_mensagem.innerHTML = "";
+
+        var multiplicador = select_multiplicador.value;
+        var max = input_max.value;
+
+
+            for( var cont = 1; cont <= max; cont++){
+                if(cont % 2 == 0){
+                 div_mensagem.innerHTML += `<p style="color= blue;"> ${multiplicador} X ${cont} = ${multiplicador * cont} <br> </p>`;
+                }
+        
+            } 
+
+       
+    }
+    
+</script>

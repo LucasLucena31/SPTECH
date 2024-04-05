@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passagens</title>
+    <title>Login Ana Braga</title>
 </head>
 <body>
 
@@ -33,19 +33,27 @@
         var Senha = input_senha.value;
         var Pergunta = select_pergunta.value;
         var Resposta = Number(input_resposta.value);
+        var tipo = 0;
+
+        // isNaN(Resposta)
+        if (Resposta == NaN) {
+            tipo = 'Texto';
+             } else {
+                  tipo = 'Number';
+                }
 
         
 
         if (Pergunta == 1 && Login == 'Ana' && Senha == 'braga' && Resposta == '1949'){
             div_mensagem.innerHTML = "Usuário autenticado";
             
-        } else if (Pergunta == 1 && Login == 'Ana' && Senha == 'braga' && isNaN(Resposta)) {
+        } else if (Pergunta == 1 && Login == 'Ana' && Senha == 'braga' && tipo == 'Texto') {
             div_mensagem.innerHTML = `Ops! Você selecionou "Ano de Nascimento" mas passou uma informação do tipo texto` 
 
         } else if (Pergunta == 2 && Login == 'Ana' && Senha == 'braga' && Resposta == 'louro josé') {
             div_mensagem.innerHTML = `Ops! Você selecionou "Ano de Nascimento" mas passou uma informação do tipo texto` 
 
-        } else if (Pergunta == 2 && Login == 'Ana' && Senha == 'braga' && isNumber(Resposta)) {
+        } else if (Pergunta == 2 && Login == 'Ana' && Senha == 'braga' && tipo == 'Number') {
             div_mensagem.innerHTML = `Ops! Você selecionou "Nome de Animal" mas passou uma informação do tipo número` 
 
         }

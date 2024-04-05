@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Número: <input type="text" id="input_numero"> <br>
+    Frase: <input type="text" id="input_frase"> <br> <br>
+    <button onclick="contar()">Papagaio!</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function contar(){
+        var qtd = input_numero.value;
+        var frase = input_frase.value;
+        var mensagem = "";
+
+        for( var cont = 1; cont <= qtd; cont++){
+            mensagem += frase + "\n"
+        }
+        for( var cont = 1; cont <= qtd; cont++){
+                alert(mensagem);
+            }
+    }
+    
+</script>

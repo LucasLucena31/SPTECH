@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Pessoa: <input type="text" id="input_pessoa"> <br>
+    Quantidade que ama: <input type="text" id="input_qtd"> <br> <br>
+
+    <button onclick="contar()">Escreva</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function contar(){
+        var pessoa = input_pessoa.value;
+        var qtd = input_qtd.value;
+        
+        div_mensagem.innerHTML = 'Iniciando contagem...<br>';
+
+        var texto_final = "";
+        for( var cont = 1; cont <= qtd; cont++){
+
+            texto_final += `${pessoa}, eu te amo! Sempre se lembre disso!<br>`;          
+            
+        }
+        div_mensagem.innerHTML = texto_final;
+
+    }
+</script>

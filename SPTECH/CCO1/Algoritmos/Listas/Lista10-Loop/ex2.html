@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="dizer()">Diga algo sobre a matéria de Algoritmos</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function dizer(){
+        var frase = "Algoritmos exige muita lógica <br>" 
+        var texto_final = "";
+
+        for( var cont = 1; cont <= 7; cont++){
+            texto_final += frase;
+        }
+        div_mensagem.innerHTML = texto_final;
+
+    }
+</script>

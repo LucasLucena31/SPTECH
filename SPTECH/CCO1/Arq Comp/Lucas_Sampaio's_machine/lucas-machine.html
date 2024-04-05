@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///C:/Users/Marise%20Miranda/Downloads/Marises%20Machine.html -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="menuEsq" id="tela" style="display: flex; flex-direction: column;">
+
+    <center>
+    <div class="titulo" id="lm">
+        <img src="imagens/punch.png" alt="" class="punch">
+        <h1>LUCAS <br> MACHINE</h1>
+    </div>
+
+<br><br>
+
+        <h3>Insira número decimal:</h3>
+        <input id="demo1" type="text" placeholder="Número decimal" class="input_numero">
+
+
+<br><br>
+
+        
+</center>
+
+
+<div class="numerais" style="display: none;" id="respostas">
+
+    <div>
+    <center>
+    <h3>Revelar resposta de:</h3>
+    </center>
+    
+
+    <div>
+        <input onclick="aparecer_octal()" type="checkbox"><b>Octal</b>
+    </div>
+
+
+
+    <div>
+        <input onclick="aparecer_hexa()" type="checkbox"><b>Hexadecimal</b>
+    </div>
+
+    
+    <div>
+        <input onclick="aparecer_bin()" type="checkbox"><b>Binário</b>
+    </div>
+</div>
+<br>
+</div>
+
+
+<input type="text" style="display: block; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(0, 0, 0); width: 20%; height: 40px; font-weight: 500; position: absolute; top: 200px; left: 40%;" id="input_octal" class="input_octal" placeholder="Advinhe o Octal do número: ">
+
+<input type="text" style="display: block; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(0, 0, 0); width: 20%; height: 40px; font-weight: 500; position: absolute; top: 280px; left: 40%;" id="input_hexadecimal" class="input_hexadecimal" placeholder="Advinhe o Hexadecimal do número: ">
+
+<input type="text" style="display: block; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(0, 0, 0); width: 20%; height: 40px; font-weight: 500; position: absolute; top: 360px; left: 40%;" id="input_binario" class="input_binario" placeholder="Advinhe o Binario do número: ">
+
+
+
+<div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(0, 0, 0); width: 20%; height: 40px; font-weight: 500; position: absolute; top: 200px; left: 65%;" id="demo2" class="Octa">Octal: </div>
+
+<div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(7, 7, 7); width: 20%; height: 40px; font-weight: 500; position: absolute; top: 280px; left: 65%;" id="demo3" class="Hexa">Hexadecimal: </div>
+
+<div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(5, 5, 5); width: 20%; height: 40px; font-weight: 500; position: absolute; top: 360px; left: 65%;" id="demo4" class="Bina">Binario: </div>
+
+
+
+<center>
+    <div class="wrapper">
+
+<button class="go" onclick="converter()" id="bt_go">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"/>
+      </svg>
+</button>
+
+<button id="bt_again" onclick="reload()" id="bt_go" style="display: none;"> tentar novamente
+</button>
+
+</div>
+
+</center>
+
+</div>  
+
+<div id="div_video" style="
+margin-left: auto;
+margin-right: auto;
+table-layout: fixed;
+border-collapse: collapse;
+z-index: -1;
+position: absolute;
+top: 0px"></div>
+
+
+<script>
+
+
+function converter() {
+    
+    var decimal = Number (demo1.value);
+
+let octal = decimal.toString(8);
+
+let hexadecimal1 = decimal.toString(16);
+let hexadecimal = hexadecimal1.toUpperCase();
+
+let binaria = decimal.toString(2);
+
+console.log (decimal);
+console.log (octal);
+console.log (hexadecimal);
+console.log (binaria);
+
+document.getElementById("demo1").innerHTML += ` ${decimal}`;
+document.getElementById("demo2").innerHTML += ` ${octal}`;
+document.getElementById("demo3").innerHTML += ` ${hexadecimal}`;
+document.getElementById("demo4").innerHTML += ` ${binaria}`;
+
+
+var Inptoctal = input_octal.value
+var Inpthexadecimal = input_hexadecimal.value
+var Inptbinario = input_binario.value
+
+if (Inptoctal != octal || Inpthexadecimal != hexadecimal || Inptbinario != binaria){
+
+tela.style.display = 'none';
+
+div_video.innerHTML = `
+<video id="myVideo" width="100%" height="100%" onclick="voltar()">
+  <source src="imagens/derrota.mp4" type="video/mp4">
+  <source src="mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video>`
+
+let vid = document.getElementById("myVideo"); 
+
+vid.play(); 
+
+} else if (Inptoctal == octal && Inpthexadecimal == hexadecimal && Inptbinario == binaria){
+
+tela.style.display = 'none';
+
+div_video.innerHTML = `
+<video id="myVideo" width="100%" height="100%" onclick="voltar()">
+  <source src="imagens/vitoria.mp4" type="video/mp4">
+  <source src="mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video>`
+
+let vid = document.getElementById("myVideo"); 
+
+vid.play(); 
+
+
+}
+
+bt_again.style.display = 'flex';
+respostas.style.display = 'flex';
+
+bt_go.style.display = 'none';
+
+
+}
+
+function voltar(){
+    tela.style.display = 'flex';
+    div_video.style.display = 'none';
+
+}
+
+function aparecer_bin() {
+    demo4.style.display = 'block';
+}
+
+function aparecer_hexa() {
+    demo3.style.display = 'block'
+}
+
+function aparecer_octal() {
+    demo2.style.display = 'block'
+}
+
+function reload(){
+    location.reload()
+}
+
+</script>
+</body>
+</html>

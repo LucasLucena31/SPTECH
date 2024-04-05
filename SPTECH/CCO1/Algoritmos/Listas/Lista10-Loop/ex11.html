@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Número de voltas: <input type="text" id="input_voltas"> <br> <br>
+    <button onclick="contar()">Iniciar Corrida!</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function contar(){
+        var voltas = Number(input_voltas.value);
+
+            for( var cont = 1; cont <= voltas; cont++){
+                div_mensagem.innerHTML += `Carro dando a ${cont}º volta <br>`;
+        
+        } 
+
+        div_mensagem.innerHTML += `Corrida finalizada!`
+       
+    }
+    
+</script>

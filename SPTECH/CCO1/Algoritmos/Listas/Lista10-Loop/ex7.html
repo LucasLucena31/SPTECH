@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Número entre 20 e 100: <input type="text" id="input_numero"> <br> <br>
+    <button onclick="contar()">Adoro múltiplos de 5</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function contar(){
+        var qtd = input_numero.value;
+
+        if( qtd <= 20 || qtd >= 100){
+            alert('Número inválido!')
+        } else {
+
+        var texto_final = "";
+
+
+        
+
+        for( var cont = 1; cont <= qtd; cont++){
+
+            var resto = cont % 5;
+
+            if(resto == 0){
+
+            texto_final += `5 / ${cont} = ${cont / 5} <br>`;
+        }
+        div_mensagem.innerHTML = texto_final;
+        } 
+
+        }
+    }
+</script>
