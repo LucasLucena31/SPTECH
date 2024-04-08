@@ -46,12 +46,12 @@
         }
         else{
             for( var cont = 1; cont <= max; cont++){
-                if(cont % 2 == 0){
-                    div_mensagem.innerHTML += `<p style="color: blue;"> ${multiplicador} X ${cont} = ${multiplicador * cont} <br> </p>`;
+                var cor = 'red'
+                if (cont % 2 == 0){
+                    cor = 'blue'
                 }
-                else {
-                    div_mensagem.innerHTML += `<p style="color: red;"> ${multiplicador} X ${cont} = ${multiplicador * cont} <br> </p>`;
-                }
+                    div_mensagem.innerHTML += `<p style="color: ${cor};"> ${multiplicador} X ${cont} = ${multiplicador * cont} <br> </p>`;
+                
         
             }
 
