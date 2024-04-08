@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    Número: 
     <select id="select_multiplicador">
         <option value="0" selected disabled>Selecione o multiplicador</option>
         <option value="2">2</option>
@@ -34,6 +35,10 @@
 
         
 
+        if( multiplicador == 0){
+            alert('Insira um número válido!')
+        }
+        else{
             for( var cont = 1; cont <= max; cont++){
                 if(cont % 2 == 0){
                     div_mensagem.innerHTML += `<p style="color: blue;"> ${multiplicador} X ${cont} = ${multiplicador * cont} <br> </p>`;
@@ -42,8 +47,9 @@
                     div_mensagem.innerHTML += `<p style="color: red;"> ${multiplicador} X ${cont} = ${multiplicador * cont} <br> </p>`;
                 }
         
-            } 
+            }
 
+        }
        
     }
     
