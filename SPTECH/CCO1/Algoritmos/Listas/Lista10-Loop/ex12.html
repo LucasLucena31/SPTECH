@@ -32,10 +32,14 @@
         var multiplicador = select_multiplicador.value;
         var max = input_max.value;
 
+        
 
             for( var cont = 1; cont <= max; cont++){
                 if(cont % 2 == 0){
-                 div_mensagem.innerHTML += `<p style="color= blue;"> ${multiplicador} X ${cont} = ${multiplicador * cont} <br> </p>`;
+                    div_mensagem.innerHTML += `<p style="color: blue;"> ${multiplicador} X ${cont} = ${multiplicador * cont} <br> </p>`;
+                }
+                else {
+                    div_mensagem.innerHTML += `<p style="color: red;"> ${multiplicador} X ${cont} = ${multiplicador * cont} <br> </p>`;
                 }
         
             } 
