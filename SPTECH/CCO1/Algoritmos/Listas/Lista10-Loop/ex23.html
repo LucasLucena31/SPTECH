@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost, do outra lado da vida</title>
+</head>
+<body>
+    Número de elefantes: <input type="text" id="input_elefantes">
+
+    <button onclick="incomodar()">Atazanar a médium</button>
+
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
+
+<script>
+    function incomodar() {
+        var elefante = input_elefantes.value;
+        var incomodo = ""
+        var mensagem = ""
+        var final = ""
+        
+    
+        
+        for (var cont = 1; cont < elefante; cont++) {
+            mensagem += ` ${cont + 1} elefantes`
+
+
+            for (var cont2 = 0; cont2 <= cont; cont2++){
+                incomodo += `, incomodam`
+            }
+            nmEle = cont + 1;
+
+            final += `${cont} elefantes incomodam muita gente! <br>` + `${nmEle} elefantes` + incomodo + ', muito mais! <br>'
+            
+            incomodo = "";
+        }
+
+        div_mensagem.innerHTML = final;
+        
+    }
+
+</script>
