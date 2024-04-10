@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coca-cola</title>
+</head>
+<body>
+    Quantas coca-cola você acha que já bebeu na vida: <input type="text" id="input_qtd"> <br>
+    <button onclick="contar()">Ver a quantidade</button>
+
+    <div id="div_mensagem"></div>
+
+    
+    
+</body>
+</html>
+
+<script>
+
+    function contar(){
+        div_mensagem.innerHTML = "";
+
+        var qtd = input_qtd.value;
+
+    for (cont = 1; cont <= qtd; cont++){
+        div_mensagem.innerHTML += `<img src="https://andinacocacola.vtexassets.com/arquivos/ids/157651/110130_COCA---CCO350ml.jpg?v=638404083111870000" alt="">`
+        
+    }
+}
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café com leite</title>
+</head>
+<body>
+    Quantas xícaras de café com leite você acha que já bebeu na vida: <input type="text" id="input_qtd"> <br>
+    <button onclick="contar()">Ver a quantidade</button>
+
+    <div id="div_mensagem"></div>
+
+    
+    
+</body>
+</html>
+
+<script>
+
+    function contar(){
+        div_mensagem.innerHTML = "";
+
+        var qtd = input_qtd.value;
+
+    for (cont = 1; cont <= qtd; cont++){
+        div_mensagem.innerHTML += `<img src="https://minhasaude.proteste.org.br/wp-content/uploads/2023/06/colher-carregando-punhado-de-leite-em-po-sobre-fundo-branco.jpg" alt="">`
+
+        div_mensagem.innerHTML += `<img src="https://cdn.pixabay.com/photo/2014/04/05/11/39/spoon-316577_960_720.jpg" alt="">`
+        
+        div_mensagem.innerHTML += `<img src="https://cdn.pixabay.com/photo/2014/04/05/11/39/spoon-316577_960_720.jpg" alt="">`
+
+    }
+}
+</script>

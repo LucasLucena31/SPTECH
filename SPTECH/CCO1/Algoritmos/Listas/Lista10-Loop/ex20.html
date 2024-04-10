@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposito</title>
+</head>
+<body>
+    Quantos depósitos fez no banco: <input type="text" id="input_qtd"> <br>
+    Valor dos depósitos: <input type="text" id="input_valor"> <br> <br>
+    <button onclick="contar()">Acompanhar grana</button>
+
+    <div id="div_mensagem"></div>
+
+    
+    
+</body>
+</html>
+
+<script>
+
+    function contar(){
+        div_mensagem.innerHTML = "";
+
+        var qtd = input_qtd.value;
+        var valor = Number(input_valor.value);
+        var valor_acumulado = 0;
+
+        var mensagem_final = ""
+        var mensagem;
+
+    for (cont = 1; cont <= qtd; cont++){
+        valor_acumulado += valor;
+        mensagem = `${cont}º Mês: ${valor_acumulado} <br>`
+        
+        mensagem_final += mensagem;
+    }
+
+    div_mensagem.innerHTML = mensagem_final + `Total guardado: ${valor_acumulado}`
+}
+</script>

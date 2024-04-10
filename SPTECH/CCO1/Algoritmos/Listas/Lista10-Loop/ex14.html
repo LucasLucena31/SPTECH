@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    inicio: <input type="text" id="input_inicio">
+    fim: <input type="text" id="input_fim">
+
+    <button onclick="exibir()">Curto 3 e 5!</button> <br>
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
+
+<script>
+
+    function exibir(){
+        div_mensagem.innerHTML = "";
+
+        var inicio = input_inicio.value;
+        var fim = input_fim.value;
+
+    for (cont = inicio; cont <= fim; cont++){
+        var restoT = cont % 3;
+        var restoC = cont % 5;
+        var mensagem = `${cont} <br>`;
+
+        if (restoT == 0){
+            mensagem = "É TRI! <br>"
+        }
+        if (restoC == 0){
+            mensagem = "É PENTA! <br>"
+        }
+        if (restoC == 0 && restoT == 0){
+            mensagem = "É TRI! É PENTA! <br>"
+        }
+        
+        div_mensagem.innerHTML += mensagem;
+    }
+}
+</script>

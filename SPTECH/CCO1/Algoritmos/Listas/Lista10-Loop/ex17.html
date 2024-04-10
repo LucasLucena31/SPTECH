@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carona 2.0</title>
+</head>
+<body>
+    Número de pessoas que pegarão carona: <input type="text" id="input_passageiro"> <br>
+    Capacidade máxima do veículo: <input type="text" id="input_capacidade"> <br> <br>
+    <button onclick="contar()">#Partiu Carona</button>
+
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
+
+<script>
+
+    function contar(){
+        div_mensagem.innerHTML = "";
+
+        var passageiro = input_passageiro.value;
+        var capacidade = input_capacidade.value;
+        var mensagem_final = "Entrou o 1º passageiro (que é o(a) motorista) <br>"
+        var mensagem;
+
+    for (cont = 2; cont <= passageiro; cont++){
+        if (cont <= capacidade){
+            mensagem = `Entrou o ${cont}º passageiro <br>`
+        } else {
+            mensagem = `O ${cont}º passageiro terá que esperar! <br>`
+        }
+        
+        mensagem_final += mensagem;
+    }
+
+    div_mensagem.innerHTML = mensagem_final
+}
+</script>

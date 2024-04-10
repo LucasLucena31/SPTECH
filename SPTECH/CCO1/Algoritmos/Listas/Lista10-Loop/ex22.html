@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposito_v3</title>
+</head>
+<body>
+    Quantos depósitos fez no banco: <input type="text" id="input_qtd"> <br>
+    Valor dos depósitos: <input type="text" id="input_valor"> <br> <br>
+    <button onclick="contar()">Acompanhar grana</button>
+
+    <div id="div_mensagem"></div>    
+    
+</body>
+</html>
+
+<script>
+
+    function contar(){
+        div_mensagem.innerHTML = "";
+
+        var qtd = input_qtd.value;
+        var valor = Number(input_valor.value);
+        var valor_acumulado = 0;
+
+
+    for (cont = 1; cont <= qtd; cont++){
+        
+        valor_acumulado += valor;
+
+        if (cont % 3 == 0){
+            valor_acumulado = valor_acumulado * 1.01;
+            div_mensagem.innerHTML += ` <span> ${cont}º Mês: ${valor_acumulado} </span> <img src="https://img.freepik.com/vetores-premium/logotipo-estrela-simples-e-moderno_535345-2471.jpg" alt="" style="width: 1%;"> <br>`
+        } else {
+            div_mensagem.innerHTML += `${cont}º Mês: ${valor_acumulado} <br>`
+        }
+
+    }
+
+    div_mensagem.innerHTML += `Total guardado: ${valor_acumulado}`
+}
+</script>

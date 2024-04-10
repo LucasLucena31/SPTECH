@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Idade: <input oninput="contar()" type="text" id="input_idade">
+
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
+
+<script>
+
+    function contar(){
+        div_mensagem.innerHTML = "";
+
+        var idade = input_idade.value;
+        var mensagem_final = ""
+
+    for (cont = 0; cont <= idade; cont++){
+
+        if(cont >= 0 && cont <= 4){
+            mensagem = `${cont} anos - (Primeira Infância) <br>`
+        } else if (cont > 4 && cont <= 6){
+            mensagem = `${cont} anos - (Pré-escolar) <br>`
+        } else if (cont > 6 && cont <= 10){
+            mensagem = `${cont} anos - (Segunda Infância) <br>`
+        } else if (cont > 10 && cont <= 18){
+            mensagem = `${cont} anos - (Adolescência) <br>`
+        } else if (cont > 18 && cont <= 50){
+            mensagem = `${cont} anos - (Adulto) <br>`
+        } else if (cont > 50 && cont <= 100){
+            mensagem = `${cont} anos - (Melhor Idade) <br>`
+        } else if (cont > 100){
+            mensagem = `${cont} anos - (Matusalém) <br>`
+        } 
+
+        mensagem_final += mensagem;
+    }
+
+    div_mensagem.innerHTML = mensagem_final
+}
+</script>
