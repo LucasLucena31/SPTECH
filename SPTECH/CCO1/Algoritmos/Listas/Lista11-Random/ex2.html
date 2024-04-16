@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Quantidade de números: <input type="text" id="input_qtd">
+    <button onclick="analisar()">Analisar</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function analisar(){
+        var qtd = Number(input_qtd.value)
+        var cont_abaixo = 0;
+        var cont_acima = 0;
+
+        var maior_numero = 0;
+
+
+        var mensagem = "";
+
+        for (var cont = 1; cont <= qtd; cont++){
+            var aleatorio = Math.random()
+
+            if(aleatorio > 0.5){
+                mensagem += aleatorio + ' está na metade superior dos números <br>'
+                cont_acima++;
+            } else {
+            mensagem += aleatorio + ' está na metade inferior dos números <br>'
+            cont_abaixo++;
+            }
+
+            if (aleatorio > maior_numero){
+                maior_numero = aleatorio;
+            }
+
+        }
+
+        var media = total / qtd;
+        div_mensagem.innerHTML = mensagem;
+        div_mensagem.innerHTML += `<br> Total de número abaixo da metade = ${cont_abaixo}`
+        div_mensagem.innerHTML += `<br> Total de número acima da metade = ${cont_acima}`
+
+        div_mensagem.innerHTML += `<br> Maior número = ${maior_numero}`
+
+    }
+
+</script>

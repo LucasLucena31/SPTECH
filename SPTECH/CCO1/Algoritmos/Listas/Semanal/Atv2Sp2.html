@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece</title>
+</head>
+<body>
+    Espisódio que vai começar a assistir: <input type="number" id="input_inicio"> <br>
+    Quantidade de tempo disponível: <input type="number" id="input_tempo"> <br>
+
+    Unidade de tempo em: 
+    <select name="" id="select_unidade">
+        <option value="0" selected disabled>Selecione uma opção</option>
+        <option value="1">Horas</option>
+        <option value="2">Minutos</option>
+    </select> <br>
+
+    Deseja pular a abertura dos episódios? 
+    <select name="" id="select_abertura">
+        <option value="0">Selecione uma opção</option>
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+    </select> <br>
+
+    Deseja pular o encerramento dos episódios? 
+    <select name="" id="select_encerramento">
+        <option value="0">Selecione uma opção</option>
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+    </select> <br> <br>
+
+    <button onclick="assistir()">Assistir Episódios</button> <br> <br>
+
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
+
+<script>
+    function assistir() {
+        var inicio = input_inicio.value;
+        var tempo = input_tempo.value;
+
+        var abertura = select_abertura.value;
+        var encerramento = select_encerramento.value;
+
+        var unidade = select_unidade.value;
+        var max = 0;
+
+        var mensagem = "";
+        div_mensagem.innerHTML = "";
+
+        if (inicio < 1 || inicio > 1100){
+            alert('O número do episódio é inválido')
+        } else {
+
+            if (unidade == 1){
+                tempo = tempo * 60;
+            }
+
+              if (abertura == 1 && encerramento == 1){
+                max = tempo / 20;
+
+                for(cont = 0; cont <= max; cont++){
+                    if( tempo > 0){
+                        div_mensagem.innerHTML += `<br> Episódio ${inicio}: <br>`
+                        mensagem = "";
+
+                            for(cont2 = 1; cont2 <= 20; cont2++){
+                                if (tempo > 0){
+                                    mensagem += `Minuto ${cont2}: Assistindo o Episódio <br>`
+                                    tempo = tempo - 1;
+
+                                    if (tempo <= 0) {
+                                        mensagem += '<br> Fim dos Episódios!'
+                                        cont2 = 20;
+                                    }
+
+                                } 
+                            }
+                        inicio++;
+                        div_mensagem.innerHTML += mensagem;
+                    } 
+                    
+              }
+
+            } else if (abertura == 2 && encerramento == 1) {
+                max = tempo / 22;
+
+                for(cont = 0; cont <= max; cont++){
+                    if( tempo > 0){
+                        div_mensagem.innerHTML += `<br> Episódio ${inicio}: <br>`
+                        mensagem = "";
+
+                            for(cont2 = 1; cont2 <= 22; cont2++){
+                                if (tempo > 0 && cont2 <= 2) {
+                                        div_mensagem.innerHTML += `Minuto ${cont2}: Assistindo a abertura <br>`
+                                        tempo = tempo - 1;
+                                    
+                                    if (tempo <= 0) {
+                                        mensagem += '<br> Fim dos Episódios!'
+                                        cont2 = 22;
+                                    }
+                                } else if (tempo > 0 && cont2 <= 22){
+                                    mensagem += `Minuto ${cont2}: Assistindo o Episódio <br>`
+                                    tempo = tempo - 1;
+
+                                    if (tempo <= 0) {
+                                        mensagem += '<br> Fim dos Episódios!'
+                                        cont2 = 22;
+                                    }
+                                }    
+                            }
+                        inicio++;
+                        div_mensagem.innerHTML += mensagem;
+                    } 
+                    
+              }
+
+            } else if (abertura == 1 && encerramento == 2) {
+                max = tempo / 22;
+
+                for(cont = 0; cont <= max; cont++){
+                    if( tempo > 0){
+                        div_mensagem.innerHTML += `<br> Episódio ${inicio}: <br>`
+                        mensagem = "";
+
+                            for(cont2 = 1; cont2 <= 22; cont2++){
+                                if (tempo > 0 && cont2 <= 20){
+                                    mensagem += `Minuto ${cont2}: Assistindo o Episódio <br>`
+                                    tempo = tempo - 1;
+
+                                    if (tempo <= 0) {
+                                        mensagem += '<br> Fim dos Episódios!'
+                                        cont2 = 22;
+                                    }
+                                } else if (tempo > 0 && cont2 <= 22) {
+                                        mensagem += `Minuto ${cont2}: Assistindo o encerramento <br>`
+                                        tempo = tempo - 1;
+                                    
+                                    if (tempo <= 0) {
+                                        mensagem += '<br> Fim dos Episódios!'
+                                        cont2 = 22;
+                                    }
+                                }  
+                            }
+                        inicio++;
+                        div_mensagem.innerHTML += mensagem;
+                    } 
+                    
+              }
+
+            } else if (abertura == 2 && encerramento == 2) {
+                max = tempo / 24;
+
+                for(cont = 0; cont <= max; cont++){
+                    if( tempo > 0){
+                        div_mensagem.innerHTML += `<br> Episódio ${inicio}: <br>`
+                        mensagem = "";
+
+                            for(cont2 = 1; cont2 <= 24; cont2++){
+
+                                if (tempo > 0 && cont2 <= 2){
+                                    mensagem += `Minuto ${cont2}: Assistindo a abertura <br>`
+                                    tempo = tempo - 1;
+
+                                    if (tempo <= 0) {
+                                        mensagem += '<br> Fim dos Episódios!'
+                                        cont2 = 22;
+                                    }
+                                } else if (tempo > 0 && cont2 <= 20){
+                                    mensagem += `Minuto ${cont2}: Assistindo o Episódio <br>`
+                                    tempo = tempo - 1;
+
+                                    if (tempo <= 0) {
+                                        mensagem += '<br> Fim dos Episódios!'
+                                        cont2 = 22;
+                                    }
+                                } else if (tempo > 0 && cont2 <= 22) {
+                                        mensagem += `Minuto ${cont2}: Assistindo o encerramento <br>`
+                                        tempo = tempo - 1;
+                                    
+                                    if (tempo <= 0) {
+                                        mensagem += '<br> Fim dos Episódios!'
+                                        cont2 = 22;
+                                    }
+                                }  
+                            }
+                        inicio++;
+                        div_mensagem.innerHTML += mensagem;
+                    } 
+                    
+              }
+
+            }
+            div_mensagem.innerHTML += `<br> Total de episódios assistidos: ${max}`;
+
+        }
+
+        }
+    
+</script>
+
+
+<!--   
+i) Ao final da listagem dos episódios, exiba “Você assistiu XX episódios”, sendo XX o número de episódios assistido pelo usuário ao longo do seu tempo disponível.  -->
