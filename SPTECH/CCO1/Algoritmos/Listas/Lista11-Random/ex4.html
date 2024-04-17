@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ptbr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,49 +15,98 @@
 <script>
     function analisar(){
         var qtd = Number(input_qtd.value)
-        var cont_abaixo = 0;
-        var cont_acima = 0;
-
-        var maior_numero = 0;
-        var menor_numero = 1;
-
-        var total = 0;
-
         var mensagem = "";
+
+        var maior_1_quartil = 0;
+        var menor_1_quartil = 1;
+        var total_1_quartil = 0;
+
+        var maior_2_quartil = 0;
+        var menor_2_quartil = 1;
+        var total_2_quartil = 0;
+
+        var maior_3_quartil = 0;
+        var menor_3_quartil = 1;
+        var total_3_quartil = 0;
+
+        var maior_4_quartil = 0;
+        var menor_4_quartil = 1;
+        var total_4_quartil = 0;
 
         for (var cont = 1; cont <= qtd; cont++){
             var aleatorio = Math.random()
 
-            total += aleatorio;
+            if(aleatorio >= 0.75){
+                mensagem += aleatorio + ' - 1º quartil <br>'
+                total_1_quartil++;
 
-            if(aleatorio > 0.75){
-                mensagem += aleatorio + ' está no 1º quartil <br>'
-                cont_acima++;
-            } else if (aleatorio > 0.5){
-            mensagem += aleatorio + ' está na metade inferior dos números <br>'
-            cont_abaixo++;
-            }
+                    if(aleatorio > maior_1_quartil){
+                        maior_1_quartil = aleatorio;
+                    }
+                    if(aleatorio < menor_1_quartil){
+                        menor_1_quartil = aleatorio;
+                    }
 
-            if (aleatorio > maior_numero){
-                maior_numero = aleatorio;
-            }
-            if (aleatorio < menor_numero){
-                menor_numero = aleatorio;
-            }
+            } else if (aleatorio >= 0.5){
+                mensagem += aleatorio + ' - 2º quartil <br>'
+                total_2_quartil++;
 
+                    if(aleatorio > maior_2_quartil){
+                            maior_2_quartil = aleatorio;
+                        }
+                    if(aleatorio < menor_2_quartil){
+                        menor_2_quartil = aleatorio;
+                    }
+
+            } else if (aleatorio >= 0.25){
+                mensagem += aleatorio + ' - 3º quartil <br>'
+                total_3_quartil++;
+
+                    if(aleatorio > maior_3_quartil){
+                            maior_3_quartil = aleatorio;
+                        }
+                    if(aleatorio < menor_3_quartil){
+                        menor_3_quartil = aleatorio;
+                    }
+
+            } else {
+                mensagem += aleatorio + ' - 4º quartil <br>'
+                total_4_quartil++;
+
+                    if(aleatorio > maior_4_quartil){
+                            maior_4_quartil = aleatorio;
+                        }
+                    if(aleatorio < menor_4_quartil){
+                        menor_4_quartil = aleatorio;
+                    }
+            }
         }
+        mensagem += `
+        <br> 1º QUARTIL
+        TOTAL DE NÚMEROS ${total_1_quartil} <br>
+        MAIOR NÚMERO SORTEADO ${maior_1_quartil} <br>
+        MENOR NÚMERO SORTEADO ${menor_1_quartil} <br>
+        <br>
 
-        var media = total / qtd;
+        <br> 2º QUARTIL
+        TOTAL DE NÚMEROS ${total_2_quartil} <br>
+        MAIOR NÚMERO SORTEADO ${maior_2_quartil} <br>
+        MENOR NÚMERO SORTEADO ${menor_2_quartil} <br>
+        <br>
+
+        <br> 3º QUARTIL
+        TOTAL DE NÚMEROS ${total_3_quartil} <br>
+        MAIOR NÚMERO SORTEADO ${maior_3_quartil} <br>
+        MENOR NÚMERO SORTEADO ${menor_3_quartil} <br>
+        <br>
+
+        <br> 4º QUARTIL
+        TOTAL DE NÚMEROS ${total_4_quartil} <br>
+        MAIOR NÚMERO SORTEADO ${maior_4_quartil} <br>
+        MENOR NÚMERO SORTEADO ${menor_4_quartil} <br>
+        <br>
+        `
         div_mensagem.innerHTML = mensagem;
-        div_mensagem.innerHTML += `<br> Total de número abaixo da metade = ${cont_abaixo}`
-        div_mensagem.innerHTML += `<br> Total de número acima da metade = ${cont_acima}`
-
-        div_mensagem.innerHTML += `<br> Maior número = ${maior_numero}`
-        div_mensagem.innerHTML += `<br> Menor número = ${menor_numero}`
-
-        div_mensagem.innerHTML += `<br> A média dos númeoros sorteados = ${media}`
-
-
     }
 
 </script>

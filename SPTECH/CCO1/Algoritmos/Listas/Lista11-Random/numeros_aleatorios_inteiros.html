@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="gerar()">Gerar Número Inteiro</button>
+    <button onclick="gerar_0_10()">Gerar entre 0 e 10</button>
+    <button onclick="gerar_1_10()">Gerar entre 1 e 10</button>
+    <button onclick="gerar_1_2()">Gerar entre 1 e 2</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function gerar() {
+        var aleatorio = Math.random();
+        div_mensagem.innerHTML = `${aleatorio} <br>`
+
+        console.log(aleatorio.toFixed(50));
+
+        var aleatorio_inteiro = aleatorio.toFixed(0);
+        div_mensagem.innerHTML += `${aleatorio_inteiro}`;
+    }
+
+    function gerar_0_10(){
+        var aleatorio = Math.random() * 10;
+        var aleatorio_inteiro = aleatorio.toFixed(0);
+        div_mensagem.innerHTML = `Sorteado: ${aleatorio} | Inteiro: ${aleatorio_inteiro} <br>`
+    }
+
+    function gerar_1_10(){
+        var min = 1;
+        var max = 10;
+        var intervalo = max - min;
+        var aleatorio = Math.random() * (max - min) + min; // * intervalo + min;
+        div_mensagem.innerHTML = `${aleatorio} <br>`
+    }
+
+    function gerar_1_2(){
+        var aleatorio = Math.random() + 1;
+        var aleatorio_inteiro = aleatorio.toFixed(0);
+        div_mensagem.innerHTML = `Número: ${aleatorio_inteiro}`
+    }
+
+</script>

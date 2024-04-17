@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Rodadas: <input type="text" id="input_rodadas"> <br>
+    Par ou Ímpar? <select id="select_escolha">
+        <option selected disabled>Selecione uma opção</option>
+        <option>PAR</option>
+        <option>IMPAR</option>
+    </select> <br>
+
+    <button onclick="jogar()">jogar</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function jogar() {
+        var rodadas = Number(input_rodadas.value);
+        var escolha = select_escolha.value;
+
+        var pontuacao_jogador = 0;
+        var pontuacao_programa = 0;
+
+        div_mensagem.innerHTML = ""
+        for (var cont = 1; cont <= rodadas; cont++) {
+            var aleatorio = Math.random();
+            var teste = aleatorio.toString();
+            var teste2 = teste.length;
+            var ultimo_digito = teste[teste2 - 1];
+            
+
+            if (ultimo_digito % 2 == 0) {
+                div_mensagem.innerHTML += "<br> É par! <br>"
+
+                if(escolha == "PAR"){
+                    pontuacao_jogador++;
+                } else {
+                    pontuacao_programa++;
+                }
+            } else {
+                div_mensagem.innerHTML += `<br> É impar! <br>`
+
+                if(escolha == "IMPAR"){
+                    pontuacao_jogador++;
+                } else {
+                    pontuacao_programa++;
+                }
+            }  
+
+            div_mensagem.innerHTML += `Jogador - ${pontuacao_jogador} <br>
+                                        Programa - ${pontuacao_programa} <br>`
+        }
+    }
+</script>

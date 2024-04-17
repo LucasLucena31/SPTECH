@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece</title>
+</head>
+<body>
+    Espisódio Inicial: <input type="number" id="input_inicio"> <br>
+    Quantidade de tempo disponível: <input type="number" id="input_tempo"> <br>
+
+    Unidade de tempo em: 
+    <select name="" id="select_unidade">
+        <option value="0" selected disabled>Selecione uma opção</option>
+        <option value="1">Horas</option>
+        <option value="2">Minutos</option>
+    </select> <br>
+
+    Deseja pular a abertura dos episódios? 
+    <select name="" id="select_abertura">
+        <option value="0">Selecione uma opção</option>
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+    </select> <br>
+
+    Deseja pular o encerramento dos episódios? 
+    <select name="" id="select_encerramento">
+        <option value="0">Selecione uma opção</option>
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+    </select> <br> <br>
+
+    <button onclick="assistir()">Assistir Episódios</button> <br> <br>
+
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
