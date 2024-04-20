@@ -133,3 +133,199 @@ SELECT * FROM gasto;
 -- Exiba somente os dados de cada tabela, mas filtrando por algum dado da tabela (por exemplo, as pessoas de alguma profissão, etc).
 SELECT * FROM pessoa WHERE profissao = 'estudante';
 SELECT * FROM gasto WHERE valor > 60;
+
+-- Exiba os dados das pessoas e dos seus gastos correspondentes
+select * from pessoa 
+	JOIN gasto 
+    ON fkPessoa = idPessoa;
+    
+-- Exiba os dados de uma determinada pessoa e dos seus gastos correspondentes.
+select * from pessoa 
+	JOIN gasto 
+    ON idPessoa = fkPessoa
+    WHERE idPessoa = 3;
+    
+-- Atualize valores já inseridos na tabela.
+UPDATE gasto SET valor = 60 where idGasto = 1;
+UPDATE gasto SET valor = 40 where idGasto = 2;
+UPDATE gasto SET valor = 100 where idGasto = 3;
+UPDATE gasto SET valor = 90 where idGasto = 4;
+UPDATE gasto SET valor = 80 where idGasto = 5;
+
+-- Exclua um ou mais registros de alguma tabela.
+DELETE FROM gasto where idGasto = 3;
+
+-- EXERCICIO 3
+-- Criar um banco de dados chamado PraticaFuncionario.
+CREATE DATABASE PraticaFuncionario;
+USE PraticaFuncionario;
+
+
+CREATE TABLE setor (
+idSetor int primary key auto_increment,
+nome varchar (45),
+andar int 
+);
+
+CREATE TABLE funcionario (
+idFuncionario int primary key auto_increment,
+nome varchar (45),
+telefone varchar (45),
+salario decimal (7,2),
+fkSetor int,
+constraint fkSetorFunc foreign key (fkSetor)
+	references setor (idSetor)
+);
+
+CREATE TABLE acompanhante (
+ idAcompanhante int,
+ fkFuncionario int,
+ nome varchar(45), 
+ relacao_funcionario varchar (45),
+ dtNasc date,
+ constraint pk_composta primary key (idAcompanhante, fkFuncionario),
+ constraint fkFuncAcomp foreign key (fkFuncionario)
+	references funcionario (idFuncionario)
+);
+
+-- Inserir dados nas tabelas, de forma que exista mais de um funcionário em cada setor cadastrado.
+INSERT INTO setor VALUES
+	(default, 'Marketing', 3),
+	(default, 'TI', 4),
+	(default, 'SAC', 5);
+
+INSERT INTO funcionario VALUES
+	(default, 'Lucas', '11 985674258', '10000.00', 1),
+	(default, 'Juliana', '11 985674754', '8000.00', 2),
+	(default, 'Ilys', '11 985677458', '100.00', 2),
+	(default, 'Ivan', '11 985202258', '7000.00', 3),
+	(default, 'Giorgio', '11 978374258', '20.00', 3);
+
+INSERT INTO acompanhante VALUES 
+	(1, 1, 'Pietro', 'irmão', '2013-02-17'),
+	(2, 1, 'Theodor', 'cachorro', '2019-01-06'),
+	(1, 2, 'Laura', 'mãe', '1980-07-12'),
+	(1, 3, 'Andrezza', 'irmã', '2005-06-28');
+
+-- Exibir todos os dados de cada tabela criada, separadamente
+SELECT * FROM setor;
+SELECT * FROM funcionario;
+SELECT * FROM acompanhante;
+
+-- Fazer os acertos da chave estrangeira, caso não tenha feito no momento da criação
+
+-- - Exibir os dados dos setores e dos seus respectivos funcionários
+SELECT * FROM setor
+	JOIN funcionario 
+    ON fkSetor = idSetor;
+    
+-- Exibir os dados de um determinado setor (informar o nome do setor na consulta) e dos seus respectivos funcionários.
+SELECT * FROM setor
+	JOIN funcionario 
+    ON fkSetor = idSetor
+    Where idSetor = 2;
+    
+-- Exibir os dados dos funcionários e de seus acompanhantes.
+SELECT * FROM acompanhante
+	JOIN funcionario
+    ON idFuncionario = fkFuncionario;
+
+-- Exibir os dados de apenas um funcionário (informar o nome do funcionário) e os dados de seus acompanhantes.
+SELECT funcionario.nome as NomeFuncionario,
+		acompanhante.nome as NomeAcompanhante
+        FROM funcionario
+		JOIN acompanhante 
+		ON fkFuncionario = idFuncionario
+        WHERE funcionario.idFuncionario = 2; 
+
+-- Exibir os dados dos funcionários, dos setores em que trabalham e dos seus acompanhantes
+    SELECT * FROM funcionario
+		JOIN acompanhante 
+        ON funcionario.idFuncionario = acompanhante.fkFuncionario
+        JOIN setor
+        ON fkSetor = idSetor;
+        
+-- EXERCICIO 4 
+-- Criar um banco de dados chamado Treinador
+CREATE DATABASE Treinador;
+
+-- Selecionar esse banco de dados
+USE Treinador;
+
+--  Criar as tabelas correspondentes à sua modelagem.
+create table treinador (
+idTreinador int primary key auto_increment,
+nome varchar (45),
+telefone varchar(45),
+email varchar (45),
+fkOrientador int,
+constraint fkOrientador foreign key (fkOrientador)
+	references treinador (idTreinador)
+    ) auto_increment = 10;
+    
+create table nadador (
+idNadador int primary key auto_increment,
+nome varchar(45),
+estado_origem varchar (45),
+dtNasc date,
+fkTreinador int,
+constraint fkTreinador foreign key (fkTreinador)
+	references treinador (IdTreinador)
+) auto_increment = 100;
+
+-- Inserir dados nas tabelas, de forma que exista mais de um nadador para algum treinador, e mais de um treinador sendo orientado por algum treinador mais experiente.
+INSERT INTO treinador VALUES 
+(default, 'bob', '1845675201', 'bob@gmail.com', null); 
+
+INSERT INTO treinador VALUES 
+(default, 'patrick', '1844745201', 'patrick@gmail.com', 10),
+(default, 'luiz', '1845696801', 'luiz@gmail.com', 10);
+
+INSERT INTO nadador VALUES 
+(default, 'leonardo', 'São Paulo', '2005-02-01', 10),
+(default, 'leticia', 'Amazonas', '2008-07-10', 11),
+(default, 'raine', 'Rio de Janeiro', '2003-10-11', 12),
+(default, 'ana', 'São Paulo', '2002-09-29', 10);
+
+-- Exibir todos os dados de cada tabela criada, separadamente.
+SELECT * FROM treinador;
+SELECT * FROM nadador;
+
+-- Fazer os acertos da chave estrangeira, caso não tenha feito no momento da criação das tabelas
+
+-- Exibir os dados dos treinadores e os dados de seus respectivos nadadores
+SELECT * FROM treinador 
+	JOIN nadador
+    ON fkTreinador = idTreinador;
+    
+-- Exibir os dados de um determinado treinador (informar o nome do treinador na consulta) e os dados de seus respectivos nadadores.
+SELECT treinador.nome as NomeTreinador,
+		nadador.nome as NomeNadador,
+        nadador.estado_origem
+        FROM treinador JOIN nadador
+        ON fkTreinador = idTreinador
+        WHERE idTreinador = 10;
+        
+-- Exibir os dados dos treinadores e os dados dos respectivos treinadores orientadores.
+SELECT treinador.nome as NomeTreinador,
+		orientador.nome as NomeOrientador
+        FROM treinador JOIN treinador as orientador
+        ON treinador.fkOrientador = orientador.idTreinador;
+        
+-- Exibir os dados dos treinadores e os dados dos respectivos treinadores orientadores, porém somente de um determinado treinador orientador (informar o nome do treinador na consulta)
+SELECT treinador.nome as NomeTreinador,
+		orientador.nome as NomeOrientador
+        FROM treinador JOIN treinador as orientador
+        ON treinador.fkOrientador = orientador.idTreinador
+        where treinador.fkOrientador = 10;
+
+-- Exibir os dados dos treinadores, os dados dos respectivos nadadores e os dados dos respectivos treinadores orientadores.
+SELECT * FROM treinador JOIN treinador as orientador
+        ON treinador.fkOrientador = orientador.idTreinador
+        JOIN nadador ON nadador.fkTreinador = treinador.idTreinador;
+        
+-- Exibir os dados de um treinador (informar o seu nome na consulta), os dados dos respectivos nadadores e os dados do seu treinador orientador
+SELECT * FROM treinador JOIN treinador as orientador
+        ON treinador.fkOrientador = orientador.idTreinador
+        JOIN nadador ON nadador.fkTreinador = treinador.idTreinador
+        WHERE treinador.idTreinador = 11;
