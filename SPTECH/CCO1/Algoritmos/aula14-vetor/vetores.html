@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Fruta: <input type="text" id="input_fruta">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Exibir</button>
+    <button onclick="pesquisar()">Pesquisar</button>
+    <button onclick="analisar()">Analisar</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    var lista_frutas = [];
+
+    function cadastrar(){
+        var fruta = input_fruta.value;
+
+        lista_frutas.push(fruta);
+    }
+
+    function exibir() {
+        div_mensagem.innerHTML = ""
+        var tamanho_lista = lista_frutas.length;
+
+        for (var index = 0; index < tamanho_lista; index++) {
+            var fruta_atual = lista_frutas[index];
+            div_mensagem.innerHTML += `${index}. ${fruta_atual} <br> <br>`
+        }
+    }
+
+    function pesquisar(){
+        div_mensagem.innerHTML = ""
+        var fruta = input_fruta.value;
+        var tamanho_lista = lista_frutas.length;
+        var retorno = 'Não Existe';
+
+         for (var index = 0; index < tamanho_lista; index++) {
+             var fruta_atual = lista_frutas[index];
+               if (fruta == fruta_atual){
+                     retorno = 'Existe'
+                }
+         }
+
+        var existe = lista_frutas.indexOf(fruta);
+        if ( existe >= 0 ){
+            retorno = 'Existe'
+        }
+
+        div_mensagem.innerHTML = retorno;
+
+    }
+
+    function analisar() {
+        div_mensagem.innerHTML = ""
+        var fruta = input_fruta.value;
+        var tamanho_lista = lista_frutas.length;
+
+        var cont_frutas_encontradas = 0;
+        var lista_indices_encontrados = []; 
+
+        for (var index = 0; index < tamanho_lista; index++) {
+            var fruta_atual = lista_frutas[index];
+            
+            if(fruta_atual == fruta){
+                cont_frutas_encontradas++;
+                lista_indices_encontrados.push(index);
+            }
+        }
+
+        if(cont_frutas_encontradas > 0){
+            div_mensagem.innerHTML = `A ${fruta} existe na lista <br>`
+        } else {
+            div_mensagem.innerHTML = `A ${fruta} não existe na lista <br>`
+        }
+
+        div_mensagem.innerHTML += `Quantas ocorrências: ${cont_frutas_encontradas} <br>`
+        div_mensagem.innerHTML += `Posições encontradas: ${lista_indices_encontrados} <br>`
+        
+    }
+</script>

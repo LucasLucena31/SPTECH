@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Frase: <input type="text" id="input_frase">
+    <button onclick="exibir()">Exibir</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function exibir() {
+        var frase = input_frase.value;
+        var tamanho_frase = frase.length;
+        var mensagem = "";
+
+        if (tamanho_frase >= 5){
+            // mensagem += frase[0] + '<br>';
+            // mensagem += frase[1] + '<br>';
+            // mensagem += frase[2] + '<br>';
+            // mensagem += frase[3] + '<br>';
+            // mensagem += frase[4] + '<br>';
+
+           for (index = 0; index < tamanho_frase; index++){
+                var letra_atual = frase[index];
+                div_mensagem.innerHTML += `${letra_atual} <br>`;
+           }
+
+        } else {
+            alert('Frase tem menos que 5 letras')
+        }
+
+    }
+</script>

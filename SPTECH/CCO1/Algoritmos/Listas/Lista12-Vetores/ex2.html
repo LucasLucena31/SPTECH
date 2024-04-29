@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Destino de viagem: <input type="text" id="input_destino">
+    <button onclick="adcionar()">Adicionar</button> <br><br>
+    <button onclick="pesquisar1()">Primeira Viagem</button>
+    <button onclick="pesquisar2()">Terceira Viagem</button>
+    <button onclick="pesquisar3()">Última Viagem</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    var lista = [];
+
+    function adcionar(){
+        var destino = input_destino.value;
+        lista.push(destino);
+    }
+
+    function pesquisar1() {
+        if (lista[0] != null){
+            div_mensagem.innerHTML = lista[0]
+        } else {
+            div_mensagem.innerHTML = 'Ainda não viajou'
+        }
+    }
+
+    function pesquisar2() {
+        if (lista[2] != null){
+            div_mensagem.innerHTML = lista[2]
+        } else {
+            div_mensagem.innerHTML = 'Ainda não viajou'
+        }
+    }
+
+    function pesquisar3() {
+        var tamanho_lista = lista.length;
+
+        div_mensagem.innerHTML = lista[tamanho_lista - 1]
+        
+    }
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Bairros que já morou: <input type="text" id="input_bairro">
+    <button onclick="adcionar()">Cadastrar Bairro</button> <br><br>
+
+    Local onde morou: <input type="text" id="input_numero"> <br> <br>
+    <button onclick="relembrar()">Relembrar Moradia</button> <br><br>
+    
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    var lista = [];
+
+    function adcionar(){
+        var bairro = input_bairro.value;
+        lista.push(bairro);
+    }
+
+    function relembrar() {
+        var cont = input_numero.value;
+        var max = lista.length
+
+        if( cont <= max) {
+            div_mensagem.innerHTML = lista[cont - 1];
+        } else {
+            div_mensagem.innerHTML = `Você ainda não morou num ${cont}º bairro!`
+        }
+
+
+    }
+
+</script>
