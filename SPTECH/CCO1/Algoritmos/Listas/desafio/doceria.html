@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria</title>
+</head>
+
+<body>
+    Quantidade de Macarons: <input type="text" id="input_macaron_qtd"> <br>
+    Quantidade de Brigadeiros: <input type="text" id="input_brigadeiro_qtd"> <br>
+    Quantidade de Cupcakes: <input type="text" id="input_cupcake_qtd"> <br>
+    Quantidade de Cheesecakes: <input type="text" id="input_cheesecake_qtd"> <br> <br>
+
+    Valor unidade de Macarons: <input type="text" id="input_macaron_vlr"> <br>
+    Valor unidade de Brigadeiros: <input type="text" id="input_brigadeiro_vlr"> <br>
+    Valor unidade de Cupcakes: <input type="text" id="input_cupcake_vlr"> <br>
+    Valor unidade de cheesecakes: <input type="text" id="input_cheesecake_vlr"> <br>
+
+    <button onclick="verificar()">Verificar Vendas</button>
+
+    <div id="div_mensagem"></div>
+
+
+
+</body>
+
+</html>
+
+<script>
+    function verificar() {
+        div_mensagem.innerHTML = "<br>"
+
+        var vlr_macarons = Number(input_macaron_vlr.value);
+        var vlr_brigadeiros = Number(input_brigadeiro_vlr.value);
+        var vlr_cupcakes = Number(input_cupcake_vlr.value);
+        var vlr_cheesecakes = Number(input_cheesecake_vlr.value);
+
+        var qtd_macarons = Number(input_macaron_qtd.value);
+        var qtd_brigadeiros = Number(input_brigadeiro_qtd.value);
+        var qtd_cupcakes = Number(input_cupcake_qtd.value);
+        var qtd_cheesecakes = Number(input_cheesecake_qtd.value);
+
+        var total = qtd_macarons + qtd_brigadeiros + qtd_cupcakes + qtd_cheesecakes;
+
+        var total_preco = (vlr_macarons * qtd_macarons) + (vlr_brigadeiros * qtd_brigadeiros) + (vlr_cupcakes * qtd_cupcakes) + (vlr_cheesecakes * qtd_cheesecakes);
+        
+
+
+        if (vlr_macarons < 0 || vlr_brigadeiros < 0 || vlr_cupcakes < 0 || vlr_cheesecakes < 0){
+            alert("Erro! Você inseriu valores negativos!")
+        }
+
+
+        for (var cont = 0; cont < total;){
+
+            for (var contM = 0; contM < qtd_macarons; contM++){
+                div_mensagem.innerHTML += `Venda ${cont + 1} - <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYXJvbnxlbnwwfHwwfHx8MA%3D%3D" alt="" style="width: 50px; height: 50px;"> - R$${vlr_macarons} <br>`
+                cont++
+            }
+
+            for (var contB = 0; contB < qtd_brigadeiros; contB++){
+                div_mensagem.innerHTML += `Venda ${cont + 1} - <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSsqfHalFJt1LI5xPyg1H25kR6d3gDZYMx4kF86VaVDw&s" alt="" style="width: 50px; height: 50px;"> - R$${vlr_brigadeiros} <br>`
+                cont++
+            }
+
+            for (var contCp = 0; contCp < qtd_cupcakes; contCp++){
+                div_mensagem.innerHTML += `Venda ${cont + 1} - <img src="https://t4.ftcdn.net/jpg/02/29/12/83/360_F_229128345_TTMINYwsJdkbukDeP53M6GoHqjUaT2ym.jpg" alt="" style="width: 50px; height: 50px;"> - R$${vlr_cupcakes} <br>`
+                cont++
+            }
+
+            for (var contCh = 0; contCh < qtd_cheesecakes; contCh++){
+                div_mensagem.innerHTML += `Venda ${cont + 1} - <img src="https://media.istockphoto.com/id/1205169550/pt/foto/cheesecake-slice-with-strawberries.jpg?s=612x612&w=0&k=20&c=ewqOO5l3NnDA3rVMXO7nwYJCcEtOjMkFuuk_vMyx_2c=" alt="" style="width: 50px; height: 50px;"> - R$${vlr_cheesecakes} <br>`
+                cont++
+            }
+        }
+
+        div_mensagem.innerHTML += `<br> Com a quantidade de ${qtd_macarons} Maracons, ${qtd_brigadeiros} Brigadeiros, ${qtd_cupcakes} Cupcakes e ${qtd_cheesecakes} Cheesecakes, a venda totalizará R$${total_preco}`
+    }
+</script>

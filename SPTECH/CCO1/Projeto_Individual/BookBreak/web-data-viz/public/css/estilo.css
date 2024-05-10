@@ -1,0 +1,219 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #3A2C23;
+  overflow-x: hidden;
+}
+
+header {
+  position: fixed;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.main {
+  display: block;
+}
+header .logo {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+header .logo img {
+  width: 60%;
+  height: 80%;
+  border-radius: 50px;
+}
+
+.container{
+  display: flex;
+  width: 100%;
+  background-color: #331e1ce6;
+  height: 90px;
+  color: #fff;
+  width: 100%;
+}
+
+.logo_txt{
+  margin-left: 10px;
+}
+
+.header a {
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.itensNaveBar {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 350px;
+  list-style: none;
+  padding-right: 20px;
+  font-family: linden-hill;
+  font-weight: 100;
+  font-size: 20px;
+}
+
+.itensNaveBar a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.home {
+  background-image: url('../assets/imgs/fundo_tela.jpeg');
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+.book{
+  margin-bottom: 0;
+  font-family: linden-hill;
+  font-weight: 100;
+}
+
+.break{
+  margin-top: -15px;
+  margin-left: 8px;
+  font-family: linden-hill;
+  font-weight: 100;
+}
+
+.chamado {
+  position: relative;
+  height: 250px;
+
+}
+
+.chamado img {
+  width: 50%;
+  height: 350%;
+  margin-left: -30px;
+}
+
+.chamado .textos {
+  position: absolute;
+  top: 300px;
+  left: 140px;
+}
+
+.chamado h1 {
+  font-family: lily;
+  font-size: 70px;
+  font-weight: 100;
+  margin-bottom: 5px;
+}
+
+.chamado h2 {
+  font-family: lusitana;
+  font-size: 20px;
+  font-weight: 100;
+  margin-top: 0px;
+}
+
+.sobNos {
+  background-image: url(../assets/imgs/livro_sob.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+  width: 1300px;
+  margin-top: 80px;
+  margin-left: 7%;
+  align-self: center;
+}
+
+.folha1 .titulo {
+  font-family: petit;
+  font-size: 80px;
+  position: relative;
+  top: 70px;
+  left: 250px;
+}
+
+.icon_cadastro {
+  background-image: url(../assets/icon/pena.png);
+  width: 180px;
+  height: 100%;
+  background-size: cover;
+}
+
+.icon_cadastro .login{
+  margin-left: 12px;
+  margin-top: 12px;
+  margin-bottom: 0px;
+  font-family: linden-hill;
+  font-weight: 100;
+  font-size: 30px;
+
+}
+
+.icon_cadastro .comercial{
+  margin-left: 85px;
+  margin-top: -25px;
+  margin-bottom: 0px;
+  font-family: linden-hill;
+  font-weight: 100;
+  font-size: 24px;
+
+}
+
+.icon_cadastro .cadastro{
+  margin-left: 65px;
+  margin-top: -10px;
+  margin-bottom: 0px;
+  font-family: linden-hill;
+  font-weight: 100;
+  font-size: 24px;
+
+}
+
+.footer {
+  height: 225px;
+  width: 100%;
+  border-top: #000 solid 2px;
+  margin-top: 10%;
+}
+
+.footer .f1{
+  height: 75px;
+  width: 100%;
+  background-color: #593d2c;
+}
+
+.footer .f2{
+  height: 150px;
+  width: 100%;
+  background-color: #b0866b;
+}
+
+@font-face {
+  font-family: linden-hill;
+  src: url(../assets/fonts/LindenHill-Regular.ttf);
+  
+}
+
+@font-face {
+  font-family: lily;
+  src: url(../assets/fonts/LilyScriptOne-Regular.ttf);
+  
+}
+
+@font-face {
+  font-family: lusitana;
+  src: url(../assets/fonts/Lusitana-Regular.ttf);
+  
+}
+
+@font-face {
+  font-family: petit;
+  src: url(../assets/fonts/PetitFormalScript-Regular.ttf);
+  
+}
