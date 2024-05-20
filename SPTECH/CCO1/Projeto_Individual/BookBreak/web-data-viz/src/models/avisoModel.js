@@ -1,20 +1,23 @@
 var database = require("../database/config");
 
-function listar() {
+function listar(idCap) {
     console.log("ACESSEI O post  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucaoSql = `
-        SELECT 
-            a.id AS idPost,
-            a.titulo,
-            a.descricao,
-            a.fk_usuario,
-            u.id AS idUsuario,
-            u.nome,
-            u.email,
-            u.senha
+    SELECT 
+        a.id AS idPost,
+        a.titulo,
+        a.descricao,
+        a.fk_usuario,
+        a.fk_capitulo,
+        u.id AS idUsuario,
+        u.nome,
+        u.email,
+        u.senha, 
+        u.cpf
         FROM post a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id;
+        INNER JOIN usuario u
+            ON a.fk_usuario = u.id
+            WHERE a.fk_capitulo = ${idCap};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -62,10 +65,10 @@ function listarPorUsuario(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
-function publicar(titulo, descricao, idUsuario, capitulo) {
-    console.log("ACESSEI O POST MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
+function publicar( titulo, descricao, idUsuario, capitulo, id) {
+    console.log("ACESSEI O POST MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", id, titulo, descricao, idUsuario);
     var instrucaoSql = `
-        INSERT INTO post (titulo, descricao, fk_usuario, fk_capitulo) VALUES ('${titulo}', '${descricao}', ${idUsuario}, ${capitulo});
+        INSERT INTO post (titulo, descricao, fk_usuario, fk_capitulo, id) VALUES ('${titulo}', '${descricao}', ${idUsuario}, ${capitulo}, ${id});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

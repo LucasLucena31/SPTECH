@@ -1,12 +1,12 @@
 var avisoModel = require("../models/avisoModel");
 
 function listar(req, res) {
-    avisoModel.listar().then(function (resultado) {
-        if (resultado.length > 0) {
+    var idCap = req.params.idCap;
+
+    avisoModel.listar(idCap)
+    .then(function (resultado) {
             res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
+        
     }).catch(function (erro) {
         console.log(erro);
         console.log("Houve um erro ao buscar os posts: ", erro.sqlMessage);
@@ -65,6 +65,7 @@ function publicar(req, res) {
     var descricao = req.body.descricao;
     var idUsuario = req.params.idUsuario;
     var capitulo = req.body.capitulo;
+    var id = req.body.id
 
     if (titulo == undefined) {
         res.status(400).send("O título está indefinido!");
@@ -73,7 +74,7 @@ function publicar(req, res) {
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        avisoModel.publicar(titulo, descricao, idUsuario, capitulo)
+        avisoModel.publicar(titulo, descricao, idUsuario, capitulo, id)
             .then(
                 function (resultado) {
                     res.json(resultado);
