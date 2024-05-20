@@ -6,6 +6,7 @@ function buscarAquariosPorEmpresa(empresaId) {
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
+  
 }
 
 function cadastrar(empresaId, descricao) {

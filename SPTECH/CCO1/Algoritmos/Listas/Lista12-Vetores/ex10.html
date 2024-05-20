@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Linha: <input type="text" id="input_linha">
+    <button onclick="adicionar()">Gravar Busão</button> <br><br>
+
+    Pesquisa: <input type="text" id="input_pesquisa">
+    <button onclick="pesquisar()">Pesquisar Linha</button> <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    var lista = [];
+
+    function adicionar(){
+        var linha = input_linha.value;
+        lista.push(linha);
+        div_mensagem.innerHTML = '';
+
+        var tamanho = lista.length;
+        var mensagem = '';
+
+        for (var cont = tamanho; cont > 0; cont--){
+            mensagem += lista[cont - 1] + '<br>';
+        }
+
+       div_mensagem.innerHTML = mensagem;
+
+
+    }
+
+    function pesquisar() {
+
+        var tamanho = lista.length;
+        var pesquisa = input_pesquisa.value;
+        var qtd = [];
+        var mensagem = '';
+
+         for (var cont = 0; cont < tamanho; cont++){
+            if (lista[cont] == pesquisa){
+                qtd.push(cont + 1);
+            } 
+         }
+
+         var tamanho2 = qtd.length;
+
+         if (qtd.length > 0){
+            div_mensagem.innerHTML = `Você já pegou essa linha ${qtd.length} vezes, nessa ordem: ` + qtd;
+         } else {
+            div_mensagem.innerHTML = 'Você nunca pegou essa linha'
+         }
+
+    }
+
+    
+
+</script>

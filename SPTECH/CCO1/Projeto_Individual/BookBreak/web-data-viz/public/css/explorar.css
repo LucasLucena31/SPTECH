@@ -1,0 +1,318 @@
+body{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+
+  background-image: url(../assets/imgs/fundo_explorar2.png);
+  background-attachment: fixed;
+}
+
+header {
+  position: fixed;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.janela {
+  display: flex;
+  justify-content: center;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+header .logo img {
+  width: 60%;
+  height: 80%;
+  border-radius: 50px;
+}
+
+.container{
+  display: flex;
+  width: 100%;
+  background-color: #d9d9d9c5;
+  height: 90px;
+  color: #3A2C23;
+  width: 100%;
+  backdrop-filter: blur(10px);
+}
+
+.logo_txt{
+  margin-left: 10px;
+}
+
+.logo_txt h3{
+  font-family: linden-hill;
+  font-weight: 100;
+}
+
+.header a {
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: #3A2C23;
+}
+
+.itensNaveBar {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 350px;
+  list-style: none;
+  padding-right: 20px;
+  font-family: linden-hill;
+  font-weight: 100;
+  font-size: 20px;
+}
+
+.itensNaveBar a{
+  text-decoration: none;
+  color: #3A2C23;
+}
+
+
+.footer {
+  height: 225px;
+  width: 100%;
+  margin-top: 10%;
+}
+
+.footer .f1{
+  height: 75px;
+  width: 100%;
+  background-color: #BBB4B4;
+  display: flex;
+  justify-content: center;
+  font-family: linden-hill;
+  font-size: 18px;
+  font-weight: 100;
+}
+
+.footer .f2{
+  height: 150px;
+  width: 100%;
+  background-color: #D9D9D9;
+}
+
+.titulo {
+  background-color: #BEBEBE;
+  width: 750px;
+  height: 300px;
+  margin-top: 220px;
+  border-radius: 10px;
+  margin-left: 7%;
+}
+
+.titulo h1 {
+  font-family: linden-hill;
+  color: #3A2C23;
+  font-weight: 100;
+  font-size: 96px;
+  margin-bottom: 0;
+}
+
+.titulo .explorar{
+  justify-content: center;
+  display: flex;
+}
+
+.titulo .texto{
+  justify-content: center;
+  display: flex;
+}
+
+.titulo h2 {
+  font-family: linden-hill;
+  color: #6e582f;
+  font-weight: 100;
+  font-size: 50px;
+  margin-top: 0;
+}
+
+.desafio {
+  background-color: #D9D9D9;
+  width: 830px;
+  height: 530px;
+  margin-left: -36.5%;
+  margin-top: 30%;
+  border-radius: 0px 10px 10px 0px;
+  margin-bottom: 30%;
+}
+
+.desafio .dsf_ctd{
+  display: flex;
+}
+
+.desafio img {
+  width: 100%;
+  height: 100%;
+}
+
+.desafio .bx_img {
+  width: 35%;
+  height: 82%;
+
+  padding: 3% 0% 0% 5%;
+}
+
+.desafio .bx_info{
+  width: 65%;
+  height: 100%;
+
+  padding: 0% 3% 0% 2%;
+}
+
+.desafio h1 {
+  width: 100%;
+  color: #5C4638;
+  font-family: linden-hill;
+  font-weight: 100;
+  font-size: 50px;
+  margin-bottom: 0;
+  text-align: center;
+  margin-top: 3%;
+}
+
+.desafio h3{
+  font-family: linden-hill;
+  color: #6e582f;
+  font-weight: 100;
+  font-size: 40px;
+
+  text-align: center;
+  margin-top: 0;
+}
+
+.desafio p {
+  margin: 20px;
+  font-size: 30px;
+
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.desafio h4 {
+  font-family: linden-hill;
+  color: #6e582f;
+  font-weight: 100;
+  font-size: 30px;
+
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: underline;
+}
+
+.sugestao {
+  background-color: #D9D9D9;
+  width: 890px;
+  height: 590px;
+  margin-left: 35.5%;
+  margin-top: 30%;
+  border-radius: 10px 0px 0px 10px;
+  margin-bottom: 2%;
+}
+
+.sugestao .dsf_ctd{
+  display: flex;
+}
+
+.sugestao img {
+  width: 100%;
+  height: 100%;
+}
+
+.sugestao .bx_img {
+  width: 35%;
+  height: 82%;
+
+  padding: 4% 3% 1% 0%;
+}
+
+.sugestao .bx_info{
+  width: 65%;
+  height: 100%;
+
+  padding: 0% 2% 0% 3%;
+}
+
+.sugestao h1 {
+  width: 100%;
+  color: #5C4638;
+  font-family: linden-hill;
+  font-weight: 100;
+  font-size: 50px;
+  margin-bottom: 0;
+  text-align: center;
+  margin-top: 3%;
+}
+
+.sugestao h3{
+  font-family: linden-hill;
+  color: #6e582f;
+  font-weight: 100;
+  font-size: 40px;
+
+  text-align: center;
+  margin-top: 0;
+}
+
+.sugestao p {
+  margin: 20px;
+  font-size: 30px;
+
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.sugestao h4 {
+  font-family: linden-hill;
+  color: #6e582f;
+  font-weight: 100;
+  font-size: 30px;
+
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: underline;
+}
+
+
+.correr {
+  display: flex;
+  justify-content: center;
+}
+
+.montante {
+  width: 100%;
+}
+
+
+@font-face {
+  font-family: linden-hill;
+  src: url(../assets/fonts/LindenHill-Regular.ttf);
+  
+}
+
+@font-face {
+  font-family: lily;
+  src: url(../assets/fonts/LilyScriptOne-Regular.ttf);
+  
+}
+
+@font-face {
+  font-family: lusitana;
+  src: url(../assets/fonts/Lusitana-Regular.ttf);
+  
+}
+
+@font-face {
+  font-family: petit;
+  src: url(../assets/fonts/PetitFormalScript-Regular.ttf);
+  
+}

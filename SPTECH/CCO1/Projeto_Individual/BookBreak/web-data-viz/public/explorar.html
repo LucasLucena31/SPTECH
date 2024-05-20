@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookBreak | Explorar</title>
+
+    <link rel="stylesheet" href="css/explorar.css" />
+    <script src="../js/sessao.js"></script>
+
+</head>
+
+<!-- <body onload=" atualizarFeed()"> -->
+
+<body>
+
+    <div class="janela">
+
+            <header class="container">
+                <div class="logo">
+                    <div class="logo_txt">
+                        <h3>Logado com: <span id="b_usuario">usuário</span></h3>
+                    </div>
+                </div>
+                
+                <div style="display: flex;">
+                    <ul class="itensNaveBar">
+                        <li> <a href="index.html">Explorar</a></li>
+                        <li>|</li>
+                        <li> <a href="dashboard/mural.html">Desafio Mensal</a></li>
+                        <li>|</li>
+                        <li> <a href="index.html#contato">Perfil</a></li>
+                        <li>|</li>
+                        <li onclick="limparSessao()">Sair</li>
+                    </ul>
+                </div>
+            </header>
+
+        
+            <div class="correr">
+                <div class="montante">
+                    <div class="titulo">
+                        <div class="explorar">
+                            <h1>Explorar</h1>
+                        </div>
+                        <div class="texto">
+                            <h2>veja algumas sugestões de leitura</h2>
+                        </div>
+                    </div>
+
+                    <div class="desafio">
+                        <div class="dsf_ctd">
+                            <div class="bx_img">
+                                <img src="assets/imgs/pequeno_principe.jpg" alt="">
+                            </div>
+                            <div class="bx_info">
+                                <h1>Desafio de leitura Mensal</h1>
+                                <h3>O Pequeno Príncipe</h3>
+                                <p><i>Sinopse:</i> Um piloto cai com seu avião no deserto e ali
+                                    encontra uma criança loura e frágil. Ela diz ter vindo de
+                                    um pequeno planeta distante. E ali, na convivência com o 
+                                    piloto perdido, os dois repensam os seus valores e
+                                    encontram o sentido da vida.
+                                </p>
+                            </div>
+                        </div>
+                        <h4>Participe do Desafio Mensal!</h4>  
+                    </div>
+
+                    <div class="sugestao">
+                        <div class="dsf_ctd">
+                            <div class="bx_info">
+                                <h1>Sugestão da plataforma</h1>
+                                <h3>O ódio que você semeia</h3>
+                                <p><i>Sinopse:</i> Starr Carter é uma adolescente 
+                                      negra que presencia o assassinato de Khalil,
+                                      seu melhor amigo, por um policial branco.
+                                      Ela é forçada a testemunhar no tribunal por
+                                      ser a única pessoa presente na cena do crime.
+                                      Mesmo sofrendo uma série de chantagens, ela
+                                      está disposta a dizer a verdade pela honra
+                                      de seu amigo, custe o que custar.
+                                </p>
+                            </div>
+                            <div class="bx_img">
+                                <img src="assets/imgs/odio_semeia.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>  
+
+            
+    </div>
+    <div class="footer" id="contato">
+                <div class="f1">
+                    <h2>Entre em contato:</h2>
+                </div>
+                <div class="f2">
+                </div>
+            </div>
+
+
+</body>
+
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    // b_cpf.innerHTML = sessionStorage.CPF_USUARIO;
+
+</script>

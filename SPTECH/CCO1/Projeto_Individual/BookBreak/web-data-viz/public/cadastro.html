@@ -6,83 +6,98 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>AquaTech | Cadastro</title>
+  <title>BookBreak | Cadastro</title>
 
   <script src="./js/sessao.js"></script>
 
   <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
+
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="listar()">
+<!-- <body onload="listar()"> -->
+  <body>
+  
   <!--header inicio-->
-  <div class="header">
-    <div class="container">
-      <h1 class="titulo">AquaTech</h1>
-      <ul class="navbar">
-        <li>
-          <a href="index.html">Inicial</a>
-        </li>
-        <li>
-          <a href="simulador.html">Simulador</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href="login.html">Login</a>
-        </li>
-        <li class="agora">
-          <a href="#">Cadastro</a>
-        </li>
-      </ul>
+  <header class="container">
+    <div class="logo">
+        <img src="assets/icon/logo.jpeg" alt="">
+        <div class="logo_txt">
+            <h1 class="book">Book</h1>
+            <h2 class="break">Break</h1>
+        </div>
     </div>
-  </div>
+    
+    <div style="display: flex;">
+        <ul class="itensNaveBar">
+            <li> <a href="index.html">Início</a></li>
+            <li>|</li>
+            <li> <a href="index.html#sobNos">Sobre </a></li>
+            <li>|</li>
+            <li> <a href="index.html#contato">Contato</a></li>
+            <li>|</li>
+            <li> <a href="login.html"> Login</a> </li>
+        </ul>
+    </div>
+
+</header>
   <!--header fim-->
 
-  <div class="login">
+  <div class="telaLogin">
+
     <div class="alerta_erro">
       <div class="card_erro" id="cardErro">
         <span id="mensagem_erro"></span>
       </div>
     </div>
-    <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
+
+
+    <div class="opacity">
+          <div class="box_cad">
+        <h2>Cadastro!</h2>
         <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
+      
           <div class="campo">
-            <span>Empresa:</span>
-            <select name="empresas" id="listaEmpresas">
-              <option selected>Selecione uma empresa</option>
-            </select>
+
+            <div class="lista">
+                <div class="esq">
+                    <span>Nome:</span> <br>
+                    <input id="nome_input" type="text"/> <br>
+                  
+                    <span>E-mail:</span> <br> 
+                    <input id="email_input" type="text"/> <br>
+
+                    <span class="gg">Gênero de livro favorito:</span>
+                      <select name="genero" id="genero">
+                        <option value="#">selecione um gênero</option>    
+                        <option value="1">Ação</option>    
+                        <option value="2">Romance</option>    
+                        <option value="3">Fantasia</option>    
+                        <option value="4">Ficção</option>    
+                      </select>
+                </div>
+            
+                <div class="dir">
+                    <span>CPF:</span> <br>
+                    <input id="cpf_input" type="text"/> <br>
+                  
+                    <span>Senha:</span> <br>
+                    <input id="senha_input" type="password"/> <br>
+                  
+                    <span class="gg">Confirmação da Senha:</span> <br>
+                    <input id="confirmacao_senha_input" type="password"/> <br>
+                </div>
+            </div>
+          
+            <div class="box_bt">
+              <button class="botao" onclick="cadastrar()">Cadastrar</button>
+            </div>
           </div>
-          <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
-          </div>
-          <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-          </div>
-          <div class="campo">
-            <span>CPF:</span>
-            <input id="cpf_input" type="text" placeholder="XXXXXXXXXXX" />
-          </div>
-          <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-          </div>
-          <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
-          </div>
-          <button class="botao" onclick="cadastrar()">Cadastrar</button>
+
         </div>
-        <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
+
+        <div id="div_aguardar" class="loading">
+          <img src="assets/gifs/circle-loading.gif" id="loading-gif" />
         </div>
 
         <div id="div_erros_login"></div>
@@ -90,17 +105,16 @@
     </div>
   </div>
 
-  <!--footer inicio-->
-  <div class="footer">
+  <!-- <div class="footer">
     <div class="container">
       <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
       <span class="version">v1.0.0</span>
     </div>
-  </div>
-  <!--footer fim-->
-</body>
+  </div> -->
 
+</body>
 </html>
+
 
 <script>
   function cadastrar() {
@@ -112,7 +126,6 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var empresaVar = listaEmpresas.value
     var cpfVar = cpf_input.value;
 
     var teste_nome = Number(nomeVar.length);
@@ -126,12 +139,11 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      empresaVar == "" ||
       cpfVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "Preencha todos os campos!";
 
       finalizarAguardar();
       return false;
@@ -140,7 +152,7 @@
       ) {
         cardErro.style.display = "block";
         mensagem_erro.innerHTML =
-        "(Atenção, campo 'nome' deve ter mais do que um caracter!)";
+        "Atenção, campo 'nome' deve ter mais do que um caracter!";
 
       finalizarAguardar();
       return false; 
@@ -151,7 +163,7 @@
       ) {
         cardErro.style.display = "block";
         mensagem_erro.innerHTML =
-        "(Atenção, campo 'email' deve ter '@' e '.'!)";
+        "Atenção, campo 'email' deve ter '@' e '.'!";
 
       finalizarAguardar();
       return false; 
@@ -161,7 +173,7 @@
       ) {
         cardErro.style.display = "block";
         mensagem_erro.innerHTML =
-        "(Atenção, campo 'senha' deve ter mais que 6 caracteres!)";
+        "Atenção, campo 'senha' deve ter mais que 6 caracteres!";
 
       finalizarAguardar();
       return false; 
@@ -171,7 +183,7 @@
       ) {
         cardErro.style.display = "block";
         mensagem_erro.innerHTML =
-        "(Atenção, campo 'senha' deve ser igual a 'confirmação da senha'!)";
+        "Atenção, campo 'senha' deve ser igual a 'confirmação da senha'!";
 
       finalizarAguardar();
       return false; 
@@ -181,7 +193,7 @@
       ) {
         cardErro.style.display = "block";
         mensagem_erro.innerHTML =
-        "(Atenção, campo 'cpf' deve conter 11 caracteres!)";
+        "Atenção, campo 'cpf' deve conter 11 caracteres!";
 
       finalizarAguardar();
       return false; 
@@ -203,7 +215,6 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        empresaServer: empresaVar,
         cpfServer: cpfVar
       }),
     })
@@ -234,21 +245,21 @@
     return false;
   }
 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
+  // function listar() {
+  //   fetch("/empresas/listar", {
+  //     method: "GET",
+  //   })
+  //     .then(function (resposta) {
+  //       resposta.json().then((empresas) => {
+  //         empresas.forEach((empresa) => {
+  //           listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+  //         });
+  //       });
+  //     })
+  //     .catch(function (resposta) {
+  //       console.log(`#ERRO: ${resposta}`);
+  //     });
+  // }
 
   function sumirMensagem() {
     cardErro.style.display = "none";

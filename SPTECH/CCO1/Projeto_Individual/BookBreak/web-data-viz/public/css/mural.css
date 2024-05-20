@@ -1,0 +1,303 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  
+    background-image: url(../assets/imgs/fundo_explorar2.png);
+    background-attachment: fixed;
+  }
+  
+  header {
+    position: fixed;
+    justify-content: space-between;
+    z-index: 10;
+  }
+  
+  .janela {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .conteudo {
+    display: flex;
+    width: 100vw;
+  }
+
+  header .logo {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+  
+  
+  .container{
+    display: flex;
+    width: 100%;
+    background-color: #d9d9d9c5;
+    height: 90px;
+    color: #3A2C23;
+    width: 100%;
+    backdrop-filter: blur(10px);
+  }
+  
+  .logo_txt{
+    margin-left: 10px;
+  }
+  
+  .logo_txt h3{
+    font-family: linden-hill;
+    font-weight: 100;
+  }
+
+  .header a {
+    text-decoration: none;
+    scroll-behavior: smooth;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #3A2C23;
+  }
+  
+  .itensNaveBar {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 350px;
+    list-style: none;
+    padding-right: 20px;
+    font-family: linden-hill;
+    font-weight: 100;
+    font-size: 20px;
+  }
+  
+  .itensNaveBar a{
+    text-decoration: none;
+    color: #3A2C23;
+  }
+  
+  
+  .footer {
+    height: 225px;
+    width: 100%;
+    margin-top: 10%;
+  }
+  
+  .footer .f1{
+    height: 75px;
+    width: 100%;
+    background-color: #BBB4B4;
+    display: flex;
+    justify-content: center;
+    font-family: linden-hill;
+    font-size: 18px;
+    font-weight: 100;
+  }
+  
+  .footer .f2{
+    height: 150px;
+    width: 100%;
+    background-color: #D9D9D9;
+  }
+
+  .menuL {
+    background-color: #604737;
+    height: 100%;
+    width: 30%;
+
+    position: fixed;
+  }
+
+  .menuL h1{
+    font-family: linden-hill;
+    color: #fff;
+    font-weight: 100;
+    font-size: 40px;
+    margin-bottom: 0;
+    margin-top: 30%;
+    text-align: center;
+  }
+
+  .menuL .filtro {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .menuL img{
+    height: 20%;
+    width: 50%;
+  }
+
+  .menuL h3 {
+    font-family: linden-hill;
+    color: #FFF;
+    font-weight: 100;
+    font-size: 35px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .menuL .cap {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cap #capitulo {
+    height: 40px;
+    margin-top: -20px;
+    margin-left: 10px;
+    background-color: #604737;
+    border: none;
+    border-bottom: #ffffff solid 2px;
+    color: #FFF;
+    font-size: 25px;
+  }
+
+  .dash-right{
+    display: flex;
+    justify-content: center;
+
+    margin-left: 30%;
+    width: 70%;
+    margin-top: 10%;
+  }  
+
+  .titulo1 {
+    background-color: #BEBEBE;
+    width: 700px;
+    height: 130px;
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .titulo1 h1 {
+    font-family: linden-hill;
+    color: #3A2C23;
+    font-weight: 100;
+    font-size: 40px;
+    margin-bottom: 0;
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .titulo1 h3 {
+    font-family: linden-hill;
+    color: #6e582f;
+    font-weight: 100;
+    font-size: 30px;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .div-form{
+    background-color: #BEBEBE;
+    width: 700px;
+    height: 340px;
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 10%;
+    text-align: center;
+  }
+
+  .div-form h1 {
+    font-family: linden-hill;
+    color: #3A2C23;
+    font-weight: 100;
+    font-size: 40px;
+    margin-bottom: 0;
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .div-form span {
+    font-family: linden-hill;
+    color: #6e582f;
+    font-weight: 100;
+    font-size: 30px;
+    margin-top: 20px;
+    text-align: center;
+
+    height: 20px;
+  }
+
+  .div-form textarea {
+    width: 400px;
+    border: #6e582f solid 2px;
+    border-radius: 10px;
+  }
+
+  .div-form .Tinp {
+    text-align: center;
+  }
+
+  .Tinp input{
+    background-color: #3a2c2300;
+    border: none;
+    border-bottom: #6e582f solid 2px;
+  }
+
+  .div-form button{
+    background-color: #3A2C23;
+    color: #FFF;
+    font-family: linden-hill;
+    font-weight: 100;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 100;
+
+    height: 30px;
+    width: 100px;
+  }
+
+  .coments{
+    background-color: #BEBEBE;
+    width: 700px;
+    height: 340px;
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 10%;
+    text-align: center;
+  }
+
+  .coments h1 {
+    font-family: linden-hill;
+    color: #3A2C23;
+    font-weight: 100;
+    font-size: 40px;
+    margin-bottom: 0;
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  @font-face {
+    font-family: linden-hill;
+    src: url(../assets/fonts/LindenHill-Regular.ttf);
+    
+  }
+  
+  @font-face {
+    font-family: lily;
+    src: url(../assets/fonts/LilyScriptOne-Regular.ttf);
+    
+  }
+  
+  @font-face {
+    font-family: lusitana;
+    src: url(../assets/fonts/Lusitana-Regular.ttf);
+    
+  }
+  
+  @font-face {
+    font-family: petit;
+    src: url(../assets/fonts/PetitFormalScript-Regular.ttf);
+    
+  }

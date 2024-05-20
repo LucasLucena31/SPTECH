@@ -6,10 +6,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Avisos</title>
+    <title>BookBreak | Desafio Mensal</title>
 
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
+    <link rel="stylesheet" href="../css/mural.css" />
+
+
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
@@ -24,75 +25,118 @@
     <div class="janela">
 
 
-        <div class="header-left">
+        <header class="container">
+                <div class="logo">
+                    <div class="logo_txt">
+                        <h3>Logado com: <span id="b_usuario">usuário</span></h3>
+                    </div>
+                </div>
+                
+                <div style="display: flex;">
+                    <ul class="itensNaveBar">
+                        <li> <a href="index.html">Explorar</a></li>
+                        <li>|</li>
+                        <li> <a href="dashboard/mural.html">Desafio Mensal</a></li>
+                        <li>|</li>
+                        <li> <a href="index.html#contato">Perfil</a></li>
+                        <li>|</li>
+                        <li onclick="limparSessao()">Sair</li>
+                    </ul>
+                </div>
+            </header>
 
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+    <div class="conteudo"> 
+        <div class="menuL">
+            <div>
+                <h1>O Pequeno Princípe</h1>
+            </div>
+            <div class="filtro">
+                <img src="../assets/imgs/pequeno_principe.jpg" alt="">
             </div>
 
-            <div class="hello">
-                <h3>Seu cpf é: <span id="b_cpf">cpf</span>!</h3>
+            <div class="cap" style="display: flex;">
+                <h3>Capítulo:</h3>
+                <select name="" id="capitulo">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                </select>
             </div>
-
-            <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-                <h3>Mural de Avisos</h3>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
+            
 
         </div>
 
         <div class="dash-right">
-
-
-            <div class="avisos">
-                <div id="alerta">
-                </div>
-                <div class="container">
-                    <h1>Publicar um aviso</h1>
+                <div>
+                    <div class="titulo1">
+                        <h1>Desafio Mensal</h1>
+                        <h3>Participe de discussões com diversos usuários</h3>
+                    </div>
+                    
                     <div class="div-form">
+                        <h1>Poste um comentário</h1>
+
                         <form id="form_postagem" method="post" onsubmit="return publicar()">
-                            <label>
-                                Título:
-                                <br>
+                            <div class="Tinp">
+                                <span>Título:</span>
                                 <input name="titulo" id="titulo" maxlength="100" type="text">
-                            </label>
-                            <br>
-                            <br>
-                            <label>
-                                Descrição (máximo de 250 caracteres):
+                            </div>
                                 <br>
-                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
-                            </label>
+                            <span>
+                                Descrição:
+                                <br>
+                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5" placeholder="(máximo de 250 caracteres)"></textarea>
+                            </span>
                             <br>
                             <br>
                             <button>Enviar</button>
+
+                            <!-- <select name="" id="teste">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                            </select> -->
+
                         </form>
                     </div>
-                    <h1>Mural de Avisos</h1>
-                    <div class="div-results">
-                        <div id="feed_container" class="feed-container">
-                        </div>
+
+                    <div class="coments">
+                        <h1>Comentários do Capítulo</h1>
+                            <div class="div-results">
+                                <div id="feed_container" class="feed-container">
+
+                                </div>
+                            </div>
                     </div>
-                </div>
+
+                </div>    
             </div>
         </div>
+
+
     </div>
 
 
@@ -105,18 +149,43 @@
 <script>
     
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    b_cpf.innerHTML = sessionStorage.CPF_USUARIO;
+    // b_cpf.innerHTML = sessionStorage.CPF_USUARIO;
+
+    var tamanho;
 
     function limparFormulario() {
         document.getElementById("form_postagem").reset();
     }
 
     function publicar() {
+
+        fetch(`/avisos/listar/${idCap}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                }
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    tamanho = resposta.length;
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+
+
+        // ==========================================
+
         var idUsuario = sessionStorage.ID_USUARIO;
+        console.log(capitulo.value);
 
         var corpo = {
             titulo: form_postagem.titulo.value,
-            descricao: form_postagem.descricao.value
+            descricao: form_postagem.descricao.value,
+            capitulo: capitulo.value,
+            id: tamanho.value
         }
 
         fetch(`/avisos/publicar/${idUsuario}`, {

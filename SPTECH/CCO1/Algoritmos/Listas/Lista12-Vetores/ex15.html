@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex15</title>
+</head>
+<body>
+    Nome do produto:<input type="text" id="input_produto"> <br>
+
+    Preço da compra: <input type="text" id="input_valor"> <br> <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <button onclick="pesquisar()">Relatório de Estoque</button> <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    var listaPd = [];
+    var listaVlr = [];
+
+    function cadastrar(){
+        var valor = Number(input_valor.value);
+        var produto = input_produto.value;
+        listaPd.push(produto);
+        listaVlr.push(valor);
+
+    }
+
+    function pesquisar() {
+        var tamanho = listaPd.length;
+        div_mensagem.innerHTML = `Total de produtos: ${tamanho} <br> <br>`
+
+        for (var cont = 0; cont < tamanho; cont++){
+
+            div_mensagem.innerHTML += `Produto ${cont + 1}: `+ listaPd[cont] + '<br>'; 
+            div_mensagem.innerHTML += `Preço de Compra: `+ listaVlr[cont] + `. Vender por ${listaVlr[cont] * 1.25} <br> <br>`; 
+
+
+        }
+
+    }
+
+    
+
+</script>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RPG Simples</title>
+<style>
+body {
+font-family: Arial;
+}
+
+#battle-container {
+width: 500px;
+margin: auto;
+border: 1px solid black;
+padding: 10px;
+}
+
+#status-container {
+display: flex;
+justify-content: space-between;
+}
+
+#player-status, #monster-status {
+width: 200px;
+}
+
+#battle-log {
+height: 200px;
+overflow-y: auto;
+}
+
+#actions-container {
+display: flex;
+justify-content: center;
+gap: 10px;
+}
+</style>
+</head>
+<body>
+<div id="battle-container">
+<div id="status-container">
+<div id="player-status">
+<b>Jogador</b>
+<br>
+HP: <span id="player-hp"></span>
+<br>
+XP: <span id="player-xp"></span>
+<br>
+Nível: <span id="player-level"></span>
+</div>
+<div id="monster-status">
+<b>Monstro</b>
+<br>
+HP: <span id="monster-hp"></span>
+<br>
+Força: <span id="monster-strength"></span>
+</div>
+</div>
+<div id="battle-log"></div>
+<div id="actions-container">
+<button id="attack-button">Atacar</button>
+<button id="heal-button">Curar</button>
+</div>
+</div>
+
+<script>
+// Variáveis globais
+let player = {
+hp: 100,
+xp: 0,
+level: 1,
+strength: 10,
+};
+
+let monsters = [
+{ name: "Goblin", strength: 5, hp: 20},
+{ name: "Dragão", strength: 20, hp: 100 },
+{ name: "Slime", strength: 10, hp: 30 },
+{ name: "Zumbi", strength: 15, hp: 40 },
+{ name: "Lobisomem", strength: 25, hp: 50 },
+];
+
+let currentMonster;
+
+// Funções
+function rollDice(min, max) {
+return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function updateStatus() {
+document.getElementById("player-hp").innerText = player.hp;
+document.getElementById("player-xp").innerText = player.xp;
+document.getElementById("player-level").innerText = player.level;
+document.getElementById("monster-hp").innerText = currentMonster.hp;
+document.getElementById("monster-strength").innerText = currentMonster.strength;
+}
+
+function logBattleMessage(message) {
+const battleLog = document.getElementById("battle-log");
+battleLog.innerHTML += `<p>${message}</p>`;
+battleLog.scrollTop = battleLog.scrollHeight;
+}
+
+function startBattle() {
+// Escolhe um monstro aleatório
+currentMonster = monsters[Math.floor(Math.random() * monsters.length)];
+
+// Atualiza o status
+updateStatus();
+
+// Mostra o log da batalha
+logBattleMessage(`Você encontrou um ${currentMonster.name}!`);
+}
+
+function attack() {
+// Rola o dado para o dano do jogador
+const playerDamage = rollDice(player.strength, player.strength + 5);
+
+// Rola o dado para o dano do monstro
+const monsterDamage = rollDice(currentMonster.strength, currentMonster.strength + 5);
+
+// Aplica o dano
+currentMonster.hp -= playerDamage;
+player.hp -= monsterDamage;
+
+// Atualiza o status
+updateStatus();
+
+// Mostra o log da batalha
+logBattleMessage(`Você causou ${playerDamage} de dano ao ${currentMonster.name}.`);
+logBattleMessage(`O ${currentMonster.name} causou ${monsterDamage} de dano a você.`);
+
+// Verifica se o jogador ou o monstro morreu
+if (player.hp <= 0) {
+// O jogador morreu
+alert("Você perdeu!");
+location.reload();
+} else if (currentMonster.hp <= 0) {
+// O monstro morreu
+logBattleMessage(`Você derrotou o ${currentMonster.name}!`);
+
+// Ganha XP
+player.xp += currentMonster.strength * 10;
+
+// Sobe de nível
+if (player.xp >= 100) {
+player.level++;
+player.xp -= 100;
+player.strength += 5;
+
+// Mostra o log da batalha
+logBattleMessage(`Você subiu para o nível ${player.level}!`);
+}
+
+// Começa uma nova batalha
+startBattle();
+}
+}
+
+function heal() {
+// Cura o jogador
+player.hp += 20;
+
+// Verifica se o jogador ultrapassou o HP máximo
+if (player.hp > 100) {
+player.hp = 100;
+}
+
+// Atualiza o status
+updateStatus();
+
+// Mostra o log da batalha
+logBattleMessage(`Você se curou em 20 pontos de vida.`);
+}
+
+// Eventos
+document.getElementById("attack-button").addEventListener("click", attack);
+document.getElementById("heal-button").addEventListener("click", heal);
+
+// Inicia o jogo
+startBattle();
+</script>
+</body>
+</html>

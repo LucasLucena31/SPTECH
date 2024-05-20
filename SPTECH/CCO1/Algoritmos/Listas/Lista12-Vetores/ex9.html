@@ -7,7 +7,8 @@
 </head>
 <body>
     Nome Projeto: <input type="text" id="input_filme">
-    <button onclick="adicionar()">Registrar Projeto</button> <br><br>
+    <button onclick="adicionar()">Registrar Projeto</button> 
+    <button onclick="mostrar()">Mostrar Projeto</button> <br><br>
 
     <!-- <button onclick="ver()">Ver favoritos</button> <br><br> -->
     
@@ -27,21 +28,40 @@
         var mensagem = '';
         var exp;
 
-            for (var cont = 0; cont < tamanho; cont++){
-                    mensagem += lista[cont] + '<br>';
-            }
+            // for (var cont = 0; cont < tamanho; cont++){
+            //         mensagem += lista[cont] + '<br>';
+            // }
 
        tamanho2 = tamanho + 1;
-       if (tamanho2 >= 0 && tamanho2 <= 4){
+       if (tamanho2 >= 0 && tamanho2 <= 5){
         exp = 'Júnior';
-       } else if (tamanho2 >= 0 && tamanho2 <= 4){
-        exp = 'Júnior';
+       } else if (tamanho2 >= 6 && tamanho2 <= 13){
+        exp = 'Pleno';
+       } else {
+        exp = 'Sênior';
        }
 
        mensagem += `Você já fez ${cont} projetos. Por isso você é um profissional ${exp}`
 
        div_mensagem.innerHTML = mensagem;
 
+
+    }
+
+    function mostrar() {
+        div_mensagem.innerHTML = '';
+        
+    
+        var tamanho = lista.length;
+        var mensagem = '';
+
+       for (var cont = tamanho; cont > 0; cont--){
+
+                mensagem += lista[cont - 1] + '<br>';
+            
+       }
+
+       div_mensagem.innerHTML = mensagem;
 
     }
 
