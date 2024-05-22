@@ -283,21 +283,24 @@
                         var btnEditar = document.createElement("button");
                         var btnDeletar = document.createElement("button");
 
-                        spanID.innerHTML = "ID: <b>" + publicacao.idPost + "</b>";
-                        spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
+                        var divDados = document.createElement("div");
+
+                        spanID.innerHTML = "Id: <span>" + publicacao.idPost + "</span>";
+                        spanTitulo.innerHTML = "Título: <span>" + publicacao.titulo + "</span>";
+                        spanNome.innerHTML = "Autor: <span>" + publicacao.nome + "</span>";
                         divDescricao.innerHTML = "Descrição: <p>" + publicacao.descricao + "</p>";
                         btnEditar.innerHTML = "Editar";
                         btnDeletar.innerHTML = "Deletar";
 
                         divPublicacao.className = "publicacao";
-                        divPublicacao.style = "background-color: #6e582fa2; border-radius: 10px; margin-top: 15px;"
                         spanTitulo.id = "inputNumero" + publicacao.idPost;
                         spanNome.className = "publicacao-nome";
                         spanTitulo.className = "publicacao-titulo";
                         divDescricao.className = "publicacao-descricao";
-
+                        spanID.className = "publicacao-id";
                         divButtons.className = "div-buttons"
+
+                        divDados.className = "publicacao-dados";
 
                         btnEditar.className = "publicacao-btn-editar"
                         btnEditar.id = "btnEditar" + publicacao.idPost;
@@ -307,9 +310,10 @@
                         btnDeletar.id = "btnDeletar" + publicacao.idPost;
                         btnDeletar.setAttribute("onclick", `deletar(${publicacao.idPost})`);
 
-                        divPublicacao.appendChild(spanID);
-                        divPublicacao.appendChild(spanNome);
-                        divPublicacao.appendChild(spanTitulo);
+                        divPublicacao.appendChild(divDados);
+                        divDados.appendChild(spanID);
+                        divDados.appendChild(spanNome);
+                        divDados.appendChild(spanTitulo);
                         divPublicacao.appendChild(divDescricao);
                         divPublicacao.appendChild(divButtons);
                         divButtons.appendChild(btnEditar);
