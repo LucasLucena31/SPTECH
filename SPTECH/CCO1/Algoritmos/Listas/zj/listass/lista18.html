@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Cadastre a musica:
+    <input id="input_mus" type="text">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Exibir</button><br><br>
+    De:
+    <input id="input_de" type="number"><br>
+    Até:
+    <input id="input_ate" type="number">
+    <button onclick="filtrar()">Filtrar</button>
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+<script>
+
+    lista = []
+    function cadastrar() {
+
+        div_mensagem.innerHTML = ""
+
+        var mus = input_mus.value
+
+        lista.push(mus)
+
+    }
+
+    function exibir() {
+        div_mensagem.innerHTML = ""
+
+        for (cont = 0; cont < lista.length; cont++) {
+
+            var nome = lista[cont];
+
+            div_mensagem.innerHTML += `${nome}<br>`
+
+
+        }
+
+    }
+
+    function filtrar() {
+        div_mensagem.innerHTML = ""
+        var de = Number(input_de.value)
+        var ate = Number(input_ate.value)
+
+
+            if (de < ate) {
+
+                
+                for (cont = de; cont <= ate; cont++) {
+
+                    var filtro = lista[cont-1]
+                    div_mensagem.innerHTML += `${filtro}<br>`
+
+                }
+
+            }else{
+                div_mensagem.innerHTML += `o até deve ser maior do que o de`
+            }
+
+
+        }
+
+</script>

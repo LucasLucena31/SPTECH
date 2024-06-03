@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Compra:<br>
+    <input type="text" id="input_nomec"><br>
+    <input type="number" id="input_qtdc"><br>
+    
+    <button onclick="comprar()">Compra</button><br><br>
+
+    Venda:<br>
+    <input type="text" id="input_nome"><br>
+    <input type="number" id="input_qtd"><br>
+    <button onclick="vender()">Venda</button><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+
+    listanomec = []
+    listaqtdc = []
+    var contador = 0
+    var totalc = 0
+
+    function comprar() {
+        div_mensagem.innerHTML = ""
+
+        var nomec = input_nomec.value
+        var qtdc = Number(input_qtdc.value)
+
+        
+        for (var index = 0; index < listanomec.length; index++) {
+            var nomecompra = listanomec[index];
+
+            var num = index
+        }
+
+        if (nomecompra == nomec) {
+
+            listaqtdc[num] += qtdc;
+
+
+        } else{
+            listanomec.push(nomec)
+            listaqtdc.push(Number(qtdc))
+    
+            contador ++
+        }
+
+        div_mensagem.innerHTML += `${listanomec} <br> ${listaqtdc}`
+    }
+
+
+    function vender() {
+
+        
+        div_mensagem.innerHTML = ""
+
+       
+        var nome = input_nome.value
+        var qtd = Number(input_qtd.value)
+
+
+        for (var index = 0; index < listanomec.length; index++) {
+            var nomecompra = listanomec[index];
+
+            var num = index
+            console.log(nomecompra)
+        
+
+        if (nomecompra == nome) {
+
+    
+            if(  listaqtdc[num] >= 1 &&  qtd <= listaqtdc[num]){
+
+            listaqtdc[num] -= qtd;
+
+            div_mensagem.innerHTML += `${listanomec} <br> ${listaqtdc}`
+
+            }else{
+                div_mensagem.innerHTML = `${nome} = acabou`
+            }
+
+        }else if(contador <= 0){
+ 
+        div_mensagem.innerHTML += `${nome} nao existe`
+        }
+
+        console.log(nomecompra)
+            console.log(nome)
+
+    }
+
+    }
+
+
+
+
+    
+</script>

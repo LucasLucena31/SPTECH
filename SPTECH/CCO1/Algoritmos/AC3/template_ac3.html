@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tênis Clube SPTECH</title>
+    <style>
+      body {
+        display: flex;
+        align-items: stretch;
+      }
+
+      body div:first-child,
+      body div:nth-of-type(2) {
+        padding: 8px;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+      }
+
+      body div:nth-of-type(2) {
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label for="input_qtd_partidas">
+        Rodadas máximas:
+        <input id="input_qtd_partidas" /><br />
+      </label>
+
+      <button onclick="realizar_partida()">Realizar partida</button>
+
+      <h3>Informe as partidas que deseja relembrar</h3>
+
+      <label for="input_inicio_intervalo">Início:</label>
+      <input id="input_inicio_intervalo" />
+      <label for="input_fim_intervalo">Fim:</label>
+      <input id="input_fim_intervalo" />
+
+      <button onclick="relembrar_partidas()">Relembrar</button>
+    </div>
+    <div>
+      <h3>Painel</h3>
+      <div id="div_painel"></div>
+    </div>
+  </body>
+</html>
+
+<script>
+  var Rdcont = 1;
+  var RdMax = 0;
+
+  var p1 = []
+  var p2 = []
+
+  var TotalP1 = 0;
+  var TotalP2 = 0;
+
+  var min = 1;
+  var max = 10;
+  var intervalo = max - min;
+  var aleatorio = 0;
+
+  var mensagem = ""
+
+  var inicio = 0;
+  var fim = 0;
+
+  // Função que realiza partida por partida
+  function realizar_partida(){
+    RdMax = Number(input_qtd_partidas.value);
+
+    if(RdMax <= 0){
+      alert("Número de partidas inválido")
+    } else {
+      
+      if (Rdcont > RdMax){
+        alert("Número de partidas excedido");
+        
+      } else {
+        pontuar();
+        
+        mensagem += `Rodada ${Rdcont}: <br>
+        Jogador 1: ${p1[Rdcont - 1]}<br>
+        Jogador 2: ${p2[Rdcont - 1]}<br>`
+
+        TotalP1 += Number(p1[Rdcont - 1]);
+        TotalP2 += Number(p2[Rdcont - 1]);
+
+        Rdcont += 1;
+
+        div_painel.innerHTML = mensagem + `
+        Total Jogador 1: ${TotalP1} <br>
+        Total Jogador 2: ${TotalP2} <br>`
+      }
+    }
+
+  }
+
+  // Função que percorre os vetores e trás uma busca filtrada
+  function relembrar_partidas(){
+    inicio = Number(input_inicio_intervalo.value);
+    fim = Number(input_fim_intervalo.value);
+    div_painel.innerHTML = ""
+
+    if(fim < inicio) {
+      alert("Insira um número final maior que o número de início")
+    } else {
+    
+    Rmdcont = Number(inicio)
+    max = fim - inicio;
+    
+    for (var cont = 0; cont <= max; cont++){
+        div_painel.innerHTML += `Rodada ${Rmdcont}: <br>
+        Jogador 1: ${p1[Rmdcont - 1]}<br>
+        Jogador 2: ${p2[Rmdcont - 1]}<br>`
+
+        Rmdcont += 1;
+    }
+  }
+  }
+
+  // Função para gerar a pontuação de ambos os jogadores
+  function pontuar(){
+
+        aleatorio = Math.random() * (max - min) + min; 
+        p1.push(aleatorio.toFixed(0));
+
+        aleatorio = Math.random() * (max - min) + min;
+        p2.push(aleatorio.toFixed(0));
+    }
+
+</script>

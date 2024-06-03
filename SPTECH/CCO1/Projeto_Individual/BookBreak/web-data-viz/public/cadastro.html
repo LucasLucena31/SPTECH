@@ -68,12 +68,12 @@
                     <input id="email_input" type="text"/> <br>
 
                     <span class="gg">Gênero de livro favorito:</span>
-                      <select name="genero" id="genero">
+                      <select name="genero" id="select_genero">
                         <option value="#">selecione um gênero</option>    
-                        <option value="1">Ação</option>    
-                        <option value="2">Romance</option>    
-                        <option value="3">Fantasia</option>    
-                        <option value="4">Ficção</option>    
+                        <option value="Ação">Ação</option>    
+                        <option value="Romance">Romance</option>    
+                        <option value="Terror">Terror</option>    
+                        <option value="Ficção">Ficção</option>    
                       </select>
                 </div>
             
@@ -127,6 +127,7 @@
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var cpfVar = cpf_input.value;
+    var generoVar = select_genero.value;
 
     var teste_nome = Number(nomeVar.length);
     var teste_senha = Number(senhaVar.length);
@@ -134,12 +135,13 @@
     var teste_ponto = emailVar.indexOf('.');
     var teste_confirmacao = confirmacao_senha_input.value;
     var teste_cpf = Number(cpfVar.length)
+
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      cpfVar == ""
+      cpfVar == "" || generoVar == "#"
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -215,7 +217,8 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        cpfServer: cpfVar
+        cpfServer: cpfVar,
+        generoServer : generoVar
       }),
     })
       .then(function (resposta) {
@@ -234,12 +237,19 @@
           limparFormulario();
           finalizarAguardar();
         } else {
+          
           throw "Houve um erro ao tentar realizar o cadastro!";
+
+
         }
       })
       .catch(function (resposta) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = 'Atenção! Já existe um usuário com este email!'
+
         console.log(`#ERRO: ${resposta}`);
         finalizarAguardar();
+        return false; 
       });
 
     return false;

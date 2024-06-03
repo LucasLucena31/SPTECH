@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Quantidade de número que serão sorteados:<br>
+    <input id="input_num" type="text">
+    <div id="div_mensagem"></div>
+    <button onclick="sortear()">Sorteie</button>
+</body>
+</html>
+<script>
+    function sortear(){
+        div_mensagem.innerHTML = ''
+        var qtd = Number(input_num.value)
+
+        for(var cont = 1; cont <= qtd; cont++){
+            var aleatorio = Math.random();
+
+        if(aleatorio >= 0.5){
+            div_mensagem.innerHTML += `${aleatorio} - está na metade superior dos números.<br>`
+            }else{   
+                div_mensagem.innerHTML += ` ${aleatorio} - está na metade inferior dos números.<br>`
+            }
+
+        }
+
+
+
+    }
+</script>

@@ -14,7 +14,9 @@ padding: 0;
 }
 
 body{
-background-color: #D7E6EB;
+background-image: url(https://img.freepik.com/vetores-gratis/particula-de-tecnologia-abstrata-realista-de-fundo_23-2148431735.jpg?w=996&t=st=1716647684~exp=1716648284~hmac=65b2e402af733527d0c979f4ad0d01b59dad7eb392213db7d44d78172c0b6ad0);
+background-repeat: no-repeat;
+background-size: cover;
 font-family: monospace;
 }
 header h1{
@@ -45,7 +47,7 @@ td {
 
 button{
     border: 0px;
-    background-color: #EC7063;
+    background-color: #1505fe;
     color: #ffffff;
     padding: 10px;
     font-size: 20px;
@@ -58,17 +60,29 @@ button{
 }
 
 #div_game{
-    background-color: #ffffff;
+    background-color: #cbdbe7;
     margin: auto;
-    
     width: 800px;
-    height: 800px;
+    height: auto;
+    padding-bottom: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+} 
+
+#gridGame {
+    border: #1F618D solid 10px;
+    border-radius: 4px;
 }
 
 #div_questions{
-background-color:#85C1E9;
 width: 700px;
 margin: auto;
+height: 150px;
+padding-top: 2%;
+
+font-weight: bold;
+font-size: 20px;
 }
 
 .button{
@@ -108,7 +122,7 @@ footer p{
 #div_information{
     width: 500px;
     margin: auto;
-    background-color: #85C1E9;
+    text-align: center;
     font-size: 20px;
 }
 
@@ -133,6 +147,24 @@ footer p{
     border:1px #7B241C solid;
 
 }
+
+.titulo {
+    background-color: #99c5e2;
+    width: 72.8%;
+    margin-left: 13.7%;
+
+    margin-top: 2%;
+    border-radius: 20px;
+    border: #2C3E50 solid 2px;
+}
+
+input {
+    border: none;
+    border-bottom: #2C3E50 solid 2px;
+    background-color: #1f618d00;
+    width: 50%;
+}
+
     </style>
 </head>
 
@@ -140,6 +172,8 @@ footer p{
 <body>
     <header>
         <div class="container">
+            <div class="titulo">
+            
             <h1>Palavras-Cruzadas</h1><br>
             <div class="div_button">
                 <center>
@@ -149,6 +183,8 @@ footer p{
                 </center>
             </div>
             <br>
+
+            </div>
         </div>
     </header>
     <article>
@@ -173,8 +209,8 @@ footer p{
                 <br>
                 <div style="display: none" id="div_questions">
                     <center>
-                        <span id="span_questionText">Vamos encontrar as esferas do dragao</span>
-                        <input type="text" id="input_answer" placeholder="Sua Reposta"><br>
+                        <span id="span_questionText">Vamos encontrar as esferas do dragao</span> <br> <br>
+                        <input type="text" id="input_answer" placeholder="Sua Reposta"><br> <br> 
                         <button id="button_verify" onclick="verify()" class="button">Verificar</button>
                     </center>
 
@@ -186,9 +222,9 @@ footer p{
     </article><br><br>
     <footer>
         <div class="container"><br>
-            <p>Developed by Carlos Santana <br>
-                RA: 01201095 <br>
-                1ADS-A
+            <p>Adaptado por Lucas Sampaio <br>
+                RA: 04241030 <br>
+                1CCO
             </p>
         </div>
     </footer>
@@ -196,20 +232,23 @@ footer p{
     var special_words = ['CPU', 'ULA', 'Registradores', 'RAM', 'ROM', 'EPROM', 'FLASH', 'Memória de Massa', 'DMA', 'CS', 'Adress Bus', 'Data Bus', 'I5', 'I7', 'Dual Core', 'Quad Core'];
 
 var questions_list = [
-    'Qual é a sigla para Central Process Unit?',
-    'Um circuto digital que realiza operações lógicas e aritméticas. Qual é o nome deste componente?',
+    'Parte do processador responsável por todas as operações lógicas e aritméticas, possuindo além da própria Unidade Lógica e Aritmética, os registradores e a Unidade de Controle',
+    'Um circuto digital que Implementa as operações lógicas (NOT, AND, OR, XOR) e aritméticas (adição e subtração)',
     'Tipo de memória que se encontra no topo da hierarquia de memória',
     'Tipo de memória volátil que tem como nome Random Acess Memory. Qual é a sigla deste componente?',
     'Tipo de memória não volátil que oferece dados apenas para leitura',
     'Tipo de memória não volátil que precisa ter seu chip exposto a luz ultravioleta para apagar seu conteúdo',
     'Tipo particular de EEPROM que mantém as informações armazenadas sem a necessidade de uma fonte de energia elétrica',
     'Tipo de memória que precisa ter seu conteúdo copiado na RAM para poder ser executado pela CPU',
-    'Permite que periféricos acessem diretamente a RAM sem ocupar processamento',
-    'Também conhecido como Slave Select (SS). Usado para selecionar um ou um conjunto de circuitos que estão conectados no computador',
+    'É um recurso que possibilita o acesso a memória do sistema, sem depender da unidade de processamento central',
+
+    'Também conhecido como Slave Select (SS). Usado para selecionar um ou um conjunto de circuitos que estão conectados no computador. Faz o controle para habilitar ou desabilitar a operação de chips',
     'Grupo de linhas ou trilhas usadas para se referir a um endereço físico na memória. O número de trilhas determina a quantidade de endereços na memória física',
     'Também chamado de Memory Bus. É responsável para carregar os dados.',
+
     'Modelo de processador desenvolvido pela Intel qu teve sua primeira versão lançada em setembro de 2009',
     'Modelo de processador desenvolvido pela Intel qu teve sua primeira versão lançada em novembro de 2008',    
+
     'Tipo de processador que possui dois processadores ou melhor dizendo ‘dois centros, núcleos ou cores de execução‘ no mesmo circuito integrado.  Cada core tem sua própria memória cash e controlador o que permite que funcione mais efetivamente do que um processador single',
     'Segue o mesmo princípio de um dual-core, mas agora em teoria tem o dobro da capacidade de processamento'
 ];

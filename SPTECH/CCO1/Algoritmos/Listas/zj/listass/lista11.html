@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Preço do produto: <br>
+    <input id="input_preco" type="text"><br><br>
+    <button onclick="cadastrar()">Cadastrar</button><br><br>
+    <button onclick="atualizar()">Atualizar estoque</button><br><br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+
+    var lista = []
+    var qtd = 0
+    var total = 0
+    function cadastrar() {
+        var preco = Number(input_preco.value)
+
+        lista.push(preco)
+
+        qtd++
+
+        total += preco
+
+        
+        console.log(lista)
+    }
+
+    function atualizar() {
+
+
+
+        for (var cont = lista.length - 1; cont >= 0; cont--) {
+
+            var elementos = lista[cont]
+
+            div_mensagem.innerHTML += `${elementos}<br>`
+
+        }
+        div_mensagem.innerHTML += `<br>Você tem ${qtd} produtos cadastrados em estoque. Seu estoque vale R$${total}`
+
+
+
+    }
+
+
+
+
+</script>

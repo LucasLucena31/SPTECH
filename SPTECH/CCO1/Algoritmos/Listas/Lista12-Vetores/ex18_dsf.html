@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Música: <input type="text" id="input_musica">
+    <button onclick="adicionar()">Cadastrar música</button>
+
+    De: <input type="number" id="input_de">
+    Até: <input type="number" id="input_ate">
+    <button onclick="filtrar1()">Filtrar</button> <br><br>
+
+    <!-- <button onclick="ver()">Ver favoritos</button> <br><br> -->
+    
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    var max = 0;
+    var lista;
+    var cont = 0;
+    var atual = 0;
+    var maxF;
+
+    function adicionar(){
+        divMsc = document.createElement(`divMsc${max}`);
+        divMsc.id = `divMsc${max}`;
+        divMsc.innerHTML = input_musica.value + '<br>';
+        divMsc.style.display = 'none';
+        div_mensagem.appendChild(divMsc);
+        div_mensagem.style.display = 'none'
+
+        max++
+    }
+
+    function filtrar1() {
+        limpar1()
+
+        inicio = input_de.value;
+        atual = inicio - 1;
+        maxF = input_ate.value;
+
+        div_mensagem.style.display = 'block'
+
+        var elemento = document.getElementById(`divMsc${atual}`);
+        elemento.style.display = 'block';
+
+        atual += 1
+
+        filtrar()
+    }
+
+    function filtrar() {
+        if (atual < maxF){
+
+            var elemento = document.getElementById(`divMsc${atual}`);
+            elemento.style.display = 'block';
+
+            atual += 1
+
+            filtrar()
+        } else {
+
+        }
+        
+    }
+
+    function limpar1() {
+        atualL = 0;
+        
+        var elemento = document.getElementById(`divMsc${atualL}`);
+        elemento.style.display = 'none';
+
+        atualL += 1
+        
+        limpar()
+    }
+
+    function limpar(){
+        if (atualL < max){
+
+        var elemento = document.getElementById(`divMsc${atualL}`);
+        elemento.style.display = 'none';
+        
+        atualL += 1
+
+        limpar()
+        } 
+        else {
+            
+        }
+    }
+
+
+
+
+    
+
+</script>

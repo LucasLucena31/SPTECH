@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Cadastrar filmes:
+    <input id="input_fil" type="text">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="listar()">Listar</button><br><br>
+    De:
+    <input id="input_de" type="number"><br>
+    Até:
+    <input id="input_ate" type="number">
+    <button onclick="filtrar()">Filtrar</button>
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+<script>
+
+    lista = []
+    var qtd = 0
+    function cadastrar() {
+
+        div_mensagem.innerHTML = ""
+
+        var fil = input_fil.value
+
+        lista.push(fil)
+
+        qtd ++
+
+        div_mensagem.innerHTML = `Você já assistiu ${qtd} filmes`
+
+    }
+
+    function listar() {
+        div_mensagem.innerHTML = ""
+
+        for (cont = lista.length-1 ; cont >= 0; cont--) {
+
+            var nome = lista[cont];
+
+            div_mensagem.innerHTML += `${nome}<br>`
+
+
+        }
+
+    }
+
+    function filtrar() {
+        div_mensagem.innerHTML = ""
+        var de = Number(input_de.value)
+        var ate = Number(input_ate.value)
+
+
+            if (de < ate) {
+
+                
+                for (cont = ate; cont >= de; cont--) {
+
+                    console.log(cont)
+
+                    var filtro = lista[cont-1]
+                    div_mensagem.innerHTML += `${filtro}<br>`
+
+                }
+
+            }else{
+                div_mensagem.innerHTML += `o até deve ser maior do que o de`
+            }
+
+
+        }
+
+</script>

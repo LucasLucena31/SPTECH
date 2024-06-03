@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Numero de rodadass:
+    <input id="input_rodadas" type="Number">
+    <select id="escolha">
+        <option>par</option>
+        <option>impar</option>
+    </select>
+    <button onclick="jogar()">Jogar</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function jogar() {
+        div_mensagem.innerHTML = ""
+        var texto = ""
+        var texto2 = ""
+        var rod = Number(input_rodadas.value)
+        var es = escolha.value
+        var pontosUser = 0
+        var pontosPgm = 0
+
+
+
+        for (cont = 0; cont < rod; cont++) {
+
+            var aleatorio = Number(((Math.random() * 10).toFixed()))
+
+            texto += `${aleatorio}<br>`
+
+            if (es == 'par') {
+
+
+                if (aleatorio % 2 == 0) {
+                    pontosUser++
+
+
+                } else {
+                    pontosPgm++
+                }
+
+            } else {
+
+                if (aleatorio % 2 != 0) {
+                    pontosUser++
+
+
+                } else {
+                    pontosPgm++
+                }
+            }
+        }
+
+        if (pontosPgm > pontosUser) {
+
+            texto2 += `Programa Venceu!`
+        } else if (pontosPgm < pontosUser) {
+            texto2 += `Usuario Venceu!`
+        } else {
+            texto2 += `Empate`
+        }
+
+        div_mensagem.innerHTML += `${texto}<br>
+        Usuário: ${pontosUser}<br>
+        Programa: ${pontosPgm}<br>
+        ${texto2}`
+
+
+
+
+    }
+
+// v2:
+    function jogar() {
+        div_mensagem.innerHTML = "";
+        var texto = "";
+        var rodadas = Number(input_rodadas.value);
+        var escolha = escolha.value;
+        var pontosUser = 0;
+        var pontosPrograma = 0;
+
+        for (cont = 0; cont < rodadas; cont++) {
+            var aleatorio = Number((Math.random() * 10).toFixed());
+
+            texto += `${aleatorio}<br>`;
+
+            if (escolha == "par") {
+                if (aleatorio % 2 == 0) {
+                    pontosUser++;
+                } else {
+                    pontosPrograma++;
+                }
+            } else {
+                if (aleatorio % 2 != 0) {
+                    pontosUser++;
+                } else {
+                    pontosPrograma++;
+                }
+            }
+        }
+
+        texto += `<br>
+        Usuário: ${pontosUser}<br>
+        Programa: ${pontosPrograma}<br>`
+
+        if (pontosPrograma > pontosUser) {
+            texto += `Programa Venceu!`;
+        } else if (pontosPrograma < pontosUser) {
+            texto += `Usuario Venceu!`;
+        } else {
+            texto += `Empate`;
+        }
+
+        div_mensagem.innerHTML = texto;
+    }
+
+    Math.random() // > 0 && < 1
+    
+    (Math.random() * 30).toFixed(); // 0, 30;
+    (Math.random() * (30 - 25)).toFixed(); // Math.random() * 5; // 0, 5;
+    (Math.random() * (30 - 25) + 25).toFixed(); // Math.random() * 5 + 25; // 25, 30;
+    (Math.random() * (max - min) + min).toFixed(); // min, max;
+
+    // juh (números inteiros entre 4 e 9 (inclusivo)):
+    // (10 - 4) +  4 = 0 > && < 6
+    // 4 > && < 9
+    
+    // ilys (números inteiros entre 13 e 24 (inclusivo)):
+    (Math.random() * (24 - 11) + 10).toFixed(); // retorna entre 10 e 25
+    (Math.random() * (24 - 13) + 10).toFixed(); // retorna entre 10 e 21
+    (Math.random() * (27 - 16) + 10).toFixed(); // retorna entre 10 e 21
+    (Math.random() * (24 - 13) + 13).toFixed(); // retorna entre 13 e 24
+    // (24 - 13) entre 0 e 11
+    // +13 => entre 13 + 0 = 13 e 13 + 11 = 24
+
+    // 0 - 1
+    // 24 - 13 = 11 || 24 + 13 = 37 || 37 - 11 = 26 || 
+
+</script>

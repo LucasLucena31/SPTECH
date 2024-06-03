@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    NOME DO PRODUTO: <br>
+    <input id="input_nome" type="text"><br><br>
+    PREÇO DO PRODUTO: <br>
+    <input id="input_preco" type="Number"><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizar()">Atualizar</button><br><br>
+
+    <select id="select_p">
+        <option value="1">Preços acima de:</option>
+        <option value="2">Preços abaixo de:</option>
+    </select>
+    <input id="input_preco2" type="Number"><br>
+    <button onclick="filtrar()">Filtrar</button>
+
+    <div id="div_mensagem"></div><br>
+
+</body>
+
+</html>
+<script>
+    listan = []
+    listap = []
+    var contador = 0
+    var total = 0
+
+    function cadastrar() {
+        div_mensagem.innerHTML = ""
+        var nome = input_nome.value
+        var preco = Number(input_preco.value)
+        var letra = nome.length
+
+        if (letra >= 3 && preco > 0) {
+            contador++
+            total += preco
+            listan.push(nome)
+            listap.push(preco)
+
+            div_mensagem.innerHTML = `CADASTRADO COM SUCESSO`
+
+        } else {
+            div_mensagem.innerHTML = `O NOME DO PRODUTO DEVE TER PELO MENOS 3 LETRAS E O VALOR DEVE SER VÁLIDO`
+        }
+    }
+
+    function atualizar() {
+
+        div_mensagem.innerHTML = ""
+        var texto = ''
+
+        for (var cont = 0; cont < listan.length; cont++) {
+
+            var p = listan[cont]
+            var n = listap[cont]
+
+            texto += ` ${cont + 1}. ${p} - R$${n}<br>`
+
+        }
+
+        div_mensagem.innerHTML = `Você tem ${contador} produtos cadastrados em estoque:<br>
+
+
+        ${texto}
+
+        Seu estoque vale R$${total}`
+
+
+    }
+
+    function filtrar() {
+        div_mensagem.innerHTML = ""
+
+        var select = select_p.value
+        var preco2 = Number(input_preco2.value)
+
+
+            for (var cont = 0; cont < listap.length; cont++) {
+
+                var nu = listap[cont]
+
+                if (select == 1 ) {
+                    if(nu > preco2)
+                    div_mensagem.innerHTML += `${nu}<br>`
+                }
+
+                if (select == 2 ) {
+                    if(nu < preco2)
+                    div_mensagem.innerHTML += `${nu}<br>`
+                }
+
+               
+            }
+        
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

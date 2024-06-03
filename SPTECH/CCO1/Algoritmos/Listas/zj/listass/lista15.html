@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nome do produto: <br>
+    <input id="input_nome" type="text"><br><br>
+    Preço do produto: <br>
+    <input id="input_preco" type="number"><br><br>
+    <button onclick="cadastrar()">Cadastrar</button><br><br>
+    <button onclick="relatar()">Relatório estoque</button><br><br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+
+    var lista = []
+    var listan = []
+    var total = 0
+    var qtd = 0
+    var tam = listan.length
+
+    function cadastrar() {
+
+        var nome = input_nome.value
+        var preco = Number(input_preco.value)
+
+        lista.push(Number(preco))
+        listan.push(nome)
+
+        total += preco
+        qtd++
+
+    }
+
+    function relatar() {
+
+        div_mensagem.innerHTML = ""
+
+        div_mensagem.innerHTML += `<br>Total de produtos: ${qtd}<br><br>`
+
+        for (var cont = 0; cont < lista.length; cont++) {
+
+            var precol = lista[cont]
+            var nomel = listan[cont]
+            var v = (lista[cont] * 0.25)
+            var venda = (lista[cont] + v)
+
+            div_mensagem.innerHTML += `Produto:${cont +1} `
+            div_mensagem.innerHTML += `${nomel}<br>`
+            div_mensagem.innerHTML += ` Preço de compra:R$${precol}. Vender por R$${venda}<br><br>  `
+
+        }
+
+    }
+
+
+
+
+
+
+</script>

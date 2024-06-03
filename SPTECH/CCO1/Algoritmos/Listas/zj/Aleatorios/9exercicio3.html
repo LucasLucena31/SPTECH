@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Quantidade de número que serão sorteados:<br>
+    <input id="input_num" type="text">
+    <div id="div_mensagem"></div>
+    <button onclick="sortear()">Sorteie</button>
+</body>
+</html>
+<script>
+    function sortear(){
+        div_mensagem.innerHTML = ''
+        var qtd = Number(input_num.value); // usuario seleciona quantos vezes ele quer que o contador conte
+        var cont_abaixo = 0; // contador para saber quantidade de vezes que ele ficou abaixo
+        var cont_acima = 0; // contador para saber quantidade de vezes que ele ficou abaixo
+
+        var maior_numero = 0;
+        var menor_numero = 1;
+
+        var total = 0; // variavel para somar os numero aleatorios que forma gerados
+
+        for(var cont = 1; cont <= qtd; cont++){ // loop para contar a quantidade de vezes que o usuario selecionou
+            var aleatorio = Math.random(); // vai chamando numeros aleatorios
+            total+=aleatorio // pega a variavel fazia e a cada loop vai somando os numeros aleatorios gerados dentro dessa variavel que começa em zero
+
+        if(aleatorio >= 0.5){ // quando numero aleatorio dor maior que 0.5
+            cont_acima++ // ele vai somar a quantidade de vezes que essa condição for verdadeira dentro desse contador acima
+            div_mensagem.innerHTML += `${aleatorio} - está na metade superior dos números.<br>`
+            }else{
+                cont_abaixo++; // caso a condicao for falsa ele vai somar dentro da variavel cont abaixo a quantidade de vezes que foi falsa
+
+                div_mensagem.innerHTML += ` ${aleatorio} - está na metade inferior dos números.<br>`
+            }
+
+           
+        if(aleatorio > maior_numero){ //vai comparar o numero aleatorio gerado e se ele e maior que 0, quando ele for ele vai ser armazenado e vai considerado o maior numero. exemplo: aleatorio 0.2 é maior que 0? sim. entao o maior numero é 0.2. numero aleatorio 0.9 e maior que o maior numero = 0.2 ? sim entao o maior numero agora sera o aleatorio 0.9. isso deve estar dentro do for par a a cada repticao ele testar um numero diferente
+            maior_numero = aleatorio
+        }
+
+        if(aleatorio < menor_numero){
+            menor_numero = aleatorio
+            //vai comparar o numero aleatorio gerado e se ele e menor que 1, quando ele for ele vai ser armazenado e vai considerado o menor numero. exemplo: aleatorio 0.5 é mnenor que 1? sim. entao o menor numero é 0.5. numero aleatorio 0.9 e menor que o menor numero = 0.5 ? não entao o menor numero que e 0.5, ou seja, continuará o mesmo
+        }
+    }
+        var media = total/qtd;
+        // total vai ser a variavel que estava somando e armazenando todos os numeros aleatorio que passavam pelo loop
+
+        div_mensagem.innerHTML += ` TOTAL DE NÚMEROS SORTEADOS ABAIXO DA METADE = ${cont_abaixo}<br>`
+        div_mensagem.innerHTML += ` TOTAL DE NÚMEROS SORTEADOS ACIMA DA METADE = ${cont_acima}<br>`
+        div_mensagem.innerHTML += `MAIOR NÚMERO SORTEADO = ${maior_numero}<br>`
+        div_mensagem.innerHTML += `MENOR NÚMERO SORTEADO = ${menor_numero}<br>`
+        div_mensagem.innerHTML += `MEDIA DE NÚMEROS SORTEADOS = ${media}}<br>`
+
+    
+}
+</script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Cadastrar filmes começando pelo seu favorito:<br>
+    <input type="text" id="input_filme">
+    <button onclick="cadastrar()">Cadastrar</button><br><br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+
+    var lista = []
+    cont = 0
+    function cadastrar() {
+
+        cont++
+        var filme = input_filme.value
+
+        lista.push(filme)
+
+        var encontre = lista.length
+
+        if (filme != "") {
+
+            if (encontre > 0){
+
+                    for (index = 0; index < encontre; index++) {
+
+                        if(index == 0 || index == 1)
+                        div_mensagem.innerHTML = (`Seu filme favorito é ${lista[0]}<br>3º. ainda não existe<br>`)
+
+                        if(index == 2){
+                        div_mensagem.innerHTML = (`Seu filme favorito é ${lista[0]}<br>3º. ${lista[2]} <br>`)
+                        }
+
+                    }
+                        
+                        div_mensagem.innerHTML += `Total de filmes cadastrados:${cont}`
+                
+                
+            }
+
+
+
+        }else{
+            div_mensagem.innerHTML = `Cadastre pelo menos 1 filme`
+         }
+    }
+
+        
+    
+
+
+
+</script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nome do projeto:<br>
+    <input type="text" id="input_projeto"><br><br>
+    <button onclick="cadastrar()">Cadastrar</button><br><br>
+    <button onclick="mostrar()">Mostrar Projetos</button><br><br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+
+    var lista = []
+
+    function cadastrar() {
+
+        var projeto = input_projeto.value
+
+        lista.push(projeto)
+
+        tam = lista.length
+
+        var profissional = ''
+
+
+            if (tam <= 4) {
+
+                profissional = 'Júnior'
+
+            }
+
+            else if (tam <= 12) {
+
+                profissional = 'Pleno'
+
+            }
+
+            else{
+
+                profissional = 'Sênior'
+
+            }
+        
+
+        div_mensagem.innerHTML = `  Você já fez ${tam} projetos. Por isso você é um ${profissional}<br> `
+
+    }
+
+    function mostrar() {
+    
+        div_mensagem.innerHTML = ''
+
+    
+        for (var cont = lista.length -1; cont >= 0; cont--) {
+
+                var nome = lista[cont]
+
+                div_mensagem.innerHTML += `${nome}<br>`
+
+            }
+        }
+    
+
+</script>

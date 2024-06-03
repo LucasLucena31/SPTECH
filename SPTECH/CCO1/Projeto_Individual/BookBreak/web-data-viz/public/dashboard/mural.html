@@ -34,11 +34,11 @@
 
             <div style="display: flex;">
                 <ul class="itensNaveBar">
-                    <li> <a href="index.html">Explorar</a></li>
+                    <li> <a href="../explorar.html">Explorar</a></li>
                     <li>|</li>
-                    <li> <a href="dashboard/mural.html">Desafio Mensal</a></li>
+                    <li> <a href="">Desafio Mensal</a></li>
                     <li>|</li>
-                    <li> <a href="index.html#contato">Perfil</a></li>
+                    <li> <a href="">Dados</a></li>
                     <li>|</li>
                     <li onclick="limparSessao()">Sair</li>
                 </ul>
@@ -222,10 +222,10 @@
 
     }
 
-    function editar(idAviso) {
-        sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
-        console.log("cliquei em editar - " + idAviso);
-        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
+    function editar(idPost) {
+        sessionStorage.ID_POSTAGEM_EDITANDO = idPost;
+        console.log("cliquei em editar - " + idPost);
+        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idPost);
         window.location = "/dashboard/edicao-aviso.html"
 
     }
@@ -288,7 +288,7 @@
                         spanID.innerHTML = "Id: <span>" + publicacao.idPost + "</span>";
                         spanTitulo.innerHTML = "Título: <span>" + publicacao.titulo + "</span>";
                         spanNome.innerHTML = "Autor: <span>" + publicacao.nome + "</span>";
-                        divDescricao.innerHTML = "Descrição: <p>" + publicacao.descricao + "</p>";
+                        divDescricao.innerHTML = "<span> Descrição: " + publicacao.descricao + "</span>";
                         btnEditar.innerHTML = "Editar";
                         btnDeletar.innerHTML = "Deletar";
 
@@ -298,27 +298,34 @@
                         spanTitulo.className = "publicacao-titulo";
                         divDescricao.className = "publicacao-descricao";
                         spanID.className = "publicacao-id";
-                        divButtons.className = "div-buttons"
 
                         divDados.className = "publicacao-dados";
-
-                        btnEditar.className = "publicacao-btn-editar"
-                        btnEditar.id = "btnEditar" + publicacao.idPost;
-                        btnEditar.setAttribute("onclick", `editar(${publicacao.idPost})`);
-
-                        btnDeletar.className = "publicacao-btn-editar"
-                        btnDeletar.id = "btnDeletar" + publicacao.idPost;
-                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idPost})`);
+                        
+                        
+                        
 
                         divPublicacao.appendChild(divDados);
                         divDados.appendChild(spanID);
                         divDados.appendChild(spanNome);
                         divDados.appendChild(spanTitulo);
                         divPublicacao.appendChild(divDescricao);
-                        divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnEditar);
-                        divButtons.appendChild(btnDeletar);
                         feed.appendChild(divPublicacao);
+                        
+                         if(publicacao.nome == sessionStorage.NOME_USUARIO){
+                             divButtons.className = "div-buttons"
+
+                             btnEditar.className = "publicacao-btn-editar"
+                             btnEditar.id = "btnEditar" + publicacao.idPost;
+                             btnEditar.setAttribute("onclick", `editar(${publicacao.idPost})`);
+
+                             btnDeletar.className = "publicacao-btn-editar"
+                             btnDeletar.id = "btnDeletar" + publicacao.idPost;
+                             btnDeletar.setAttribute("onclick", `deletar(${publicacao.idPost})`);
+
+                             divPublicacao.appendChild(divButtons);
+                             divButtons.appendChild(btnEditar);
+                             divButtons.appendChild(btnDeletar);
+                         }
                     }
 
                 });

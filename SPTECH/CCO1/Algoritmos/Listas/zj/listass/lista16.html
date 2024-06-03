@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nome do produto: <br>
+    <input id="input_nome" type="text"><br><br>
+    Preço do produto: <br>
+    <input id="input_preco" type="number"><br><br>
+    <button onclick="cadastrar()">Cadastrar</button><br><br>
+    <button onclick="relatar()">Relatório estoque</button><br><br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+
+    var lista = []
+    var listan = []
+    var total = 0
+    var qtd = 0
+
+    var maior = 0
+    var menor 
+
+    function cadastrar() {
+
+        var nome = input_nome.value
+        var preco = Number(input_preco.value)
+
+        lista.push(Number(preco))
+        menor = lista[0]
+
+        listan.push(nome)
+
+        total += preco
+        qtd++
+
+        if (preco > maior) {
+            maior = preco
+        }
+
+        if (preco < menor) {
+            menor = preco
+        }
+
+
+    }
+
+    function relatar() {
+
+        var preco = Number(input_preco.value)
+
+        div_mensagem.innerHTML = ""
+
+        div_mensagem.innerHTML += `<br>Total de produtos: ${qtd}<br><br>`
+
+        for (var cont = 0; cont < lista.length; cont++) {
+
+
+            var precol = lista[cont]
+            var nomel = listan[cont]
+            var v = (lista[cont] * 0.25)
+            var venda = (lista[cont] + v)
+
+            if(precol == maior){
+                var nome_maior = listan[cont]
+
+            }
+
+            if(precol == menor){
+                var nome_menor = listan[cont]
+
+            }
+
+            div_mensagem.innerHTML += `Produto:${cont + 1} `
+            div_mensagem.innerHTML += `${nomel}<br>`
+            div_mensagem.innerHTML += ` Preço de compra:R$${precol}. Vender por R$${venda}<br><br>  `
+
+
+        }
+
+        div_mensagem.innerHTML += ` Produto mais caro: R$${nome_maior}<br>`
+        div_mensagem.innerHTML += ` Produto mais barato: R$${nome_menor}<br>`
+        div_mensagem.innerHTML += `A soma dos preços de compra dos produtos: R$${total}<br>`
+        div_mensagem.innerHTML += ` A média de preço de venda dos produtos: R$${total / qtd}<br>`
+
+    }
+
+
+
+
+
+
+</script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Escreva um destino:<br>
+    <input type="text" id="input_destino">
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="primeira()">Primeira Viagem</button>
+    <button onclick="terceira()">Terceira Viagem</button>
+    <button onclick="ultima()">Ultima Viagem</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+
+    var lista = []
+    function adicionar() {
+        var destino = input_destino.value
+        lista.push(destino)
+    }
+
+    function primeira() {
+        var destino = input_destino.value;
+
+
+        if (lista.length > 0) {
+
+            div_mensagem.innerHTML = (`O primeiro local cadastrado é: ${lista[0]}`);
+            
+
+        } else {
+            div_mensagem.innerHTML = (`Ainda não viajou`);
+        }
+
+    }
+    function terceira() {
+        var destino = input_destino.value;
+
+
+        if (lista.length > 2) {
+
+                div_mensagem.innerHTML = (`O terceiro local cadastrado é: ${lista[2]}`);
+            
+
+        } else {
+            div_mensagem.innerHTML = (`Ainda faz a terceira viagem`);
+        }
+
+    }
+
+    function ultima() {
+        var destino = input_destino.value;
+        var encontre = lista.length
+        var cont = 0
+
+
+        if (lista.length > 0) {
+
+            for (index = 1; index <= encontre; index++)
+                cont ++
+
+                div_mensagem.innerHTML = (`Ultimo local ${lista[cont - 1]}`);
+            
+
+        } else {
+            div_mensagem.innerHTML = (`Ainda não viajou`);
+        }
+    
+
+
+    
+
+
+    }
+
+</script>

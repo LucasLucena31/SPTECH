@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex15</title>
+</head>
+<body>
+    <h3>Compra</h3>
+    Nome do produto:<input type="text" id="input_produtoCp"> <br>
+
+    Quantidade comprada: <input type="text" id="input_qtdCp"> <br> <br>
+    <button onclick="comprar()">Comprar</button>
+
+
+    <h3>Venda</h3>
+    Nome do produto:<input type="text" id="input_produtoVd"> <br>
+
+    Quantidade comprada: <input type="text" id="input_qtdVd"> <br> <br>
+    <button onclick="vender()">Vendar</button>
+
+    <!-- <button onclick="pesquisar()">Relatório de Estoque</button> <br><br> -->
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    var listaPd = [];
+    var listaQtd = [];
+    var listaFicha = [];
+
+    function comprar(){
+        var tamanho = listaPd.length;
+        var ficha = -1;
+
+        for (let cont = 0; cont < tamanho; cont++) {
+            ficha = cont;
+        }
+
+        if (ficha >= 0) {
+            var qtd = Number(input_qtdCp.value);
+            listaQtd[ficha] += qtd;
+        } else {
+            var qtd = Number(input_qtdCp.value);
+            var produto = input_produtoCp.value;
+            listaPd.push(produto);
+            listaQtd.push(qtd);
+        }
+    }
+
+    function vender(){
+        var tamanho = listaPd.length;
+        var ficha = -1;
+        var produtoVd = input_produtoVd.value;
+        var qtdVd = Number(input_qtdVd.value);
+
+
+        for (let cont = 0; cont < tamanho; cont++) {
+            if(listaPd[cont] == produtoVd){
+                if(listaQtd[cont] > qtdVd){
+                    listaQtd[cont] -= qtdVd;
+                }
+            }
+
+            
+        }
+
+        if (ficha >= 0) {
+            var qtd = Number(input_qtdCp.value);
+            listaQtd[ficha] += qtd;
+        } else {
+            var qtd = Number(input_qtdCp.value);
+            var produto = input_produtoCp.value;
+            listaPd.push(produto);
+            listaQtd.push(qtd);
+        }
+    }
+
+
+
+    function pesquisar() {
+        var maisVlr = 0;
+        var menosVlr = 0;
+
+        var PdMin;
+        var PdMax;
+
+        var total = 0;
+
+        var tamanho = listaPd.length;
+        div_mensagem.innerHTML = `Total de produtos: ${tamanho} <br> <br>`
+
+        for (var cont = 0; cont < tamanho; cont++){
+
+            div_mensagem.innerHTML += `Produto ${cont + 1}: `+ listaPd[cont] + '<br>'; 
+            div_mensagem.innerHTML += `Preço de Compra: `+ listaVlr[cont] + `. Vender por ${listaVlr[cont] * 1.25} <br> <br>`; 
+
+            if(listaVlr[cont] > maisVlr){
+                maisVlr = listaVlr[cont];
+                PdMax = listaPd[cont];
+            }
+
+            if(listaVlr[cont] < menosVlr || menosVlr == 0){
+                menosVlr = listaVlr[cont];
+                PdMin = listaPd[cont];
+            }
+
+            total += listaVlr[cont];
+
+        }
+
+            div_mensagem.innerHTML += `O produto com maior qtd é: ${PdMax} <br>
+                                       O produto com menor qtd é: ${PdMin} <br> 
+                                       O total foi: ${total} <br>
+                                       A média foi: ${total / tamanho} <br>`
+
+    }
+
+    
+
+</script>
