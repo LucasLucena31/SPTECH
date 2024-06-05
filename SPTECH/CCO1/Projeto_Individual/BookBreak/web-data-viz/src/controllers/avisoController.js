@@ -60,6 +60,24 @@ function pesquisarDescricao(req, res) {
         );
 }
 
+function plotar(req, res) {
+    avisoModel.plotar()
+    .then(function (resultado) {
+        res.json({
+            Acao: resultado[0].gen,
+            Ficcao: resultado[1].gen,
+            Romance: resultado[2].gen,
+            Terror: resultado[3].gen
+        });
+        
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os posts: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
 function publicar(req, res) {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
@@ -134,5 +152,6 @@ module.exports = {
     pesquisarDescricao,
     publicar,
     editar,
-    deletar
+    deletar, 
+    plotar
 }

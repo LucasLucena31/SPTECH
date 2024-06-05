@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome:<input type="text" id="ipt_nome"><br>
+    Idade:<input type="text" id="ipt_idade"><br>
+    CPF:<input type="text" id="ipt_cpf"><br>
+    <button onclick="cadastrar()">Registrar</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+
+    function cadastrar() {
+
+        var nome =  ipt_nome.value
+        var idade =  ipt_idade.value
+        var cpf =  ipt_cpf.value
+
+        const pessoa = {
+            nome: nome,  
+            idade: idade, 
+            cpf: cpf,
+        }
+        
+        div_mensagem.innerHTML = `
+            Nome: ${pessoa.nome}<br>
+            Idade: ${pessoa.idade}<br>
+            CPF: ${pessoa.cpf}<br>
+        `
+        console.log(pessoa)
+    }
+</script>

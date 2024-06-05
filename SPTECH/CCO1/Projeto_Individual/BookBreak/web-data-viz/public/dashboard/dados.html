@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/icon_nav.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookBreak | Dados</title>
+
+    <link rel="stylesheet" href="../css/explorar.css" />
+    <script src="../js/sessao.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+
+<!-- <body onload=" atualizarFeed()"> -->
+
+<body onload="plotar()">
+
+    <div class="janela">
+
+            <header class="container">
+                <div class="logo">
+                    <div class="logo_txt">
+                        <h3>Logado com: <span id="b_usuario">usuário</span></h3>
+                    </div>
+                </div>
+                
+                <div style="display: flex;">
+                    <ul class="itensNaveBar">
+                        <li> <a href="../explorar.html">Explorar</a></li>
+                        <li>|</li>
+                        <li> <a href="mural.html">Desafio Mensal</a></li>
+                        <li>|</li>
+                        <li> <a href="">Dados</a></li>
+                        <li>|</li>
+                        <li onclick="limparSessao()">Sair</li>
+                    </ul>
+                </div>
+            </header>
+
+        
+            <div class="correr">
+                <div class="montante">
+                    <div class="titulo" style="padding-top: 0; padding-bottom: 40px; width: 80%; margin-left: 10%;">
+                        <div class="explorar">
+                            <h1>Relatório</h1>
+                        </div>
+                        <div class="texto" style="text-align: center;">
+                            <h2>Levantamento de dados para auxílio na administração da página</h2>
+                        </div>
+                    </div>
+
+                    <div class="grafico">
+                        <div>
+                            <h4>Gêneros Favoritos dos leitores</h4> 
+                              <div>
+                                <canvas id="doughnut"></canvas>
+                              </div>
+                        </div>
+                        <div>
+                            <h4>Comentários ao longo do <br>Desafio Mensal</h4>  
+                              <div>
+                                <canvas id="coments" style="height: 200px;"></canvas>
+                              </div>
+
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>  
+
+            
+    </div>
+    <div class="footer" id="contato">
+                <div class="f1">
+                    <h2>Entre em contato:</h2>
+                </div>
+                <div class="f2">
+                </div>
+            </div>
+
+
+</body>
+
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    // b_cpf.innerHTML = sessionStorage.CPF_USUARIO;
+    
+
+
+function plotar(){
+
+    fetch("/avisos/plotar", {
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    acao = json.Acao;
+                    ficcao = json.Ficcao;
+                    romance = json.Romance;
+                    terror = json.Terror;
+
+                    console.log('os valores estão em: ', acao, ficcao, romance, terror);
+                    
+
+                    // <============= Grafico Donuts =============>
+
+                    let dataD = {
+                        labels: [
+                            'Ação       .',
+                            'Romance',
+                            'Terror         .',
+                            'Ficção.'
+                        ],
+                        datasets: [{
+                            label: 'My First Dataset',
+                            data: [acao, romance, terror, ficcao],
+                            backgroundColor: [
+                            '#4E3C30',
+                            '#7E6D62',
+                            '#AF988A',
+                            '#9A7D48'
+                            ],
+                            hoverOffset: 4
+                        }]
+                        };
+
+                    const configD = {
+                        type: 'doughnut',
+                        data: dataD,
+                        options: {
+                            responsive: true,
+                            plugins: {
+                            legend: {
+                                position: 'bottom',
+                            },
+                            title: {
+                                display: false,
+                                text: 'Chart.js Doughnut Chart'
+                            }
+                            }
+                        },
+                        };
+
+                    const doughnut = new Chart(
+                    document.getElementById('doughnut'),
+                    configD
+                    );
+
+
+                // <============= Grafico de Linha =============>
+
+                    let dataL = {
+                        labels: [
+                            '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27'
+                        ],
+                        datasets: [{
+                            label: 'Comentários',
+                            backgroundColor: '#4E3C30',
+                            data: [8, 2, 3, 2, 4, 5, 2, 7, 5, 1, 4, 4, 6, 3, 1, 2, 9, 1, 2, 2, 0, 1, 2, 2, 4, 1, 5],
+                        }], 
+                        
+                        };
+
+                    const configL = {
+                    type: 'line',
+                    data: dataL,
+                    options: {
+                        responsive: true,
+                        plugins: {
+
+                        title: {
+                            display: true,
+                            position: 'bottom',
+                            text: 'Número do Capítulo ->'
+                        },
+                        legend: {
+                            position: 'bottom',
+                            display: false,
+                        }
+                        
+                        }
+                    },
+                    };
+
+                    const comments = new Chart(
+                    document.getElementById('coments'),
+                    configL
+                    );
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+
+
+
+
+
+}
+
+</script>

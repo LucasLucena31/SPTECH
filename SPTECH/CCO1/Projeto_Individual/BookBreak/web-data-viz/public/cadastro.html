@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="./css/estilo.css" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="shortcut icon" href="assets/icon/icon_nav.png" type="image/x-icon">
 </head>
 
 <!-- <body onload="listar()"> -->
@@ -237,15 +238,17 @@
           limparFormulario();
           finalizarAguardar();
         } else {
-          
-          throw "Houve um erro ao tentar realizar o cadastro!";
+          cardErro.style.display = "block";
+          mensagem_erro.innerHTML = 'Atenção! Já existe um usuário com este email!'
 
+          setTimeout(() => {
+            finalizarAguardar();
+          }, "2000");
 
         }
       })
       .catch(function (resposta) {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = 'Atenção! Já existe um usuário com este email!'
+        throw "Houve um erro ao tentar realizar o cadastro!";
 
         console.log(`#ERRO: ${resposta}`);
         finalizarAguardar();
