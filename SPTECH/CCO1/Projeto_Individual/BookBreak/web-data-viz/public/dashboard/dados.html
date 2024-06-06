@@ -35,7 +35,7 @@
                         <li>|</li>
                         <li> <a href="mural.html">Desafio Mensal</a></li>
                         <li>|</li>
-                        <li> <a href="">Dados</a></li>
+                        <li> <a href="">Relatório</a></li>
                         <li>|</li>
                         <li onclick="limparSessao()">Sair</li>
                     </ul>
@@ -118,6 +118,7 @@ function plotar(){
 
                     // <============= Grafico Donuts =============>
 
+
                     let dataD = {
                         labels: [
                             'Ação       .',
@@ -160,17 +161,58 @@ function plotar(){
                     configD
                     );
 
+                });
 
+                fetch("/avisos/plotarComent", {
+                    }).then(function (resposta) {
+                        console.log("ESTOU NO THEN DO entrar()!")
+
+                   
+
+                    resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
                 // <============= Grafico de Linha =============>
+
+                    CP1 = json.C1;
+                    CP2 = json.C2;
+                    CP3 = json.C3;
+                    CP4 = json.C4;
+                    CP5 = json.C5;
+                    CP6 = json.C6;
+                    CP7 = json.C7;
+                    CP8 = json.C8;
+                    CP9 = json.C9;
+                    CP10 = json.C10;
+                    CP11 = json.C11;
+                    CP12 = json.C12;
+                    CP13 = json.C13;
+                    CP14 = json.C14;
+                    CP15 = json.C15;
+                    CP16 = json.C16;
+                    CP17 = json.C17;
+                    CP18 = json.C18;
+                    CP19 = json.C19;
+                    CP20 = json.C20;
+                    CP21 = json.C21;
+                    CP22 = json.C22;
+                    CP23 = json.C23;
+                    CP24 = json.C24;
+                    CP25 = json.C25;
+                    CP26 = json.C26;
+                    CP27 = json.C27;
+
+                    console.log(CP1, CP2, CP3, CP4, CP5, CP6, CP7, CP8, CP9, CP10, CP11, CP12, CP13, CP14, CP15, CP16, CP17, CP18, CP19, CP20, CP21, CP22, CP23, CP24, CP25, CP26, CP27)
+      
 
                     let dataL = {
                         labels: [
-                            '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27'
+                            'Capítulo 1', 'Capítulo 2', 'Capítulo 3', 'Capítulo 4', 'Capítulo 5', 'Capítulo 6', 'Capítulo 7', 'Capítulo 8', 'Capítulo 9', 'Capítulo 10', 'Capítulo 11', 'Capítulo 12', 'Capítulo 13', 'Capítulo 14', 'Capítulo 15', 'Capítulo 16', 'Capítulo 17', 'Capítulo 18', 'Capítulo 19', 'Capítulo 20', 'Capítulo 21', 'Capítulo 22', 'Capítulo 23', 'Capítulo 24', 'Capítulo 25', 'Capítulo 26', 'Capítulo 27'
                         ],
                         datasets: [{
                             label: 'Comentários',
                             backgroundColor: '#4E3C30',
-                            data: [8, 2, 3, 2, 4, 5, 2, 7, 5, 1, 4, 4, 6, 3, 1, 2, 9, 1, 2, 2, 0, 1, 2, 2, 4, 1, 5],
+                            data: [CP1, CP2, CP3, CP4, CP5, CP6, CP7, CP8, CP9, CP10, CP11, CP12, CP13, CP14, CP15, CP16, CP17, CP18, CP19, CP20, CP21, CP22, CP23, CP24, CP25, CP26, CP27],
                         }], 
                         
                         };
@@ -201,7 +243,12 @@ function plotar(){
                     configL
                     );
 
-                });
+                })
+            });
+
+
+
+            
 
             } else {
 

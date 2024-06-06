@@ -125,19 +125,36 @@ a {
   background-image: url(../assets/imgs/livro_sob.png);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 800px;
-  width: 1300px;
+  height: 660px;
+  width: 1200px;
   margin-top: 80px;
-  margin-left: 7%;
+  margin-left: 10%;
   align-self: center;
+
+}
+
+.folha1 {
+  width: 40%;
+  margin-left: 9%;
+  margin-top: 4.5%;
+
+  display: block;
+  text-align: center;
 }
 
 .folha1 .titulo {
+ width: 100%;
+}
+
+.folha1 .titulo h1 {
   font-family: petit;
-  font-size: 80px;
-  position: relative;
-  top: 70px;
-  left: 250px;
+  font-size: 50px;
+  text-decoration: underline;
+}
+
+.folha1 .titulo p {
+  font-family: pridi;
+  font-size: 26px;
 }
 
 .icon_cadastro {
@@ -411,5 +428,11 @@ a {
 @font-face {
   font-family: petit;
   src: url(../assets/fonts/PetitFormalScript-Regular.ttf);
+  
+}
+
+@font-face {
+  font-family: pridi;
+  src: url(../assets/fonts/Pridi-Regular.ttf);
   
 }

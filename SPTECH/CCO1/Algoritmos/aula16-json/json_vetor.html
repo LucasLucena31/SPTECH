@@ -9,6 +9,8 @@
     Nome:<input type="text" id="ipt_nome"><br>
     Idade:<input type="text" id="ipt_idade"><br>
     CPF:<input type="text" id="ipt_cpf"><br>
+    Contato1:<input type="text" id="ipt_ctt1"><br>
+    Contato2:<input type="text" id="ipt_ctt2"><br>
     <button onclick="cadastrar()">Registrar</button> <br> <br>
 
     Pessoa:<input type="text" id="ipt_pessoa"><br>
@@ -17,44 +19,48 @@
 </body>
 </html>
 <script>
-    nome = []
-    idade = []
-    cpf = []
+    nomeL = []
+    idadeL = []
+    cpfL = []
+    contatoL = []
 
-    let pessoa = {
-            nome: nome,  
-            idade: idade, 
-            cpf: cpf,
+    const pessoa = {
+            nome: nomeL,  
+            idade: idadeL, 
+            cpf: cpfL,
+            contato: []
         }
 
     function cadastrar() {
 
-        nome.push(ipt_nome.value) 
-        idade.push(ipt_idade.value) 
-        cpf.push(ipt_cpf.value) 
+        nomeL.push(ipt_nome.value) 
+        idadeL.push(ipt_idade.value) 
+        cpfL.push(ipt_cpf.value)
 
-        let pessoa = {
-            nome: nome,  
-            idade: idade, 
-            cpf: cpf,
-        }
+        contatoL = [ipt_ctt1.value, ipt_ctt2.value]
+
+        pessoa.nome = nomeL;
+        pessoa.idade = idadeL;
+        pessoa.cpf = cpfL;
+        pessoa.contato.push(contatoL);
         
         div_mensagem.innerHTML = `
             Nome: ${pessoa.nome}<br>
             Idade: ${pessoa.idade}<br>
             CPF: ${pessoa.cpf}<br>
+            Contato: ${pessoa.contato}<br>
         `
         console.log(pessoa)
     }
 
     function procurar() {
-        pessoapsq = Number(ipt_pessoa.value) - 1
+        pessoapsq = Number(ipt_pessoa.value) - 1;
 
         div_mensagem.innerHTML = `
             Nome: ${pessoa.nome[pessoapsq]}<br>
             Idade: ${pessoa.idade[pessoapsq]}<br>
             CPF: ${pessoa.cpf[pessoapsq]}<br>
+            Contatos: ${pessoa.contato[pessoapsq]}<br>
         `
-        
     }
 </script>

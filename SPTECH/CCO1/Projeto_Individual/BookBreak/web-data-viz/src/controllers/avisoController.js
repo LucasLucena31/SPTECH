@@ -77,6 +77,46 @@ function plotar(req, res) {
     });
 }
 
+function plotarComent(req, res) {
+    avisoModel.plotarComent()
+    .then(function (resultado) {
+        res.json({
+            C1: resultado[0].num,
+            C2: resultado[1].num,
+            C3: resultado[2].num,
+            C4: resultado[3].num,
+            C5: resultado[4].num,
+            C6: resultado[5].num,
+            C7: resultado[6].num,
+            C8: resultado[7].num,
+            C9: resultado[8].num,
+            C10: resultado[9].num,
+            C11: resultado[10].num,
+            C12: resultado[11].num,
+            C13: resultado[12].num,
+            C14: resultado[13].num,
+            C15: resultado[14].num,
+            C16: resultado[15].num,
+            C17: resultado[16].num,
+            C18: resultado[17].num,
+            C19: resultado[18].num,
+            C20: resultado[19].num,
+            C21: resultado[20].num,
+            C22: resultado[21].num,
+            C23: resultado[22].num,
+            C24: resultado[23].num,
+            C25: resultado[24].num,
+            C26: resultado[25].num,
+            C27: resultado[26].num
+        });
+        
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os posts: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 
 function publicar(req, res) {
     var titulo = req.body.titulo;
@@ -153,5 +193,6 @@ module.exports = {
     publicar,
     editar,
     deletar, 
-    plotar
+    plotar,
+    plotarComent
 }
