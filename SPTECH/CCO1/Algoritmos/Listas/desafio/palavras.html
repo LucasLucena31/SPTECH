@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caça-Palavras</title>
+</head>
+
+<body onload="preencher()">
+    <div>
+        <div id="div_game" style="border: #000 solid 2px; height: auto; padding: 10px; width: 800px;"></div>
+        <h4>Rosa</h4>
+        <h4>Raposa</h4>
+        <h4>Cativar</h4>
+        <h4>Aviao</h4>
+        <h4>Chapeu</h4>
+    </div>
+
+
+
+</body>
+</html>
+
+<script>
+    const L1 = [];
+    const BT = [];
+
+    const palavras = {
+        P1: ['R', 'O', 'S', 'A'],
+        P2: ['R', 'A', 'P', 'O', 'S', 'A'],
+        P3: ['C', 'A', 'T', 'I', 'V', 'A', 'R'],
+        P4: ['A', 'V', 'I', 'A', 'O'],
+        P5: ['C', 'H', 'A', 'P', 'E', 'U']
+
+    }
+
+    const tamanho = 300;
+    let Nclick = 0;
+
+    var mensagem = ""
+
+    function preencher(){
+
+        for (let index = 1; index <= tamanho; index++){
+            ps1 = (Math.random() * 26 - 0.5).toFixed();
+
+            if (ps1 == 0) {L1[index - 1] = 'A'} 
+            if (ps1 == 1) {L1[index - 1] = 'B'} 
+            if (ps1 == 2) {L1[index - 1] = 'C'} 
+            if (ps1 == 3) {L1[index - 1] = 'D'} 
+            if (ps1 == 4) {L1[index - 1] = 'E'}
+            if (ps1 == 5) {L1[index - 1] = 'F'} 
+            if (ps1 == 6) {L1[index - 1] = 'G'} 
+            if (ps1 == 7) {L1[index - 1] = 'H'} 
+            if (ps1 == 8) {L1[index - 1] = 'I'} 
+            if (ps1 == 9) {L1[index - 1] = 'J'} 
+            if (ps1 == 10) {L1[index - 1] = 'K'} 
+            if (ps1 == 11) {L1[index - 1] = 'L'} 
+            if (ps1 == 12) {L1[index - 1] = 'M'} 
+            if (ps1 == 13) {L1[index - 1] = 'N'} 
+            if (ps1 == 14) {L1[index - 1] = 'O'} 
+            if (ps1 == 15) {L1[index - 1] = 'P'} 
+            if (ps1 == 16) {L1[index - 1] = 'Q'} 
+            if (ps1 == 17) {L1[index - 1] = 'R'} 
+            if (ps1 == 18) {L1[index - 1] = 'S'} 
+            if (ps1 == 19) {L1[index - 1] = 'T'} 
+            if (ps1 == 20) {L1[index - 1] = 'U'} 
+            if (ps1 == 21) {L1[index - 1] = 'V'} 
+            if (ps1 == 22) {L1[index - 1] = 'W'} 
+            if (ps1 == 23) {L1[index - 1] = 'X'} 
+            if (ps1 == 24) {L1[index - 1] = 'Y'} 
+            if (ps1 == 25) {L1[index - 1] = 'Z'} 
+        }
+
+        for (let index = 1; index <= tamanho; index++) {
+            div_game.innerHTML += `<button onclick="BT[${index - 1}] = 1; marcar()" id="bt${index - 1}" style="background-color: #00000000; border-color: #00000000; width: 5%"> ${L1[index - 1]} </button>`
+
+            if (index % 20 == 0){
+                div_game.innerHTML += '<br>'
+            }
+            
+        }
+
+        posicionar()
+
+    }
+
+    let PP1 = 302
+    let PP2 = 302
+
+    function marcar(){
+        Nclick += 1
+
+        if (Nclick == 1){
+            PP1 = BT.indexOf(1)
+            BT[PP1] = 0
+
+            document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
+
+        } else if (Nclick == 2){
+            PP2 = BT.indexOf(1)
+            BT[PP2] = 0
+
+            if (r1[0] == PP1 && r1[1] == PP2){
+                document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = 'green'
+
+                document.getElementById(`bt${PP1}`).disabled = true
+                document.getElementById(`bt${PP2}`).disabled = true
+            
+                if(r1[1] - r1[0] == 3){
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = 'green'
+
+                    document.getElementById(`bt${PP1 + 1}`).disabled = true
+                    document.getElementById(`bt${PP1 + 2}`).disabled = true
+                } else if (r1[1] - r1[0] == 60) {
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = 'green'
+
+                    document.getElementById(`bt${PP1 + 20}`).disabled = true
+                    document.getElementById(`bt${PP1 + 40}`).disabled = true
+                }
+            } else if (r2[0] == PP1 && r2[1] == PP2){
+                document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = 'green'
+
+                document.getElementById(`bt${PP1}`).disabled = true
+                document.getElementById(`bt${PP2}`).disabled = true
+
+                if(r2[1] - r2[0] == 5){
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = 'green'
+
+                    document.getElementById(`bt${PP1 + 1}`).disabled = true
+                    document.getElementById(`bt${PP1 + 2}`).disabled = true
+                    document.getElementById(`bt${PP1 + 3}`).disabled = true
+                    document.getElementById(`bt${PP1 + 4}`).disabled = true
+                } else if (r2[1] - r2[0] == 100) {
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = 'green'
+
+                    document.getElementById(`bt${PP1 + 20}`).disabled = true
+                    document.getElementById(`bt${PP1 + 40}`).disabled = true
+                    document.getElementById(`bt${PP1 + 60}`).disabled = true
+                    document.getElementById(`bt${PP1 + 80}`).disabled = true
+                }
+            } else if (r3[0] == PP1 && r3[1] == PP2){
+                document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = 'green'
+
+                document.getElementById(`bt${PP1}`).disabled = true
+                document.getElementById(`bt${PP2}`).disabled = true
+
+                if(r3[1] - r3[0] == 6){
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 5}`).style.backgroundColor = 'green'
+
+                    document.getElementById(`bt${PP1 + 1}`).disabled = true
+                    document.getElementById(`bt${PP1 + 2}`).disabled = true
+                    document.getElementById(`bt${PP1 + 3}`).disabled = true
+                    document.getElementById(`bt${PP1 + 4}`).disabled = true
+                    document.getElementById(`bt${PP1 + 5}`).disabled = true
+                } else if (r3[1] - r3[0] == 120) {
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 100}`).style.backgroundColor = 'green'
+
+                    document.getElementById(`bt${PP1 + 20}`).disabled = true
+                    document.getElementById(`bt${PP1 + 40}`).disabled = true
+                    document.getElementById(`bt${PP1 + 60}`).disabled = true
+                    document.getElementById(`bt${PP1 + 80}`).disabled = true
+                    document.getElementById(`bt${PP1 + 100}`).disabled = true
+                }
+            } else if (r4[0] == PP1 && r4[1] == PP2){
+                document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = 'green'
+
+                document.getElementById(`bt${PP1}`).disabled = true
+                document.getElementById(`bt${PP2}`).disabled = true
+
+                if(r4[1] - r4[0] == 4){
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = 'green'
+
+                    document.getElementById(`bt${PP1 + 1}`).disabled = true
+                    document.getElementById(`bt${PP1 + 2}`).disabled = true
+                    document.getElementById(`bt${PP1 + 3}`).disabled = true
+                } else if (r4[1] - r4[0] == 80) {
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = 'green'
+
+                    document.getElementById(`bt${PP1 + 20}`).disabled = true
+                    document.getElementById(`bt${PP1 + 40}`).disabled = true
+                    document.getElementById(`bt${PP1 + 60}`).disabled = true
+                }
+            } else if (r5[0] == PP1 && r5[1] == PP2){
+                document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = 'green'
+
+                document.getElementById(`bt${PP1}`).disabled = true
+                document.getElementById(`bt${PP2}`).disabled = true
+
+                if(r5[1] - r5[0] == 5){
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = 'green'
+
+                    document.getElementById(`bt${PP1 + 1}`).disabled = true
+                    document.getElementById(`bt${PP1 + 2}`).disabled = true
+                    document.getElementById(`bt${PP1 + 3}`).disabled = true
+                    document.getElementById(`bt${PP1 + 4}`).disabled = true
+                } else if (r5[1] - r5[0] == 100) {
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = 'green'
+
+                    document.getElementById(`bt${PP1 + 20}`).disabled = true
+                    document.getElementById(`bt${PP1 + 40}`).disabled = true
+                    document.getElementById(`bt${PP1 + 60}`).disabled = true
+                    document.getElementById(`bt${PP1 + 80}`).disabled = true
+                }
+            } else {
+                document.getElementById(`bt${PP1}`).style.backgroundColor = 'white'
+            }
+
+            Nclick = 0
+        }
+    }
+
+    let cont = 1;
+    let respT;
+    let lc;
+    let repeticao = []
+
+    let r1 = []
+    let r2 = []
+    let r3 = []
+    let r4 = []
+    let r5 = []
+
+    let ps1 = 0
+    let existe = 0;
+
+    function posicionar(){
+        if (cont == 1){
+            respT = 4
+        } else if (cont == 2){
+            respT = 6
+        } else if (cont == 3){
+            respT = 7
+        }  else if (cont == 4){
+            respT = 5
+        } else if (cont == 5){
+            respT = 6
+        }
+
+        lc = (Math.random()).toFixed();
+        aleat = (Math.random() * tamanho).toFixed();
+
+        ps1 = Number(aleat)
+
+        if (lc == 1){
+            if  (ps1 > (20 - respT) && ps1 <= 20 
+                || ps1 > (40 - respT) && ps1 <= 40 
+                || ps1 > (60 - respT) && ps1 <= 60 
+                || ps1 > (80 - respT) && ps1 <= 80
+                || ps1 > (100 - respT) && ps1 <= 100
+                || ps1 > (120 - respT) && ps1 <= 120
+                || ps1 > (140 - respT) && ps1 <= 140
+                || ps1 > (160 - respT) && ps1 <= 160
+                || ps1 > (180 - respT) && ps1 <= 180
+                || ps1 > (200 - respT) && ps1 <= 200
+                || ps1 > (220 - respT) && ps1 <= 220
+                || ps1 > (240 - respT) && ps1 <= 240
+                || ps1 > (260 - respT) && ps1 <= 260
+                || ps1 > (280 - respT) && ps1 <= 280
+                || ps1 > (300 - respT) && ps1 <= 300){
+                posicionar()
+
+            } else {
+                for (index = 0; index < repeticao.length; index++){
+                    for(index2 = 0; index2 < respT; index2++){
+                        if (repeticao[index] == (ps1 + (index2 - 1))) { existe = 1 }
+                    }
+                }
+
+                if (existe == 0){
+                    for (index = 0; index < respT; index++){
+                        if (cont == 1) document.getElementById(`bt${Number(ps1) + (index - 1)}`).innerHTML = palavras.P1[index]
+                        if (cont == 2) document.getElementById(`bt${Number(ps1) + (index - 1)}`).innerHTML = palavras.P2[index]
+                        if (cont == 3) document.getElementById(`bt${Number(ps1) + (index - 1)}`).innerHTML = palavras.P3[index]
+                        if (cont == 4) document.getElementById(`bt${Number(ps1) + (index - 1)}`).innerHTML = palavras.P4[index]
+                        if (cont == 5) document.getElementById(`bt${Number(ps1) + (index - 1)}`).innerHTML = palavras.P5[index]
+
+                        repeticao.push((Number(ps1) + (index - 1)))
+                        
+
+                        // document.getElementById(`bt${Number(ps1) + (index - 1)}`).style.backgroundColor = 'gray'
+                    }
+                        if (cont == 1){
+                            r1.push(ps1 - 1)
+                            r1.push(ps1 + (respT - 1) - 1)
+                        } else if (cont == 2){
+                            r2.push(ps1 - 1)
+                            r2.push(ps1 + (respT - 1) - 1)
+                        } else if (cont == 3){
+                            r3.push(ps1 - 1)
+                            r3.push(ps1 + (respT - 1) - 1)
+                        } else if (cont == 4){
+                            r4.push(ps1 - 1)
+                            r4.push(ps1 + (respT - 1) - 1)
+                        } else if (cont == 5){
+                            r5.push(ps1 - 1)
+                            r5.push(ps1 + (respT - 1) - 1)
+                        } 
+
+                    cont++
+
+                    if (cont > 5){} 
+                    else {
+                        posicionar()
+                    }
+                } else {
+                    existe = 0
+                    posicionar()
+                }
+
+            }
+        } else {
+            if(ps1 > (300 - (respT * 20))){
+                posicionar()
+            } else {
+
+                
+                for (index = 0; index < repeticao.length; index++){
+                    for (index2 = 0; index2 < respT; index2++){
+                        if (repeticao[index] == (ps1 + ((index2 * 20) - 1))) { existe = 1 }
+                    }
+                }
+
+                if (existe == 0){
+                    for (index = 0; index < respT; index++){
+                        if (cont == 1) document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).innerHTML = palavras.P1[index]
+                        if (cont == 2) document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).innerHTML = palavras.P2[index]
+                        if (cont == 3) document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).innerHTML = palavras.P3[index]
+                        if (cont == 4) document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).innerHTML = palavras.P4[index]
+                        if (cont == 5) document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).innerHTML = palavras.P5[index]
+
+                        repeticao.push((Number(ps1) + ((index * 20) - 1)))
+
+                        // document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).style.backgroundColor = 'gray'
+                    }
+                    if (cont == 1){
+                            r1.push(ps1 - 1)
+                            r1.push(ps1 + ((respT - 1) * 20) - 1)
+                        } else if (cont == 2){
+                            r2.push(ps1 - 1)
+                            r2.push(ps1 + ((respT - 1) * 20) - 1)
+                        } else if (cont == 3){
+                            r3.push(ps1 - 1)
+                            r3.push(ps1 + ((respT - 1) * 20) - 1)
+                        } else if (cont == 4){
+                            r4.push(ps1 - 1)
+                            r4.push(ps1 + ((respT - 1) * 20) - 1)
+                        } else if (cont == 5){
+                            r5.push(ps1 - 1)
+                            r5.push(ps1 + ((respT - 1) * 20) - 1)
+                        } 
+
+                    cont++
+
+                    if (cont > 5){} 
+                    else {
+                        posicionar()
+                    }
+                } else {
+                    existe = 0
+                    posicionar()
+                }
+
+            }
+        }
+    }
+</script>
