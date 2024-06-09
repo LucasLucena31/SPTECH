@@ -10,14 +10,11 @@
 
     <link rel="stylesheet" href="../css/mural.css" />
 
-
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
@@ -50,11 +47,22 @@
                 <div>
                     <h1>O Pequeno Princípe</h1>
                 </div>
-                <div class="filtro">
+                <div class="filtro" id="capa_livro">
                     <img src="../assets/imgs/pequeno_principe.jpg" alt="">
                 </div>
 
-                <div class="cap" style="display: flex;">
+                <div class="filtro" style="display: none; color: #FFF;" id="lista">
+                    <h3>Lista de Palavras:</h3>
+                        <div style="text-align: center;">
+                            <h4 id="QR1">Rosa</h4>
+                            <h4 id="QR2">Raposa</h4>
+                            <h4 id="QR3">Cativar</h4>
+                            <h4 id="QR4">Aviao</h4>
+                            <h4 id="QR5">Chapeu</h4>
+                        </div>
+                </div>
+
+                <div class="cap" style="display: flex;" id="cap">
                     <h3>Capítulo:</h3>
                     <select name="" id="capitulo" onchange="atualizarFeed()">
                         <option value="1">1</option>
@@ -87,10 +95,16 @@
                     </select>
                 </div>
 
+                <div class="filtro" style="margin-top: 0;">
+                    <button id="bt_minigame" onclick="trocarGame()"> Desafie-se! </button>
+                    <button id="bt_mural" onclick="trocarMural()" style="display: none;"> Mural </button>
+                </div>
+                
+                <h5 style="width: 40%; margin-left: 30%; text-align: center; color: #FFF; display: none;" id="info_game">Ao encontrar uma palavra, clique na primeira e na última letra dela!</h5>
 
             </div>
 
-            <div class="dash-right">
+            <div class="dash-right" id="mural_tela">
                 <div>
                     <div class="titulo1">
                         <h1>Desafio Mensal</h1>
@@ -135,6 +149,17 @@
 
                 </div>
             </div>
+
+            <div id="game_tela" style="display: none;" class="dash-right">
+                <div class="titulo1" style="margin-left: 10%; margin-bottom: 5%; height: auto; width: 68%;">
+                    <h1 style="text-align: center; color: #3A2C23; font-family: linden-hill; font-weight: 100;" id="msg_ccplv">
+                        Caça-Palavras
+                    </h1>
+                </div>
+                <div id="div_game"></div>
+    
+            </div>
+
         </div>
 
 
@@ -230,26 +255,30 @@
 
     }
 
-    function deletar(idAviso) {
-        console.log("Criar função de apagar post escolhido - ID" + idAviso);
-        fetch(`/avisos/deletar/${idAviso}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
+    function deletar(idDiv) {
 
-            if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+        idDiv.style.display = 'none';
+
+        // console.log("Criar função de apagar post escolhido - ID" + idAviso);
+        // fetch(`/avisos/deletar/${idAviso}`, {
+        //     method: "DELETE",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     }
+        // }).then(function (resposta) {
+
+        //     if (resposta.ok) {
+        //         window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+        //         window.location = "/dashboard/mural.html"
+        //     } else if (resposta.status == 404) {
+        //         window.alert("Deu 404!");
+        //     } else {
+        //         throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+        //     }
+        // }).catch(function (resposta) {
+        //     console.log(`#ERRO: ${resposta}`);
+        // });
+
     }
 
     function atualizarFeed() {
@@ -275,6 +304,7 @@
 
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
+                        divPublicacao.id = "div" + i;
                         var spanID = document.createElement("span");
                         var spanTitulo = document.createElement("span");
                         var spanNome = document.createElement("span");
@@ -314,16 +344,16 @@
                          if(publicacao.nome == sessionStorage.NOME_USUARIO){
                              divButtons.className = "div-buttons"
 
-                             btnEditar.className = "publicacao-btn-editar"
-                             btnEditar.id = "btnEditar" + publicacao.idPost;
-                             btnEditar.setAttribute("onclick", `editar(${publicacao.idPost})`);
+                            //  btnEditar.className = "publicacao-btn-editar"
+                            //  btnEditar.id = "btnEditar" + publicacao.idPost;
+                            //  btnEditar.setAttribute("onclick", `editar(${publicacao.idPost})`);
 
                              btnDeletar.className = "publicacao-btn-editar"
                              btnDeletar.id = "btnDeletar" + publicacao.idPost;
-                             btnDeletar.setAttribute("onclick", `deletar(${publicacao.idPost})`);
+                             btnDeletar.setAttribute("onclick", `deletar(${divPublicacao.id})`);
 
                              divPublicacao.appendChild(divButtons);
-                             divButtons.appendChild(btnEditar);
+                            //  divButtons.appendChild(btnEditar);
                              divButtons.appendChild(btnDeletar);
                          }
                     }
@@ -336,6 +366,508 @@
             console.error(resposta);
 
         });
+    }
+
+    function trocarGame() {
+        mural_tela.style.display = 'none';
+        cap.style.display = 'none'
+
+        bt_minigame.style.marginTop = "10%"
+        game_tela.style.display = 'block';
+
+        div_game.style.borderColor = "#FFF"
+
+        capa_livro.style.display = 'none'
+
+        lista.style.display = 'block'
+        
+        preencher()
+
+        bt_mural.style.display = 'block'
+        bt_minigame.style.display = 'none'
+
+        info_game.style.display = 'block'
+        
+    }
+
+    function trocarMural() {
+        mural_tela.style.display = 'flex';
+        game_tela.style.display = 'none';
+
+        cap.style.display = 'flex'
+        lista.style.display = 'none'
+
+        bt_minigame.style.marginTop = "0"
+
+        div_game.style.borderColor = "#FFF"
+
+        capa_livro.style.display = 'flex'
+
+        bt_mural.style.display = 'none'
+        bt_minigame.style.display = 'block'
+
+        info_game.style.display = 'none'
+        
+    }
+
+    // <================================= Caça Palavras =================================>
+
+    const L1 = [];
+    const BT = [];
+
+    const palavras = {
+        P1: ['R', 'O', 'S', 'A'],
+        P2: ['R', 'A', 'P', 'O', 'S', 'A'],
+        P3: ['C', 'A', 'T', 'I', 'V', 'A', 'R'],
+        P4: ['A', 'V', 'I', 'A', 'O'],
+        P5: ['C', 'H', 'A', 'P', 'E', 'U']
+
+    }
+
+    const tamanhoJg = 300;
+    let Nclick = 0;
+
+    var mensagem = ""
+
+    function preencher(){
+
+        div_game.innerHTML = ""
+
+        for (let index = 1; index <= tamanhoJg; index++){
+            ps1 = (Math.random() * 26 - 0.5).toFixed();
+
+            if (ps1 == 0) {L1[index - 1] = 'A'} 
+            if (ps1 == 1) {L1[index - 1] = 'B'} 
+            if (ps1 == 2) {L1[index - 1] = 'C'} 
+            if (ps1 == 3) {L1[index - 1] = 'D'} 
+            if (ps1 == 4) {L1[index - 1] = 'E'}
+            if (ps1 == 5) {L1[index - 1] = 'F'} 
+            if (ps1 == 6) {L1[index - 1] = 'G'} 
+            if (ps1 == 7) {L1[index - 1] = 'H'} 
+            if (ps1 == 8) {L1[index - 1] = 'I'} 
+            if (ps1 == 9) {L1[index - 1] = 'J'} 
+            if (ps1 == 10) {L1[index - 1] = 'K'} 
+            if (ps1 == 11) {L1[index - 1] = 'L'} 
+            if (ps1 == 12) {L1[index - 1] = 'M'} 
+            if (ps1 == 13) {L1[index - 1] = 'N'} 
+            if (ps1 == 14) {L1[index - 1] = 'O'} 
+            if (ps1 == 15) {L1[index - 1] = 'P'} 
+            if (ps1 == 16) {L1[index - 1] = 'Q'} 
+            if (ps1 == 17) {L1[index - 1] = 'R'} 
+            if (ps1 == 18) {L1[index - 1] = 'S'} 
+            if (ps1 == 19) {L1[index - 1] = 'T'} 
+            if (ps1 == 20) {L1[index - 1] = 'U'} 
+            if (ps1 == 21) {L1[index - 1] = 'V'} 
+            if (ps1 == 22) {L1[index - 1] = 'W'} 
+            if (ps1 == 23) {L1[index - 1] = 'X'} 
+            if (ps1 == 24) {L1[index - 1] = 'Y'} 
+            if (ps1 == 25) {L1[index - 1] = 'Z'} 
+        }
+
+        for (let index = 1; index <= tamanhoJg; index++) {
+            div_game.innerHTML += `<button onclick="BT[${index - 1}] = 1; marcar()" id="bt${index - 1}" style="background-color: #00000000; border-color: #00000000; width: 5%; color: #3A2C23"> ${L1[index - 1]} </button>`
+
+            if (index % 20 == 0){
+                div_game.innerHTML += '<br>'
+            }
+            
+        }
+
+        cont = 0;
+        repeticao = []
+        r1 = []
+        r2 = []
+        r3 = []
+        r4 = []
+        r5 = []
+        certas = 0
+
+        ps1 = 0
+        existe = 0;
+
+        QR1.style.textDecoration = 'none'
+        QR2.style.textDecoration = 'none'
+        QR3.style.textDecoration = 'none'
+        QR4.style.textDecoration = 'none'
+        QR5.style.textDecoration = 'none'
+
+        msg_ccplv.innerHTML = 'Caça-Palavras'
+
+        posicionar()
+
+    }
+
+    let PP1 = 302
+    let PP2 = 302
+
+    function marcar(){
+        Nclick += 1
+
+        if (Nclick == 1){
+            PP1 = BT.indexOf(1)
+            BT[PP1] = 0
+
+            document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+            document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 10px 10px'
+
+        } else if (Nclick == 2){
+            PP2 = BT.indexOf(1)
+            BT[PP2] = 0
+
+            if (r1[0] == PP1 && r1[1] == PP2){
+                document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = '#5C4638'
+
+                document.getElementById(`bt${PP1}`).disabled = true
+                document.getElementById(`bt${PP2}`).disabled = true
+
+                QR1.style.textDecoration = 'line-through';
+                certas += 1;
+            
+                if(r1[1] - r1[0] == 3){
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = '#5C4638'
+
+                    document.getElementById(`bt${PP1 + 1}`).disabled = true
+                    document.getElementById(`bt${PP1 + 2}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 0px 0px 10px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 10px 10px 0px'
+                } else if (r1[1] - r1[0] == 60) {
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = '#5C4638'
+
+                    document.getElementById(`bt${PP1 + 20}`).disabled = true
+                    document.getElementById(`bt${PP1 + 40}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 0px 0px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 0px 10px 10px'
+
+                }
+            } else if (r2[0] == PP1 && r2[1] == PP2){
+                document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = '#5C4638'
+
+                document.getElementById(`bt${PP1}`).disabled = true
+                document.getElementById(`bt${PP2}`).disabled = true
+
+                QR2.style.textDecoration = 'line-through';
+                certas += 1;
+
+                if(r2[1] - r2[0] == 5){
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = '#5C4638'
+
+                    document.getElementById(`bt${PP1 + 1}`).disabled = true
+                    document.getElementById(`bt${PP1 + 2}`).disabled = true
+                    document.getElementById(`bt${PP1 + 3}`).disabled = true
+                    document.getElementById(`bt${PP1 + 4}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 0px 0px 10px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 10px 10px 0px'
+                } else if (r2[1] - r2[0] == 100) {
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = '#5C4638'
+
+                    document.getElementById(`bt${PP1 + 20}`).disabled = true
+                    document.getElementById(`bt${PP1 + 40}`).disabled = true
+                    document.getElementById(`bt${PP1 + 60}`).disabled = true
+                    document.getElementById(`bt${PP1 + 80}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 0px 0px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 0px 10px 10px'
+                }
+            } else if (r3[0] == PP1 && r3[1] == PP2){
+                document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = '#5C4638'
+
+                document.getElementById(`bt${PP1}`).disabled = true
+                document.getElementById(`bt${PP2}`).disabled = true
+
+                QR3.style.textDecoration = 'line-through';
+                certas += 1;
+
+                if(r3[1] - r3[0] == 6){
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 5}`).style.backgroundColor = '#5C4638'
+
+                    document.getElementById(`bt${PP1 + 1}`).disabled = true
+                    document.getElementById(`bt${PP1 + 2}`).disabled = true
+                    document.getElementById(`bt${PP1 + 3}`).disabled = true
+                    document.getElementById(`bt${PP1 + 4}`).disabled = true
+                    document.getElementById(`bt${PP1 + 5}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 0px 0px 10px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 10px 10px 0px'
+                } else if (r3[1] - r3[0] == 120) {
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 100}`).style.backgroundColor = '#5C4638'
+
+                    document.getElementById(`bt${PP1 + 20}`).disabled = true
+                    document.getElementById(`bt${PP1 + 40}`).disabled = true
+                    document.getElementById(`bt${PP1 + 60}`).disabled = true
+                    document.getElementById(`bt${PP1 + 80}`).disabled = true
+                    document.getElementById(`bt${PP1 + 100}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 0px 0px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 0px 10px 10px'
+                }
+            } else if (r4[0] == PP1 && r4[1] == PP2){
+                document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = '#5C4638'
+
+                document.getElementById(`bt${PP1}`).disabled = true
+                document.getElementById(`bt${PP2}`).disabled = true
+
+                QR4.style.textDecoration = 'line-through';
+                certas += 1;
+
+                if(r4[1] - r4[0] == 4){
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = '#5C4638'
+
+                    document.getElementById(`bt${PP1 + 1}`).disabled = true
+                    document.getElementById(`bt${PP1 + 2}`).disabled = true
+                    document.getElementById(`bt${PP1 + 3}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 0px 0px 10px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 10px 10px 0px'
+                } else if (r4[1] - r4[0] == 80) {
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = '#5C4638'
+
+                    document.getElementById(`bt${PP1 + 20}`).disabled = true
+                    document.getElementById(`bt${PP1 + 40}`).disabled = true
+                    document.getElementById(`bt${PP1 + 60}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 0px 0px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 0px 10px 10px'
+                }
+            } else if (r5[0] == PP1 && r5[1] == PP2){
+                document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = '#5C4638'
+
+                document.getElementById(`bt${PP1}`).disabled = true
+                document.getElementById(`bt${PP2}`).disabled = true
+
+                QR5.style.textDecoration = 'line-through';
+                certas += 1;
+
+                if(r5[1] - r5[0] == 5){
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = '#5C4638'
+
+                    document.getElementById(`bt${PP1 + 1}`).disabled = true
+                    document.getElementById(`bt${PP1 + 2}`).disabled = true
+                    document.getElementById(`bt${PP1 + 3}`).disabled = true
+                    document.getElementById(`bt${PP1 + 4}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 0px 0px 10px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 10px 10px 0px'
+                } else if (r5[1] - r5[0] == 100) {
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = '#5C4638'
+
+                    document.getElementById(`bt${PP1 + 20}`).disabled = true
+                    document.getElementById(`bt${PP1 + 40}`).disabled = true
+                    document.getElementById(`bt${PP1 + 60}`).disabled = true
+                    document.getElementById(`bt${PP1 + 80}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 0px 0px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 0px 10px 10px'
+                }
+            } else {
+                document.getElementById(`bt${PP1}`).style.backgroundColor = '#BEBEBE'
+                document.getElementById(`bt${PP1}`).style.borderRadius = '0px 0px 0px 0px'
+
+            }
+
+            if(certas == 5){
+                msg_ccplv.innerHTML = 'Parabéns! Caça-Pavras completo!'
+
+                for (let index = 1; index <= tamanhoJg; index++) {
+
+                    id = `bt${index - 1}`
+                    document.getElementById(id).disabled = true
+            
+                }
+            }
+
+            Nclick = 0
+        }
+    }
+
+    let cont = 1;
+    let respT;
+    let lc;
+    let repeticao = []
+
+    var certas = 0;
+
+    let r1 = []
+    let r2 = []
+    let r3 = []
+    let r4 = []
+    let r5 = []
+
+    let ps1 = 0
+    let existe = 0;
+
+    function posicionar(){
+        if (cont == 1){
+            respT = 4
+        } else if (cont == 2){
+            respT = 6
+        } else if (cont == 3){
+            respT = 7
+        }  else if (cont == 4){
+            respT = 5
+        } else if (cont == 5){
+            respT = 6
+        }
+
+        lc = (Math.random()).toFixed();
+        aleat = (Math.random() * tamanhoJg).toFixed();
+
+        ps1 = Number(aleat)
+
+        if (lc == 1){
+            if  (ps1 > (20 - respT) && ps1 <= 20 
+                || ps1 > (40 - respT) && ps1 <= 40 
+                || ps1 > (60 - respT) && ps1 <= 60 
+                || ps1 > (80 - respT) && ps1 <= 80
+                || ps1 > (100 - respT) && ps1 <= 100
+                || ps1 > (120 - respT) && ps1 <= 120
+                || ps1 > (140 - respT) && ps1 <= 140
+                || ps1 > (160 - respT) && ps1 <= 160
+                || ps1 > (180 - respT) && ps1 <= 180
+                || ps1 > (200 - respT) && ps1 <= 200
+                || ps1 > (220 - respT) && ps1 <= 220
+                || ps1 > (240 - respT) && ps1 <= 240
+                || ps1 > (260 - respT) && ps1 <= 260
+                || ps1 > (280 - respT) && ps1 <= 280
+                || ps1 > (300 - respT) && ps1 <= 300){
+                posicionar()
+
+            } else {
+                for (index = 0; index < repeticao.length; index++){
+                    for(index2 = 0; index2 < respT; index2++){
+                        if (repeticao[index] == (ps1 + (index2 - 1))) { existe = 1 }
+                    }
+                }
+
+                if (existe == 0){
+                    for (index = 0; index < respT; index++){
+                        if (cont == 1) document.getElementById(`bt${Number(ps1) + (index - 1)}`).innerHTML = palavras.P1[index]
+                        if (cont == 2) document.getElementById(`bt${Number(ps1) + (index - 1)}`).innerHTML = palavras.P2[index]
+                        if (cont == 3) document.getElementById(`bt${Number(ps1) + (index - 1)}`).innerHTML = palavras.P3[index]
+                        if (cont == 4) document.getElementById(`bt${Number(ps1) + (index - 1)}`).innerHTML = palavras.P4[index]
+                        if (cont == 5) document.getElementById(`bt${Number(ps1) + (index - 1)}`).innerHTML = palavras.P5[index]
+
+                        repeticao.push((Number(ps1) + (index - 1)))
+                        
+
+                        // document.getElementById(`bt${Number(ps1) + (index - 1)}`).style.backgroundColor = 'gray'
+                    }
+                        if (cont == 1){
+                            r1.push(ps1 - 1)
+                            r1.push(ps1 + (respT - 1) - 1)
+                        } else if (cont == 2){
+                            r2.push(ps1 - 1)
+                            r2.push(ps1 + (respT - 1) - 1)
+                        } else if (cont == 3){
+                            r3.push(ps1 - 1)
+                            r3.push(ps1 + (respT - 1) - 1)
+                        } else if (cont == 4){
+                            r4.push(ps1 - 1)
+                            r4.push(ps1 + (respT - 1) - 1)
+                        } else if (cont == 5){
+                            r5.push(ps1 - 1)
+                            r5.push(ps1 + (respT - 1) - 1)
+                        } 
+
+                    cont++
+
+                    if (cont > 5){} 
+                    else {
+                        posicionar()
+                    }
+                } else {
+                    existe = 0
+                    posicionar()
+                }
+
+            }
+        } else {
+            if(ps1 > (300 - (respT * 20))){
+                posicionar()
+            } else {
+
+                
+                for (index = 0; index < repeticao.length; index++){
+                    for (index2 = 0; index2 < respT; index2++){
+                        if (repeticao[index] == (ps1 + ((index2 * 20) - 1))) { existe = 1 }
+                    }
+                }
+
+                if (existe == 0){
+                    for (index = 0; index < respT; index++){
+                        if (cont == 1) document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).innerHTML = palavras.P1[index]
+                        if (cont == 2) document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).innerHTML = palavras.P2[index]
+                        if (cont == 3) document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).innerHTML = palavras.P3[index]
+                        if (cont == 4) document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).innerHTML = palavras.P4[index]
+                        if (cont == 5) document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).innerHTML = palavras.P5[index]
+
+                        repeticao.push((Number(ps1) + ((index * 20) - 1)))
+
+                        // document.getElementById(`bt${Number(ps1) + ((index * 20) - 1)}`).style.backgroundColor = 'gray'
+                    }
+                    if (cont == 1){
+                            r1.push(ps1 - 1)
+                            r1.push(ps1 + ((respT - 1) * 20) - 1)
+                        } else if (cont == 2){
+                            r2.push(ps1 - 1)
+                            r2.push(ps1 + ((respT - 1) * 20) - 1)
+                        } else if (cont == 3){
+                            r3.push(ps1 - 1)
+                            r3.push(ps1 + ((respT - 1) * 20) - 1)
+                        } else if (cont == 4){
+                            r4.push(ps1 - 1)
+                            r4.push(ps1 + ((respT - 1) * 20) - 1)
+                        } else if (cont == 5){
+                            r5.push(ps1 - 1)
+                            r5.push(ps1 + ((respT - 1) * 20) - 1)
+                        } 
+
+                    cont++
+
+                    if (cont > 5){} 
+                    else {
+                        posicionar()
+                    }
+                } else {
+                    existe = 0
+                    posicionar()
+                }
+
+            }
+        }
     }
 
 </script>

@@ -9,11 +9,11 @@
 <body onload="preencher()">
     <div>
         <div id="div_game" style="border: #000 solid 2px; height: auto; padding: 10px; width: 800px;"></div>
-        <h4>Rosa</h4>
-        <h4>Raposa</h4>
-        <h4>Cativar</h4>
-        <h4>Aviao</h4>
-        <h4>Chapeu</h4>
+        <h4 id="QR1">Rosa</h4>
+        <h4 id="QR2">Raposa</h4>
+        <h4 id="QR3">Cativar</h4>
+        <h4 id="QR4">Aviao</h4>
+        <h4 id="QR5">Chapeu</h4>
     </div>
 
 
@@ -95,143 +95,184 @@
             PP1 = BT.indexOf(1)
             BT[PP1] = 0
 
-            document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
+            document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+            document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 10px 10px'
 
         } else if (Nclick == 2){
             PP2 = BT.indexOf(1)
             BT[PP2] = 0
 
             if (r1[0] == PP1 && r1[1] == PP2){
-                document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
-                document.getElementById(`bt${PP2}`).style.backgroundColor = 'green'
+                document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = '#5C4638'
 
                 document.getElementById(`bt${PP1}`).disabled = true
                 document.getElementById(`bt${PP2}`).disabled = true
+                QR1.style.textDecoration = 'line-through';
             
                 if(r1[1] - r1[0] == 3){
-                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = '#5C4638'
 
                     document.getElementById(`bt${PP1 + 1}`).disabled = true
                     document.getElementById(`bt${PP1 + 2}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 0px 0px 10px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 10px 10px 0px'
                 } else if (r1[1] - r1[0] == 60) {
-                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = '#5C4638'
 
                     document.getElementById(`bt${PP1 + 20}`).disabled = true
                     document.getElementById(`bt${PP1 + 40}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 0px 0px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 0px 10px 10px'
+
                 }
             } else if (r2[0] == PP1 && r2[1] == PP2){
-                document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
-                document.getElementById(`bt${PP2}`).style.backgroundColor = 'green'
+                document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = '#5C4638'
 
                 document.getElementById(`bt${PP1}`).disabled = true
                 document.getElementById(`bt${PP2}`).disabled = true
 
+                QR2.style.textDecoration = 'line-through';
+
                 if(r2[1] - r2[0] == 5){
-                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = '#5C4638'
 
                     document.getElementById(`bt${PP1 + 1}`).disabled = true
                     document.getElementById(`bt${PP1 + 2}`).disabled = true
                     document.getElementById(`bt${PP1 + 3}`).disabled = true
                     document.getElementById(`bt${PP1 + 4}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 0px 0px 10px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 10px 10px 0px'
                 } else if (r2[1] - r2[0] == 100) {
-                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = '#5C4638'
 
                     document.getElementById(`bt${PP1 + 20}`).disabled = true
                     document.getElementById(`bt${PP1 + 40}`).disabled = true
                     document.getElementById(`bt${PP1 + 60}`).disabled = true
                     document.getElementById(`bt${PP1 + 80}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 0px 0px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 0px 10px 10px'
                 }
             } else if (r3[0] == PP1 && r3[1] == PP2){
-                document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
-                document.getElementById(`bt${PP2}`).style.backgroundColor = 'green'
+                document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = '#5C4638'
 
                 document.getElementById(`bt${PP1}`).disabled = true
                 document.getElementById(`bt${PP2}`).disabled = true
 
+                QR3.style.textDecoration = 'line-through';
+
                 if(r3[1] - r3[0] == 6){
-                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 5}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 5}`).style.backgroundColor = '#5C4638'
 
                     document.getElementById(`bt${PP1 + 1}`).disabled = true
                     document.getElementById(`bt${PP1 + 2}`).disabled = true
                     document.getElementById(`bt${PP1 + 3}`).disabled = true
                     document.getElementById(`bt${PP1 + 4}`).disabled = true
                     document.getElementById(`bt${PP1 + 5}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 0px 0px 10px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 10px 10px 0px'
                 } else if (r3[1] - r3[0] == 120) {
-                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 100}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 100}`).style.backgroundColor = '#5C4638'
 
                     document.getElementById(`bt${PP1 + 20}`).disabled = true
                     document.getElementById(`bt${PP1 + 40}`).disabled = true
                     document.getElementById(`bt${PP1 + 60}`).disabled = true
                     document.getElementById(`bt${PP1 + 80}`).disabled = true
                     document.getElementById(`bt${PP1 + 100}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 0px 0px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 0px 10px 10px'
                 }
             } else if (r4[0] == PP1 && r4[1] == PP2){
-                document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
-                document.getElementById(`bt${PP2}`).style.backgroundColor = 'green'
+                document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = '#5C4638'
 
                 document.getElementById(`bt${PP1}`).disabled = true
                 document.getElementById(`bt${PP2}`).disabled = true
 
+                QR4.style.textDecoration = 'line-through';
+
                 if(r4[1] - r4[0] == 4){
-                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = '#5C4638'
 
                     document.getElementById(`bt${PP1 + 1}`).disabled = true
                     document.getElementById(`bt${PP1 + 2}`).disabled = true
                     document.getElementById(`bt${PP1 + 3}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 0px 0px 10px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 10px 10px 0px'
                 } else if (r4[1] - r4[0] == 80) {
-                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = '#5C4638'
 
                     document.getElementById(`bt${PP1 + 20}`).disabled = true
                     document.getElementById(`bt${PP1 + 40}`).disabled = true
                     document.getElementById(`bt${PP1 + 60}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 0px 0px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 0px 10px 10px'
                 }
             } else if (r5[0] == PP1 && r5[1] == PP2){
-                document.getElementById(`bt${PP1}`).style.backgroundColor = 'green'
-                document.getElementById(`bt${PP2}`).style.backgroundColor = 'green'
+                document.getElementById(`bt${PP1}`).style.backgroundColor = '#5C4638'
+                document.getElementById(`bt${PP2}`).style.backgroundColor = '#5C4638'
 
                 document.getElementById(`bt${PP1}`).disabled = true
                 document.getElementById(`bt${PP2}`).disabled = true
 
+                QR5.style.textDecoration = 'line-through';
+
                 if(r5[1] - r5[0] == 5){
-                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 1}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 2}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 3}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 4}`).style.backgroundColor = '#5C4638'
 
                     document.getElementById(`bt${PP1 + 1}`).disabled = true
                     document.getElementById(`bt${PP1 + 2}`).disabled = true
                     document.getElementById(`bt${PP1 + 3}`).disabled = true
                     document.getElementById(`bt${PP1 + 4}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 0px 0px 10px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 10px 10px 0px'
                 } else if (r5[1] - r5[0] == 100) {
-                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = 'green'
-                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = 'green'
+                    document.getElementById(`bt${PP1 + 20}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 40}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 60}`).style.backgroundColor = '#5C4638'
+                    document.getElementById(`bt${PP1 + 80}`).style.backgroundColor = '#5C4638'
 
                     document.getElementById(`bt${PP1 + 20}`).disabled = true
                     document.getElementById(`bt${PP1 + 40}`).disabled = true
                     document.getElementById(`bt${PP1 + 60}`).disabled = true
                     document.getElementById(`bt${PP1 + 80}`).disabled = true
+
+                    document.getElementById(`bt${PP1}`).style.borderRadius = '10px 10px 0px 0px'
+                    document.getElementById(`bt${PP2}`).style.borderRadius = '0px 0px 10px 10px'
                 }
             } else {
                 document.getElementById(`bt${PP1}`).style.backgroundColor = 'white'

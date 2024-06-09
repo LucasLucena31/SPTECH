@@ -266,7 +266,7 @@ a {
     padding-bottom: 40px;
     margin-top: 10%;
     text-align: center;
-    
+
 }
 
 .coments h1 {
@@ -297,7 +297,7 @@ a {
     text-align: center;
 }
 
-.publicacao-id span{
+.publicacao-id span {
     color: #ffffff;
     font-weight: 100;
     font-size: 18px;
@@ -339,7 +339,7 @@ a {
 
 }
 
-.div-buttons button{
+.div-buttons button {
     width: 150px;
     background-color: #3A2C23;
     border: #000 solid 2px;
@@ -357,7 +357,39 @@ a {
 
 }
 
+#bt_minigame {
+    width: 60%;
+    background-color: #3A2C23;
+    border: #000 solid 2px;
+    border-radius: 20px;
+    padding: 10px;
+    color: #fff;
+    font-family: linden-hill;
+    font-size: 24px;
+    align-self: center;
+}
 
+#bt_mural {
+    width: 60%;
+    background-color: #3A2C23;
+    border: #000 solid 2px;
+    border-radius: 20px;
+    padding: 10px;
+    color: #fff;
+    font-family: linden-hill;
+    font-size: 24px;
+    align-self: center;
+}
+
+#div_game {
+    border: #000 solid 2px;
+    height: auto;
+    padding: 10px;
+    width: 800px;
+    margin-left: 10%;
+    background-color: #BEBEBE;
+    border-radius: 10px;
+}
 
 @font-face {
     font-family: linden-hill;
