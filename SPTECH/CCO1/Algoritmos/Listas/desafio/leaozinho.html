@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sete e Meio</title>
+</head>
+<body>
+    <h1>Sete e Meio</h1>
+
+    <div id="tela1">
+        <button onclick="sortear()">Iniciar Jogo</button>
+    </div>
+
+    <div id="tela2" style="display: none;">
+        <button onclick="sortear()" id="botao_carta">Pedir outra carta</button>
+        <button onclick="sortear(2)" id="botao_passar">Passar a vez</button>
+
+        <div id="div_mensagem"></div>
+    </div>
+
+    
+</body>
+</html>
+
+<script>
+
+    const baralho = [{num: 'A', copas: 0, espadas: 0, ouros: 0, paus: 0},
+                     {num: '2', copas: 0, espadas: 0, ouros: 0, paus: 0},
+                     {num: '3', copas: 0, espadas: 0, ouros: 0, paus: 0},
+                     {num: '4', copas: 0, espadas: 0, ouros: 0, paus: 0},
+                     {num: '5', copas: 0, espadas: 0, ouros: 0, paus: 0},
+                     {num: '6', copas: 0, espadas: 0, ouros: 0, paus: 0},
+                     {num: '7', copas: 0, espadas: 0, ouros: 0, paus: 0},
+                     {num: 'Val', copas: 0, espadas: 0, ouros: 0, paus: 0},
+                     {num: 'Rai', copas: 0, espadas: 0, ouros: 0, paus: 0},
+                     {num: 'Rei', copas: 0, espadas: 0, ouros: 0, paus: 0}];
+
+    var minC = 1;
+    var maxC = 10;
+
+    var minN = 1;
+    var maxN = 4;
+
+    let cartaNum = ''
+    let cartaNap = ''
+
+    let cont = 0;
+
+    let pontuacaoJg = 0
+    let pontuacaoMs = 0
+
+    let vez = 1
+
+    function sortear(param) {
+        if (cont == 0){
+            tela1.style.display = 'none'
+            tela2.style.display = 'block'
+
+            cont++
+            div_mensagem.innerHTML = `Jogador: <br>`
+        }
+
+        if (param == 2){
+            vez = 2
+        }
+
+        var numC = Math.random() * (maxC - minC) + minC; // * intervalo + min;
+        var naipe = Math.random() * (maxN - minN) + minN; // * intervalo + min; 
+        
+        cartaNum = numC.toFixed()
+        cartaNap = naipe.toFixed()
+
+        if(cartaNap == 1){
+            cartaNap = 'copas'
+        } else if(cartaNap == 2){
+            cartaNap = 'espadas'
+        } else if(cartaNap == 3){
+            cartaNap = 'ouros'
+        } else if(cartaNap == 4){
+            cartaNap = 'paus'
+        } 
+
+        if(cartaNum == 8){
+            cartaNum = 'Val'
+        } else if (cartaNum == 9){
+            cartaNum = 'Rai'
+        } else if (cartaNum == 10){
+            cartaNum = 'Rei'
+        } else if (cartaNum == 1){
+            cartaNum = 'A'
+        }
+        
+        procurar();
+    }
+
+
+     function procurar() {
+        for(var i = 0; i < baralho.length; i++){
+            if(baralho[i].num == cartaNum){
+                if (cartaNap == 'copas' ){
+                    if(baralho[i].copas == 0){
+                        baralho[i].copas = 1
+                        jogar()
+                        break;
+                    } else {
+                        sortear()
+                        break;
+                    }
+                } else if (cartaNap == 'espadas' ){
+                    if(baralho[i].espadas == 0){
+                        baralho[i].espadas = 1
+                        jogar()
+                        break;
+                    } else {
+                        sortear()
+                        break;
+                    }
+                } else if (cartaNap == 'ouros' ){
+                    if(baralho[i].ouros == 0){
+                        baralho[i].ouros = 1
+                        jogar()
+                        break;
+                    } else {
+                        sortear()
+                        break;
+                    }
+                } else if (cartaNap == 'paus' ){
+                    if(baralho[i].paus == 0){
+                        baralho[i].paus = 1
+                        jogar()
+                        break;
+                    } else {
+                        sortear()
+                        break;
+                    }
+                }
+            }
+
+        }
+     }
+
+
+    function jogar(){
+        if (cartaNum == 'A'){
+            pont = 1
+            if (vez == 1) pontuacaoJg += 1
+            if (vez == 2) pontuacaoMs += 1
+
+        } else if (cartaNum == '2'){
+            pont = 2
+            if (vez == 1) pontuacaoJg += 2
+            if (vez == 2) pontuacaoMs += 2
+
+        } else if (cartaNum == '3'){
+            pont = 3
+            if (vez == 1) pontuacaoJg += 3
+            if (vez == 2) pontuacaoMs += 3
+
+        } else if (cartaNum == '4'){
+            pont = 4
+            if (vez == 1) pontuacaoJg += 4
+            if (vez == 2) pontuacaoMs += 4
+
+        } else if (cartaNum == '5'){
+            pont = 5
+            if (vez == 1) pontuacaoJg += 5
+            if (vez == 2) pontuacaoMs += 5
+
+        } else if (cartaNum == '6'){
+            pont = 6
+            if (vez == 1) pontuacaoJg += 6
+            if (vez == 2) pontuacaoMs += 6
+
+        } else if (cartaNum == '7'){
+            pont = 7
+            if (vez == 1) pontuacaoJg += 7
+            if (vez == 2) pontuacaoMs += 7
+
+        } else {
+            pont = 0.5
+            if (vez == 1) pontuacaoJg += 0.5
+            if (vez == 2) pontuacaoMs += 0.5
+        }
+
+        if (vez == 1){
+            div_mensagem.innerHTML += `(${pont} pontos) ${cartaNum} ${cartaNap} ${pontuacaoJg}<br> `
+        }
+
+        if (vez == 2){
+            div_mensagem.innerHTML += `(${pont} pontos) ${cartaNum} ${cartaNap} ${pontuacaoMs}<br> `
+        }
+
+        if( vez == 1 && pontuacaoJg == 7.5){
+            div_mensagem.innerHTML += '<br> SETE E MEIO! Jogador venceu!'
+            botao_carta.disabled = true;
+            botao_passar.disabled = true;
+           
+
+        } else if( vez == 2 && pontuacaoJg == 7.5){
+            div_mensagem.innerHTML += '<br> SETE E MEIO! Banca venceu'
+            botao_carta.disabled = true;
+            botao_passar.disabled = true;
+
+        } 
+
+        if (pontuacaoJg > 7.5){
+            div_mensagem.innerHTML += `<br> Jogador extorou! Banca Venceu`
+            botao_carta.disabled = true;
+            botao_passar.disabled = true;
+        }
+
+        if (pontuacaoMs > 7.5){
+            div_mensagem.innerHTML += `<br> Banca extorou! Jogador Venceu`
+            botao_carta.disabled = true;
+            botao_passar.disabled = true;
+        }
+
+        if( vez == 2 && pontuacaoJg >= pontuacaoMs && pontuacaoMs <= 7.5){
+            sortear()
+        } else if (vez == 2 && pontuacaoJg < pontuacaoMs){
+            if (pontuacaoMs = 7.5){
+                div_mensagem.innerHTML += '<br> SETE E MEIO! Banca venceu'
+                botao_carta.disabled = true;
+                botao_passar.disabled = true;
+            }
+            else if(pontuacaoMs < 7.5 ){
+                div_mensagem.innerHTML += `<br> Banca venceu com ${pontuacaoMs}`
+                botao_carta.disabled = true;
+                botao_passar.disabled = true;
+            }
+        } 
+    }
+</script>

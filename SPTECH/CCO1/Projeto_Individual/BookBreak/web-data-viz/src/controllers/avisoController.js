@@ -169,9 +169,10 @@ function editar(req, res) {
 }
 
 function deletar(req, res) {
-    var idPost = req.params.idPost;
+    var idDiv = req.params.idDiv;
+    var idCap = req.params.idCap;
 
-    avisoModel.deletar(idPost)
+    avisoModel.deletar(idDiv, idCap)
         .then(
             function (resultado) {
                 res.json(resultado);

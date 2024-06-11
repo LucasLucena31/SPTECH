@@ -255,29 +255,32 @@
 
     }
 
-    function deletar(idDiv) {
+    function deletar(id) {
+        var idCap = capitulo.value;
 
-        idDiv.style.display = 'none';
+        alert(id)
 
-        // console.log("Criar função de apagar post escolhido - ID" + idAviso);
-        // fetch(`/avisos/deletar/${idAviso}`, {
-        //     method: "DELETE",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     }
-        // }).then(function (resposta) {
+        // idDiv.style.display = 'none';
 
-        //     if (resposta.ok) {
-        //         window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-        //         window.location = "/dashboard/mural.html"
-        //     } else if (resposta.status == 404) {
-        //         window.alert("Deu 404!");
-        //     } else {
-        //         throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-        //     }
-        // }).catch(function (resposta) {
-        //     console.log(`#ERRO: ${resposta}`);
-        // });
+         console.log("Criar função de apagar post escolhido - ID" + id);
+         fetch(`/avisos/deletar/${id}/${idCap}`, {
+             method: "DELETE",
+             headers: {
+                 "Content-Type": "application/json"
+             }
+         }).then(function (resposta) {
+
+             if (resposta.ok) {
+                 window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                 window.location = "/dashboard/mural.html"
+             } else if (resposta.status == 404) {
+                 window.alert("Deu 404!");
+             } else {
+                 throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+             }
+         }).catch(function (resposta) {
+             console.log(`#ERRO: ${resposta}`);
+         });
 
     }
 
@@ -304,7 +307,7 @@
 
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
-                        divPublicacao.id = "div" + i;
+                        divPublicacao.id = i;
                         var spanID = document.createElement("span");
                         var spanTitulo = document.createElement("span");
                         var spanNome = document.createElement("span");
@@ -350,7 +353,7 @@
 
                              btnDeletar.className = "publicacao-btn-editar"
                              btnDeletar.id = "btnDeletar" + publicacao.idPost;
-                             btnDeletar.setAttribute("onclick", `deletar(${divPublicacao.id})`);
+                             btnDeletar.setAttribute("onclick", `deletar(${publicacao.idPost})`);
 
                              divPublicacao.appendChild(divButtons);
                             //  divButtons.appendChild(btnEditar);
@@ -699,7 +702,7 @@
             }
 
             if(certas == 5){
-                msg_ccplv.innerHTML = 'Parabéns! Caça-Pavras completo!'
+                msg_ccplv.innerHTML = 'Parabéns! Caça-Palavras completo!'
 
                 for (let index = 1; index <= tamanhoJg; index++) {
 

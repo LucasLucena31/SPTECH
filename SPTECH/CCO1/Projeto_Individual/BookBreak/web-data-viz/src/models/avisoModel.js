@@ -83,10 +83,10 @@ function editar(novaDescricao, idPost) {
     return database.executar(instrucaoSql);
 }
 
-function deletar(idPost) {
-    console.log("ACESSEI O post MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idPost);
+function deletar(idDiv, idCap) {
+    console.log("ACESSEI O post MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idDiv);
     var instrucaoSql = `
-        DELETE FROM post WHERE id = ${idPost};
+        DELETE FROM post WHERE id = ${idDiv} and fk_capitulo = ${idCap};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

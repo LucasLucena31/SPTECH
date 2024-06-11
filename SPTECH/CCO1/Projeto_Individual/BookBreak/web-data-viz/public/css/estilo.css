@@ -131,15 +131,19 @@ a {
   margin-left: 10%;
   align-self: center;
 
+  display: flex;
+
 }
 
 .folha1 {
-  width: 40%;
-  margin-left: 9%;
+  width: 37%;
+  margin-left: 10%;
   margin-top: 4.5%;
 
   display: block;
   text-align: center;
+  padding-left: 7px;
+  padding-right: 14px;
 }
 
 .folha1 .titulo {
@@ -150,11 +154,43 @@ a {
   font-family: petit;
   font-size: 50px;
   text-decoration: underline;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .folha1 .titulo p {
   font-family: pridi;
-  font-size: 26px;
+  font-size: 20px;
+  text-align: justify;
+  margin-top: 0;
+}
+
+.folha2 {
+  width: 37%;
+  margin-left: 2.2%;
+  margin-top: 4.5%;
+
+  display: block;
+  text-align: center;
+  padding-left: 7px;
+  padding-right: 14px;
+}
+
+.folha2 .titulo {
+ width: 100%;
+}
+
+.folha2 .titulo h1 {
+  font-family: petit;
+  font-size: 50px;
+  text-decoration: underline;
+}
+
+.folha2 .titulo p {
+  font-family: pridi;
+  font-size: 20px;
+  text-align: justify;
+  font-weight: 100;
 }
 
 .icon_cadastro {
