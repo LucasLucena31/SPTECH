@@ -104,7 +104,7 @@ function plotar() {
 function plotarComent() {
     console.log("ACESSEI O post  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucaoSql = `
-        select COUNT(post.id) as num from post right join capitulo on fk_capitulo = capitulo.id group by capitulo.id;
+        select COUNT(post.id) as num from post right join Capitulo on fk_capitulo = Capitulo.id group by Capitulo.id;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
