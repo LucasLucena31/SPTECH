@@ -184,51 +184,44 @@
         }
 
         if (vez == 1){
-            div_mensagem.innerHTML += `(${pont} pontos) ${cartaNum} ${cartaNap} ${pontuacaoJg}<br> `
+            div_mensagem.innerHTML += `(${pont} pontos) ${cartaNum} ${cartaNap} ${pontuacaoJg} jg <br> `
         }
 
         if (vez == 2){
-            div_mensagem.innerHTML += `(${pont} pontos) ${cartaNum} ${cartaNap} ${pontuacaoMs}<br> `
+            div_mensagem.innerHTML += `(${pont} pontos) ${cartaNum} ${cartaNap} ${pontuacaoMs} ms<br> `
         }
 
         if( vez == 1 && pontuacaoJg == 7.5){
             div_mensagem.innerHTML += '<br> SETE E MEIO! Jogador venceu!'
             botao_carta.disabled = true;
             botao_passar.disabled = true;
-           
-
-        } else if( vez == 2 && pontuacaoJg == 7.5){
+        } 
+        
+        else if (pontuacaoJg > 7.5){
+            div_mensagem.innerHTML += `<br> Jogador extorou! Banca Venceu`
+            botao_carta.disabled = true;
+            botao_passar.disabled = true;
+        }
+        
+        else if( vez == 2 && pontuacaoMs == 7.5){
             div_mensagem.innerHTML += '<br> SETE E MEIO! Banca venceu'
             botao_carta.disabled = true;
             botao_passar.disabled = true;
 
         } 
-
-        if (pontuacaoJg > 7.5){
-            div_mensagem.innerHTML += `<br> Jogador extorou! Banca Venceu`
-            botao_carta.disabled = true;
-            botao_passar.disabled = true;
-        }
-
-        if (pontuacaoMs > 7.5){
+        else if (pontuacaoMs > 7.5){
             div_mensagem.innerHTML += `<br> Banca extorou! Jogador Venceu`
             botao_carta.disabled = true;
             botao_passar.disabled = true;
         }
 
-        if( vez == 2 && pontuacaoJg >= pontuacaoMs && pontuacaoMs <= 7.5){
+        else if( vez == 2 && pontuacaoJg >= pontuacaoMs){
             sortear()
         } else if (vez == 2 && pontuacaoJg < pontuacaoMs){
-            if (pontuacaoMs = 7.5){
-                div_mensagem.innerHTML += '<br> SETE E MEIO! Banca venceu'
-                botao_carta.disabled = true;
-                botao_passar.disabled = true;
-            }
-            else if(pontuacaoMs < 7.5 ){
                 div_mensagem.innerHTML += `<br> Banca venceu com ${pontuacaoMs}`
                 botao_carta.disabled = true;
                 botao_passar.disabled = true;
-            }
+            
         } 
     }
 </script>
