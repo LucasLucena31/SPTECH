@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sete e Meio</title>
+    <link rel="stylesheet" href="style7.css">
 </head>
 <body>
-    <h1>Sete e Meio</h1>
-
-    <div id="tela1">
-        <button onclick="sortear()">Iniciar Jogo</button>
+    
+    <div id="tela1" class="tela1">
+        <div class="inicio">
+            <h1>Dev x Cliente <br>
+                (Sete e Meio)</h1>
+            <button onclick="sortear()">Iniciar Jogo</button>
+        </div>
     </div>
 
-    <div id="tela2" style="display: none;">
-        <button onclick="sortear()" id="botao_carta">Pedir outra carta</button>
-        <button onclick="sortear(2)" id="botao_passar">Passar a vez</button>
-
-        <div id="div_mensagem"></div>
+    <div id="tela2" style="display: none;" class="tela2">
+        <div class="ctd">
+            <div id="div_mensagem" class="msg"></div>
+            <div class="bts">
+                <button onclick="sortear()" id="botao_carta">Adicionar Requisito</button>
+                <button onclick="sortear(2)" id="botao_passar">Entregar Projeto</button>
+            </div>
+        </div>
     </div>
 
     
@@ -58,7 +65,7 @@
             tela2.style.display = 'block'
 
             cont++
-            div_mensagem.innerHTML = `Jogador: <br>`
+            div_mensagem.innerHTML = `Desenvolvedor: <br> <br>`
         }
 
         if (param == 2){
@@ -140,77 +147,134 @@
         }
      }
 
+     var req = ""
+     var contPlay = 0;
 
     function jogar(){
         if (cartaNum == 'A'){
+            cartaNum = 'Ás'
             pont = 1
-            if (vez == 1) pontuacaoJg += 1
-            if (vez == 2) pontuacaoMs += 1
+            if (vez == 1) {
+                pontuacaoJg += 1 
+                req = "Requisito IMPORTANTE Adicionado!"
+            }
+            if (vez == 2) {
+                pontuacaoMs += 1 
+                req = "Requisito IMPORTANTE Encontrado!"
+            }
 
         } else if (cartaNum == '2'){
             pont = 2
-            if (vez == 1) pontuacaoJg += 2
-            if (vez == 2) pontuacaoMs += 2
+            if (vez == 1) {
+                pontuacaoJg += 2
+                req = "Requisito IMPORTANTE Adicionado!"
+            }
+            if (vez == 2) {
+                pontuacaoMs += 2
+                req = "Requisito IMPORTANTE Encontrado!"
+            }
 
         } else if (cartaNum == '3'){
             pont = 3
-            if (vez == 1) pontuacaoJg += 3
-            if (vez == 2) pontuacaoMs += 3
+            if (vez == 1) {
+                pontuacaoJg += 3
+                req = "Requisito IMPORTANTE Adicionado!"
+            }
+            if (vez == 2) {
+                pontuacaoMs += 3
+                req = "Requisito IMPORTANTE Encontrado!"
+            }
 
         } else if (cartaNum == '4'){
             pont = 4
-            if (vez == 1) pontuacaoJg += 4
-            if (vez == 2) pontuacaoMs += 4
+            if (vez == 1){
+                pontuacaoJg += 4
+                req = "Requisito IMPORTANTE Adicionado!"
+            }
+            if (vez == 2) {
+                pontuacaoMs += 4
+                req = "Requisito IMPORTANTE Encontrado!"
+            }
 
         } else if (cartaNum == '5'){
             pont = 5
-            if (vez == 1) pontuacaoJg += 5
-            if (vez == 2) pontuacaoMs += 5
+            if (vez == 1) {
+                pontuacaoJg += 5
+                req = "Requisito IMPORTANTE Adicionado!"
+            }
+            if (vez == 2) {
+                pontuacaoMs += 5
+                req = "Requisito IMPORTANTE Encontrado!"
+            }
 
         } else if (cartaNum == '6'){
             pont = 6
-            if (vez == 1) pontuacaoJg += 6
-            if (vez == 2) pontuacaoMs += 6
+            if (vez == 1) {
+                pontuacaoJg += 6
+                req = "Requisito IMPORTANTE Adicionado!"
+            }
+            if (vez == 2) {
+                pontuacaoMs += 6
+                req = "Requisito IMPORTANTE Encontrado!"
+            }
 
         } else if (cartaNum == '7'){
             pont = 7
-            if (vez == 1) pontuacaoJg += 7
-            if (vez == 2) pontuacaoMs += 7
+            if (vez == 1) {
+                pontuacaoJg += 7
+                req = "Requisito IMPORTANTE Adicionado!"
+            }
+            if (vez == 2) {
+                pontuacaoMs += 7
+                req = "Requisito IMPORTANTE Encontrado!"
+            }
 
         } else {
             pont = 0.5
-            if (vez == 1) pontuacaoJg += 0.5
-            if (vez == 2) pontuacaoMs += 0.5
+            if (vez == 1) {
+                pontuacaoJg += 0.5
+                req = "Requisito DESEJAVEL Adicionado!"
+            }
+            if (vez == 2) {
+                pontuacaoMs += 0.5
+                req = "Requisito DESEJAVEL Encontrado!"
+            }
+
+        }
+
+        if (contPlay == 0 && vez == 2){
+            div_mensagem.innerHTML += '<br> <br> Cliente: <br>'
+            contPlay++
         }
 
         if (vez == 1){
-            div_mensagem.innerHTML += `(${pont} pontos) ${cartaNum} ${cartaNap} ${pontuacaoJg} jg <br> `
+            div_mensagem.innerHTML += `${req} (${pont} pontos) <br> [${cartaNum} ${cartaNap}] <br> Progressão Projeto: ${pontuacaoJg} <br> `
         }
 
         if (vez == 2){
-            div_mensagem.innerHTML += `(${pont} pontos) ${cartaNum} ${cartaNap} ${pontuacaoMs} ms<br> `
+            div_mensagem.innerHTML += `${req} (${pont} pontos) <br> [${cartaNum} ${cartaNap}] <br> Progressão Pedido: ${pontuacaoMs} <br> `
         }
 
         if( vez == 1 && pontuacaoJg == 7.5){
-            div_mensagem.innerHTML += '<br> SETE E MEIO! Jogador venceu!'
+            div_mensagem.innerHTML += '<br> SETE E MEIO! DEV fez um projeto PERFEITO!'
             botao_carta.disabled = true;
             botao_passar.disabled = true;
         } 
         
         else if (pontuacaoJg > 7.5){
-            div_mensagem.innerHTML += `<br> Jogador extorou! Banca Venceu`
+            div_mensagem.innerHTML += `<br> Dev estorou o orçamento! Foi demitido`
             botao_carta.disabled = true;
             botao_passar.disabled = true;
         }
         
         else if( vez == 2 && pontuacaoMs == 7.5){
-            div_mensagem.innerHTML += '<br> SETE E MEIO! Banca venceu'
+            div_mensagem.innerHTML += '<br> O cliente analisou PERFEITAMENTE o projeto e achou falhas! Você foi demitido'
             botao_carta.disabled = true;
             botao_passar.disabled = true;
 
         } 
         else if (pontuacaoMs > 7.5){
-            div_mensagem.innerHTML += `<br> Banca extorou! Jogador Venceu`
+            div_mensagem.innerHTML += `<br> Cliente pediu coisas fora do escopo! Dev ganhou`
             botao_carta.disabled = true;
             botao_passar.disabled = true;
         }
@@ -218,7 +282,7 @@
         else if( vez == 2 && pontuacaoJg >= pontuacaoMs){
             sortear()
         } else if (vez == 2 && pontuacaoJg < pontuacaoMs){
-                div_mensagem.innerHTML += `<br> Banca venceu com ${pontuacaoMs}`
+                div_mensagem.innerHTML += `<br> Cliente achou coisas faltando no projeto! Você perdeu! <br> [pontos cliente: ${pontuacaoMs}]`
                 botao_carta.disabled = true;
                 botao_passar.disabled = true;
             
