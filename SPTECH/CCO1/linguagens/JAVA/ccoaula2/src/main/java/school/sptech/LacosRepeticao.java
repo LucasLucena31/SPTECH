@@ -2,8 +2,17 @@ package school.sptech;
 
 public class LacosRepeticao {
     public static void main(String[] args) {
-        for (int i = 0; i <= 10; i++){
-            System.out.println(i);
+
+        // Loop infinito...
+//        for (;;){
+//            System.out.println(1+1);
+//        };
+
+        // WHILE
+        Integer contador = 0;
+        while(contador < 10){
+            System.out.println("Contador: " + contador);
+            contador++;
         }
 
 
