@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="tela">
+        <div class="hamb">
+            <img src="http://1.bp.blogspot.com/_xXvW4ICqwEQ/TNIBF3VVltI/AAAAAAAAAPQ/P2XAtsZy9aQ/s1600/cinza.jpg" alt="" class="escuro" id="escuro">
+            <div>
+                <button onclick="abrir()" style="position: relative; z-index: 10; width: 30px; height: 30px; background-color: #F3F5F4;"><img src="https://static.vecteezy.com/system/resources/previews/002/292/406/large_2x/hamburger-menu-line-icon-free-vector.jpg" alt="" width="100%" height="100%"></button>
+            </div>
+            <div class="menu" id="menu" style="display: none; position: fixed; z-index: 7; background-color: rgb(255, 255, 255); padding-left: 33px; padding-right: 6%; height: 80%;">
+                <h4>Home</h4>
+                <h4>Nossos Serviços</h4>
+                <h4>Sob nós</h4>
+                <h4>Equipe</h4>
+            </div>
+        </div>
+        <div class="main">
+            <h4> Teste de Diminuição de Texto <div class="desktop">desktop costuma ter muito texto porque o usuario tem mais tempo para ler</div> <div class="mobile">mobile user preguiçoso</div> </h4>
+        </div>
+</div>
+
+
+    
+</body>
+</html>
+
+<script>
+    var click = 0;
+
+    function abrir(){
+        if (click == 0){
+            menu.style.display = 'flex'
+            escuro.style.display = 'flex'
+            click = 1
+        } else {
+            menu.style.display = 'none'
+            escuro.style.display = 'none'
+            click = 0
+        }
+    }
+</script>

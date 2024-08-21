@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-aspect-ratio: 1) {
+    .desktop {
+        display: flex;
+    }
+    :is(.mobile, .hamb, .escuro, .menu) {
+        display: none;
+    }
+}
+
+@media (max-aspect-ratio: 1) {
+    .desktop {
+        display: none;
+    }
+    :is(.mobile, .hamb, .escuro, .menu) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.escuro {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    opacity: 60%;
+    height: 100%;
+
+}

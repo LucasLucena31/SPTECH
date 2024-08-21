@@ -1,0 +1,40 @@
+from math import pow
+
+exum = pow(2,3)
+exdo = pow((-2),3)
+exts = pow(1,0)
+exqt = pow((-1),0)
+exci = pow(2,0)
+exse = pow((2/5),3)
+exst = pow(3,-2)
+exot = pow((1/2),-3)
+
+pt1nv = pow((-1),3)
+exnv = pow(pt1nv,4)
+
+exdz = pow((0.5),3)
+exoz = pow((0.25),4)
+exdoz = pow(0,4)
+extrz = 1 + (pow(0.41,2))
+exqrz = 1/4 + (pow(5,2)) - (pow(-2,-4))
+exqiz = (pow(2,-3)) + (pow(-4,-5))
+exdezs = (pow((4/5) - (1/2) + 1,-2)) + 1/(1 + pow(3,2) - pow((4-5),-2))
+
+
+print("Ex 1 = ", exum)
+print("Ex 2 = ", exdo)
+print("Ex 3 = ", exts)
+print("Ex 4 = ", exqt)
+print("Ex 5 = ", exci)
+print("Ex 6 = ", exse)
+print("Ex 7 = ", exst)
+print("Ex 8 = ", exot)
+print("Ex 9 = ", exnv)
+print("Ex 10 = ", exdz)
+print("Ex 11 = ", exoz)
+print("Ex 12 = ", exdoz)
+print("Ex 13 = ", extrz)
+print("Ex 14 = ", exqrz)
+print("Ex 15 = ", exqiz)
+print("Ex 16 = ", exdezs)
+
